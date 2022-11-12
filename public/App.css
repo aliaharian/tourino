@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'chistayekanR';
+    font-style: normal;
+    font-weight: normal;
+    src: local('chistayekanR'), local('chistayekanR'), url('fonts/chistaYekan/ChistaYekanRegular.ttf') format('truetype'), url('fonts/chistaYekan/ChistaYekanRegular.woff') format('woff'), url('fonts/chistaYekan/ChistaYekanRegular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'chistayekanB';
+    font-style: normal;
+    font-weight: normal;
+    src: local('chistayekanB'), local('chistayekanB'), url('fonts/chistaYekan/ChistaYekanBold.ttf') format('truetype'), url('fonts/chistaYekan/ChistaYekanBold.woff') format('woff'), url('fonts/chistaYekan/ChistaYekanBold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'chistayekanM';
+    font-style: normal;
+    font-weight: normal;
+    src: local('chistayekanM'), local('chistayekanM'), url('fonts/chistaYekan/ChistaYekanmedium.ttf') format('truetype'), url('fonts/chistaYekan/ChistaYekanmedium.woff') format('woff'), url('fonts/chistaYekan/ChistaYekanmedium.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'chistayekanM';
+    font-style: normal;
+    font-weight: normal;
+    src: local('chistayekanM'), local('chistayekanM'), url('fonts/chistaYekan/ChistaYekanmedium.ttf') format('truetype'), url('fonts/chistaYekan/ChistaYekanmedium.woff') format('woff'), url('fonts/chistaYekan/ChistaYekanmedium.woff2') format('woff2');
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body,
+.MuiTypography-body1 {
+    font-family: 'chistayekanR';
+    font-size: 13px;
+}
