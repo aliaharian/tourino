@@ -14,15 +14,18 @@ const SearchSection = ({ scrollPos , showSearch , setShowSearch , dest , origin 
     return (
         <div className={classes.searchSectionContainer}>
             <div className={clsx(classes.transportContainer , (scrollPos && showSearch) && classes.transportContainerDark)} style={(scrollPos && !showSearch) ? { display: 'none' } : {}}>
-                {/* <div onClick={() => { setTransport('all') }} className={transport === 'all' && classes.transportActive}>
+                <div onClick={() => { setTransport('all') }} className={transport === 'all' && classes.transportActive}>
                     <p>همه</p>
+                </div>
+                <div onClick={() => { setTransport('airplane') }} className={transport === 'airplane' && classes.transportActive}>
+                    <p>هواپیما</p>
                 </div>
                 <div onClick={() => { setTransport('train') }} className={transport === 'train' && classes.transportActive}>
                     <p>قطار</p>
                 </div>
                 <div onClick={() => { setTransport('bus') }} className={transport === 'bus' && classes.transportActive}>
                     <p>اتوبوس</p>
-                </div> */}
+                </div>
             </div>
             <div className={clsx(classes.searchbarContainer, (scrollPos && !showSearch) && classes.searchbarContainerSm )}>
                 <Searchbar dest={dest} origin={origin} query={query} transport={transport} showSearch={showSearch} setShowSearch={(e)=>{setShowSearch(e)}} scrollPos={scrollPos}/>

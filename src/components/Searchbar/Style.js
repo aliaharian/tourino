@@ -2,8 +2,9 @@ import { makeStyles } from "@material-ui/styles";
 export default makeStyles((theme) => ({
     searchbar: {
         maxWidth: 860,
-        height: 67,
+        height: 68,
         borderRadius: 91,
+        // paddingLeft:8,
         backgroundColor: 'rgb(245,245,245)',
         border: '1px solid #e7e7e7',
         boxShadow: '0 3px 20px 0 rgba(0,0,0,0.25)',
@@ -42,16 +43,20 @@ export default makeStyles((theme) => ({
         borderRadius: 34,
         // backgroundColor:'rgba(245,245,245,1)',
         backgroundColor: 'transparent',
-        padding: '11px 26px',
+        padding: '11px 24px',
         cursor: 'pointer',
         transition: 'all 150ms ease',
         position: 'relative',
+        '&:nth-child(1)':{
+            padding: '11px 24px 11px 32px',
+
+        },
         [theme.breakpoints.down(800)]: {
             padding: '11px 20px',
         },
         '&:after': {
             content: '""',
-            height: 34,
+            height: 32,
             width: 1,
             backgroundColor: '#d6d3d3',
             position: 'absolute',
@@ -77,13 +82,14 @@ export default makeStyles((theme) => ({
 
         },
         '&>p': {
-            fontSize: 13,
+            fontSize: 14,
             lineHeight: '22px',
             '&:nth-child(1)': {
                 color: theme.textColor.primary,
-                marginBottom: 1,
+                marginBottom: 2,
             },
             '&:nth-child(2)': {
+                fontSize: 12,
                 color: theme.textColor.secondary
             }
         }
@@ -105,15 +111,15 @@ export default makeStyles((theme) => ({
     },
     searchBtnContainer: {
         display: 'flex',
-        paddingRight: 11,
+        paddingRight: 12,
         // minWidth: 248,
         maxWidth: 300,
         justifyContent: 'space-between',
         '& button': {
-            width: 43,
-            minWidth: 43,
-            maxWidth: 43,
-            height: 43,
+            width: 44,
+            minWidth: 44,
+            maxWidth: 44,
+            height: 44,
             backgroundColor: '#ff5a5f',
             borderRadius: '50%',
             '&:hover': {

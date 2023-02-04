@@ -38,22 +38,22 @@ export const getServerSideProps = wrapper.getServerSideProps(
     const cookies = new Cookies(req, res)
 
 
-    const hotels = await axios.post(`${BASE_URL}/hotels/public/page`, {
-      "pageNumber": 0,
-      "pageSize": 5,
-    },
+    // const hotels = await axios.post(`${BASE_URL}/hotels/public/page`, {
+    //   "pageNumber": 0,
+    //   "pageSize": 5,
+    // },
       // {
       //   headers: {
       //     Cookie: req.headers.cookie,
       //   },
       // }
-    );
+    // );
 
-    store.dispatch(getHotelsList(true, hotels.data));
+    // store.dispatch(getHotelsList(true, hotels.data));
 
     return {
       props: {
-        hotels: hotels.data
+        // hotels: []
       }, // will be passed to the page component as props
 
     };

@@ -7,7 +7,7 @@ export default makeStyles((theme) => ({
         padding: '21px 80px',
         position: 'absolute',
         zIndex: 12,
-        height: 84,
+        height: 80,
         position: 'fixed',
         top: 0,
         transition: 'all 150ms ease',
@@ -17,14 +17,14 @@ export default makeStyles((theme) => ({
     headerContainer: {
         width: '100%',
         display: 'flex',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         justifyContent: 'space-between',
         maxWidth: 1618,
         margin: '0 auto',
-        padding: '21px 80px',
+        padding: '16px 80px',
         position: 'absolute',
         zIndex: 12,
-        height: 84,
+        height: 80,
         margin: '0 auto',
         position: 'fixed',
         top: 0,
@@ -47,7 +47,7 @@ export default makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'flex-start',
         transition: 'all 150ms ease',
-        paddingTop: 5,
+        // paddingTop: 5,
         '&>a': {
             display: 'flex',
             alignItems: 'center',
@@ -65,7 +65,7 @@ export default makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'flex-start',
         transition: 'all 150ms ease',
-        paddingTop: 5,
+        // paddingTop: 5,
         '&>a': {
             display: 'flex',
             alignItems: 'center',
@@ -98,30 +98,31 @@ export default makeStyles((theme) => ({
 
     },
     profileMenu: {
-        width: 79,
-        height: 42,
+        width: 64,
+        height: 32,
         backgroundColor: '#fff',
         borderRadius: 21,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 6,
+        padding: 4,
         cursor: 'pointer',
-        minWidth: 79,
+        minWidth: 64,
         border: '1px solid ' + theme.textColor.border
     },
 
     avatarContainer: {
         borderRadius: '50%',
-        width: 31,
-        height: 31,
+        width: 24,
+        height: 24,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        marginLeft: 4,
+
         '& svg': {
-            fontSize: 35,
+            fontSize: 26,
             color: theme.textColor.avatarBg,
-            marginLeft: 11,
         }
     },
     menuIconContainer: {
@@ -145,13 +146,14 @@ export default makeStyles((theme) => ({
     transportContainer: {
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between',
-        width: 172,
-        paddingTop: 7,
+        // justifyContent: 'space-between',
+        // width: 182,
+        // paddingTop: 7,
 
         '&>div': {
             position: 'relative',
             cursor: 'pointer',
+            margin:'0 16px',
             '&:after': {
                 position: 'absolute',
                 width: 0,
@@ -201,9 +203,9 @@ export default makeStyles((theme) => ({
     },
     searchbarContainer: {
         width: '100vw',
-        marginTop: 30,
+        marginTop: 33,
         position: 'absolute',
-        top: 30,
+        top: 26,
         transform: 'translateX(-12px)',
         padding: '0 40px',
         transition: 'all 150ms ease'
@@ -211,7 +213,7 @@ export default makeStyles((theme) => ({
     },
     searchbarContainerSm: {
         width: 'max-content',
-        top: '-33px',
+        top: '-57px',
         transition: 'all 150ms ease'
     },
 }));

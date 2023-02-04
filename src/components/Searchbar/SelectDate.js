@@ -57,7 +57,7 @@ const SelectDate = ({ startDate, setStartDate, endDate, setEndDate, ...props }) 
 
     return (<>
         <div className={clsx(classes.searchbarItem, props.selected && classes.searchbarItemActive)}
-            style={focusedInput ? { maxWidth: 210 } : { maxWidth: 210 }}
+            // style={focusedInput ? { maxWidth: 210 } : { maxWidth: 210 }}
             ref={anchorEl}
             aria-controls={props.selected ? 'menu-list-grow' : undefined}
             aria-haspopup="true"
