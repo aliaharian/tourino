@@ -283,6 +283,8 @@ const Searchbar = ({
     }
   };
 
+  console.log('start',startLocation)
+    console.log('end',endLocation)
   return (
     <div
       ref={anchorElGlobal}
@@ -348,9 +350,9 @@ const Searchbar = ({
         >
           {query && startLocation && endLocation && startDateStr ? (
             <Typography>
-              {startLocation?.title}
+              {startLocation?.title || startLocation?.city?.title}
               <span> | </span>
-              {endLocation?.title}
+              {endLocation?.title || endLocation?.city?.title}
               <span> | </span>
               {startDateStr} _ {endDateStr}
               <span> | </span>
