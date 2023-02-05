@@ -69,33 +69,59 @@ export async function getServerSideProps({ query }) {
   });
   roomsParam = roomsParam.substring(0, roomsParam.length - 1);
 
+  let minPrice = undefined;
+  let maxPrice = undefined;
+  if (query.price) {
+    //split min and max price from query price by ,
+    let price = query.price.split(",");
+    minPrice = price[0];
+    maxPrice = price[1];
+  }
+
   console.log("roomsParamroomsParamroomsParamroomsParam", roomsParam);
   console.log("roomsParamroomsParamroomsParamroomsParam", roomsArray);
 
-  console.log("dvdvvd", {
+  console.log("neeee", {
     adult: roomsArray[0]?.adult,
     kids: roomsArray[0]?.child,
     teens: roomsArray[0]?.teen,
     infants: roomsArray[0]?.infant,
-    from_date: query.startDate,
-    to_date: query.endDate,
+    from_date: query.startDate * 1000,
+    to_date: query.endDate * 1000,
     from_city_id: query.origin,
     to_city_id: query.dest,
-    departure_vehicle_type: query.transport,
-    arrival_vehicle_type: query.transport,
+    departure_vehicle_type: query.departure_type,
+    arrival_vehicle_type: query.arrival_type,
+    hotel_stars: query.star || null,
+    min_price: minPrice ? minPrice : null,
+    max_price: maxPrice ? maxPrice : null,
+    order: query.sort || null,
   });
-  const hotelsSuggest = await axios.post(`${BASE_URL}/tours/suggest/hotel`, {
+  let params = {
     adult: roomsArray[0]?.adult,
     kids: roomsArray[0]?.child,
     teens: roomsArray[0]?.teen,
     infants: roomsArray[0]?.infant,
-    from_date: query.startDate*1000,
-    to_date: query.endDate*1000,
+    from_date: query.startDate * 1000,
+    to_date: query.endDate * 1000,
     from_city_id: query.origin,
     to_city_id: query.dest,
-    departure_vehicle_type: query.transport,
-    arrival_vehicle_type: query.transport,
-  });
+    departure_vehicle_type: query.departure_type,
+    arrival_vehicle_type: query.arrival_type,
+  };
+  if(query.star){
+    params.hotel_stars = query.star
+  }
+  if(minPrice){
+    params.min_price = minPrice
+  }
+  if(maxPrice){
+    params.max_price = maxPrice
+  }
+  if(query.sort){
+    params.order = query.sort
+  }
+  const hotelsSuggest = await axios.post(`${BASE_URL}/tours/suggest/hotel`, params);
 
   loading = false;
 

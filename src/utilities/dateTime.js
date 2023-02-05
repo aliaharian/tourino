@@ -43,6 +43,10 @@ const dateTimeCustom = (date) => {
     weekday: "long",
   });
 
+  const dateDate = year + "/" + monthNum + "/" + day;
+  const dateTime = hour + ":" + minute;
+
+  
   return {
     day,
     month,
@@ -51,9 +55,12 @@ const dateTimeCustom = (date) => {
     hour,
     minute,
     weekDay,
-    monthNum
+    monthNum,
+    dateDate,
+    dateTime,
   };
 };
+
 export default {
   dateTimeCustom,
 };

@@ -28,63 +28,29 @@ const SearchTour = ({
   roomsParam,
   query,
   error,
-//   startBusSuggest,
-//   endBusSuggest,
+  //   startBusSuggest,
+  //   endBusSuggest,
   loadingParam,
   hotelsSuggest,
 }) => {
   const classes = useStyles();
-  const [selectedSort, setSelectedSort] = useState("view");
+  const [selectedSort, setSelectedSort] = useState("price");
   const [selectedStar, setSelectedStar] = useState(4);
   const [price, setPrice] = React.useState([50000, 4000000]);
-  const [selectedHotelType, setSelectedHotelType] = useState([]);
+  const [selectedDepartureType, setSelectedDepartureType] = useState([]);
+  const [selectedArrivalType, setSelectedArrivalType] = useState([]);
   const [openTimeout, setOpenTimeout] = useState(false);
   const [ready, setReady] = useState(false);
   const Dispatch = useDispatch();
   const Router = useRouter();
   const loading = useSelector((state) => state.user.searchLoading);
-//   console.log("startBusSuggest", startBusSuggest);
-//   console.log("endBusSuggest", endBusSuggest);
   console.log("hotelSuggest", hotelsSuggest);
   console.log("roomsParam", roomsParam);
   let hotels = [];
 
-//   if (startBusSuggest.length > 0 && endBusSuggest.length > 0) {
-    // hotels = [
-    //   {
-    //     img: hotelImg,
-    //     name: "هتل الماس",
-    //     star: 5,
-    //     destnation: "مشهد",
-    //     price: 5400000,
-    //     transfer: [
-    //       {
-    //         name: startBusSuggest[0].busType,
-    //         departDate: startBusSuggest[0].departDate,
-    //         departTime: startBusSuggest[0].departTime,
-    //         time: query.startDate,
-    //       },
-    //       {
-    //         name: endBusSuggest[0].busType,
-    //         departDate: endBusSuggest[0].departDate,
-    //         departTime: endBusSuggest[0].departTime,
-    //         time: query.endDate,
-    //       },
-    //     ],
-    //   },
-    // ];
-//   }
   const hotelTypes = useSelector((state) => state.hotel.hotelTypes);
 
-//   useEffect(() => {
-//     handleLoading(false);
-//     console.log("donne");
-//   }, [startBusSuggest, endBusSuggest]);
-
   console.log("loading", loading);
-  useEffect(() => {
-    !hotelTypes && Dispatch(getHotelTypes());
-  }, [hotelTypes]);
 
   useEffect(() => {
     if (!ready) {
@@ -96,7 +62,7 @@ const SearchTour = ({
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       setOpenTimeout(true);
-    }, 300000);
+    }, 9999999999999999);
   };
 
   useEffect(() => {
@@ -149,6 +115,7 @@ const SearchTour = ({
   };
 
   const handleSubmitPrice = (event, newValue) => {
+    Dispatch(setLoading(true));
     setPrice(newValue);
     let tmp = "?";
     query &&
@@ -162,27 +129,55 @@ const SearchTour = ({
     setSearchTimeout();
   };
 
-  const handleChangeHotelType = (hotelType) => {
-    let tmpHotelType = selectedHotelType;
-    tmpHotelType = _.xor(tmpHotelType, [hotelType]);
-    setSelectedHotelType([...tmpHotelType]);
+  const handleChangeDepartureType = (type) => {
+    let tmpType = selectedDepartureType;
+    tmpType = _.xor(tmpType, [type]);
+    setSelectedDepartureType([...tmpType]);
     let tmp = "?";
     query &&
       Object.keys(query).map((key) => {
-        if (key !== "hotelType") {
+        if (key !== "departure_type") {
           tmp += `${key}=${query[key]}&`;
         }
       });
     let tmpTxt = "";
-    tmpHotelType.map((item) => {
+    tmpType.map((item) => {
+      tmpTxt += item + ",";
+    });
+    tmpTxt = tmpTxt.substring(0, tmpTxt.length - 1);
+    if (tmpTxt == "") {
+      tmpTxt = "all";
+    }
+    tmp += `departure_type=${tmpTxt}`;
+    Router.push(`/tour/search${tmp}`);
+    setSearchTimeout();
+  };
+
+  const handleChangeArrivalType = (type) => {
+    let tmpType = selectedArrivalType;
+    tmpType = _.xor(tmpType, [type]);
+    setSelectedArrivalType([...tmpType]);
+    let tmp = "?";
+    query &&
+      Object.keys(query).map((key) => {
+        if (key !== "arrival_type") {
+          tmp += `${key}=${query[key]}&`;
+        }
+      });
+    let tmpTxt = "";
+    tmpType.map((item) => {
       tmpTxt += item + ",";
     });
     tmpTxt = tmpTxt.substring(0, tmpTxt.length - 1);
 
-    tmp += `hotelType=${tmpTxt}`;
+    if (tmpTxt == "") {
+      tmpTxt = "all";
+    }
+    tmp += `arrival_type=${tmpTxt}`;
     Router.push(`/tour/search${tmp}`);
     setSearchTimeout();
   };
+
   if (Router.asPath.search("search?") === -1) {
     return (
       <div
@@ -206,14 +201,15 @@ const SearchTour = ({
         </div>
       );
     } else if (
-      !query.transport ||
+      !query.departure_type ||
+      !query.arrival_type ||
       !query.origin ||
       !query.dest ||
       !query.startDate ||
       !query.endDate ||
       !query.rooms ||
-      !query.sort ||
-      !query.star
+      !query.sort
+      // !query.star
     ) {
       return (
         <div
@@ -230,15 +226,8 @@ const SearchTour = ({
   };
 
   return (
-    <Grid container className={classes.searchTourContainer}>
-      <Grid
-        xl={4}
-        lg={4}
-        md={4}
-        sm={12}
-        xs={12}
-        className={classes.FilterContainer}
-      >
+    <div className={classes.searchTourContainer}>
+      <div className={classes.FilterContainer}>
         <Sidebar
           stars={stars}
           selectedStar={selectedStar}
@@ -247,17 +236,20 @@ const SearchTour = ({
           handleChangePrice={handleChangePrice}
           price={price}
           setPrice={setPrice}
-          handleChangeHotelType={handleChangeHotelType}
-          selectedHotelType={selectedHotelType}
+          handleChangeDepartureType={handleChangeDepartureType}
+          handleChangeArrivalType={handleChangeArrivalType}
+          selectedDepartureType={selectedDepartureType}
+          selectedArrivalType={selectedArrivalType}
+          // selectedHotelType={selectedHotelType}
           handleSubmitPrice={handleSubmitPrice}
         />
-      </Grid>
-      <Grid xl={8} lg={8} md={8} sm={12} xs={12} className={classes.hotelsList}>
+      </div>
+      <div className={classes.hotelsList}>
         <div>
           <div className={classes.sortSection}>
             <Typography>مرتب سازی بر اساس:</Typography>
             <div className={classes.sortButtons}>
-              <Button
+              {/* <Button
                 className={clsx(
                   selectedSort === "view" && classes.sortSelected
                 )}
@@ -267,7 +259,7 @@ const SearchTour = ({
                 }}
               >
                 بیشترین بازدید
-              </Button>
+              </Button> */}
               <Button
                 className={clsx(
                   selectedSort === "price" && classes.sortSelected
@@ -281,10 +273,10 @@ const SearchTour = ({
               </Button>
               <Button
                 className={clsx(
-                  selectedSort === "time" && classes.sortSelected
+                  selectedSort === "departure_date" && classes.sortSelected
                 )}
                 onClick={() => {
-                  handleChangeSort("time");
+                  handleChangeSort("departure_date");
                   handleLoading(true);
                 }}
               >
@@ -298,7 +290,12 @@ const SearchTour = ({
           <div className={classes.hotelContainer}>
             {hotelsSuggest.hotels.length > 0 ? (
               hotelsSuggest.hotels.map((hotel, index) => (
-                <HotelItem key={index} data={hotel.hotel} />
+                <HotelItem
+                  key={index}
+                  data={hotel}
+                  from_city={hotelsSuggest.from_city}
+                  to_city={hotelsSuggest.to_city}
+                />
               ))
             ) : (
               <div className={classes.noResult}>
@@ -308,10 +305,10 @@ const SearchTour = ({
             )}
           </div>
         </div>
-      </Grid>
+      </div>
       <TimeoutModal open={openTimeout} />
       <LoadingModal open={loading} />
-    </Grid>
+    </div>
   );
 };
 

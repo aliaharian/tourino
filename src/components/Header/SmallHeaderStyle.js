@@ -5,7 +5,7 @@ export default makeStyles((theme) => ({
         margin: '0 auto',
         padding: '21px 80px',
         zIndex: 12,
-        height: 84,
+        height: 80,
         position: 'sticky',
         top: 0,
         transition: 'all 150ms ease',
@@ -14,14 +14,14 @@ export default makeStyles((theme) => ({
     headerContainer: {
         width: '100%',
         display: 'flex',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         justifyContent: 'space-between',
-        maxWidth: 1618,
+        maxWidth: 1200,
         margin: '0 auto',
         padding: '21px 80px',
         position: 'absolute',
         zIndex: 12,
-        height: 84,
+        height: 80,
         margin: '0 auto',
         position: 'fixed',
         top: 0,
@@ -203,7 +203,7 @@ export default makeStyles((theme) => ({
     },
     searchbarContainerSm: {
         width: '300px',
-        top: '-33px',
+        top: '-57px',
         transition: 'all 150ms ease'
     },
     overlay: {
