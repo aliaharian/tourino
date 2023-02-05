@@ -1,45 +1,54 @@
-import { Grid, Link, Typography } from '@material-ui/core'
+import { Grid, Link, Typography } from "@material-ui/core";
 
-import useStyles from './Style'
-import img from '../../assets/img/landscapeTour.png'
-
+import useStyles from "./Style";
+import img from "../../assets/img/blog1.jpg";
+import img2 from "../../assets/img/blog2.jpg";
+import img3 from "../../assets/img/blog3.jpg";
+import img4 from "../../assets/img/blog4.jpg";
 
 const LandscapeToursSection = () => {
-    const classes = useStyles()
-    return (
-        <Grid  className={classes.landscapeToursSection}>
-            <Typography className={classes.landscapeTourTitle}>تور های طبیعت گردی</Typography>
-           <Grid container>
-           <Grid lg={3} md={3} sm={6} xs={6} className={classes.landscapeTourItem}>
-                <Link href={'#'}>
-                    <img src={img} />
-                    <Typography>سفر به دریاچه و آبشار</Typography>
-                </Link>
-            </Grid>
-            <Grid lg={3} md={3} sm={6} xs={6} className={classes.landscapeTourItem}>
-                <Link href={'#'}>
-                    <img src={img} />
-                    <Typography>سفر به دریاچه و آبشار</Typography>
-                </Link>
-            </Grid>
+  const classes = useStyles();
+  return (
+    <Grid className={classes.landscapeToursSection}>
+      <Typography className={classes.landscapeTourTitle}>
+        پیشنهاد تورینو
+      </Typography>
+      <div className={classes.landscapeTour}>
+        <div className={classes.landscapeTourItem}>
+          <Link href={"#"}>
+            <img src={img} />
+            <Typography>سفر به کویر</Typography>
+            <Typography>لورم ایپسوم یا طرح‌نما به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گفته می‌شود...</Typography>
+          </Link>
+        </div>
+        <div className={classes.landscapeTourItem}>
+          <Link href={"#"}>
+            <img src={img2} />
+            <Typography>سفر به دریاچه و آبشار</Typography>
+            <Typography>لورم ایپسوم یا طرح‌نما به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گفته می‌شود...</Typography>
 
-            <Grid lg={3} md={3} sm={6} xs={6} className={classes.landscapeTourItem}>
-                <Link href={'#'}>
-                    <img src={img} />
-                    <Typography>سفر به دریاچه و آبشار</Typography>
-                </Link>
-            </Grid>
-            <Grid lg={3} md={3} sm={6} xs={6} className={classes.landscapeTourItem}>
-                <Link href={'#'}>
-                    <img src={img} />
-                    <Typography>سفر به دریاچه و آبشار</Typography>
-                </Link>
-            </Grid>
-           </Grid>
+          </Link>
+        </div>
 
-        </Grid>
-    )
-}
+        <div className={classes.landscapeTourItem}>
+          <Link href={"#"}>
+            <img src={img3} />
+            <Typography>سفر به دریاچه و آبشار</Typography>
+            <Typography>لورم ایپسوم یا طرح‌نما به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گفته می‌شود...</Typography>
 
+          </Link>
+        </div>
+        <div className={classes.landscapeTourItem}>
+          <Link href={"#"}>
+            <img src={img4} />
+            <Typography>سفر به دریاچه و آبشار</Typography>
+            <Typography>لورم ایپسوم یا طرح‌نما به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گفته می‌شود...</Typography>
 
-export default LandscapeToursSection
+          </Link>
+        </div>
+      </div>
+    </Grid>
+  );
+};
+
+export default LandscapeToursSection;

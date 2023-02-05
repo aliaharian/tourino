@@ -22,9 +22,9 @@ export default function Home() {
       </Head>
       <HomepageLayout >
         <Intro />
-        <HotelsSection />
+        {/* <HotelsSection /> */}
         <LandscapeToursSection />
-        <OfferedToursSection />
+        {/* <OfferedToursSection /> */}
         <Faq />
         <Customers />
       </HomepageLayout>

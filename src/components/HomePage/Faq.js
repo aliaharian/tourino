@@ -112,7 +112,7 @@ const Faq = () => {
     return (
         <Grid className={classes.FaqSection}>
             <Typography className={classes.landscapeTourTitle}>سوالات متداول</Typography>
-            <Grid container>
+            <Grid container className={classes.faqContainer}>
 
                 {faq.map((data, index) => (
                     <Accordion square expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
