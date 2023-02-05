@@ -177,7 +177,7 @@ export default makeStyles((theme) => ({
         '& .MuiPaper-root': {
             width: 300,
             maxHeight: 250,
-            height: 250,
+            height: 210,
             overflowY: 'auto',
             overflowX:'auto',
             // height: 508,
@@ -394,15 +394,17 @@ export default makeStyles((theme) => ({
             transform: 'translateX(50%)'
         },
         '&:last-child': {
+            // borderBottom:"none"
             '&:after': {
-                position: 'absolute',
-                content: '""',
-                width: '100%',
-                height: 1,
-                backgroundColor: theme.textColor.border,
-                bottom: 0,
-                right: '50%',
-                transform: 'translateX(50%)'
+                display:"none"
+                // position: 'absolute',
+                // content: '""',
+                // width: '100%',
+                // height: 1,
+                // backgroundColor: theme.textColor.border,
+                // bottom: 0,
+                // right: '50%',
+                // transform: 'translateX(50%)'
             },
         }
 

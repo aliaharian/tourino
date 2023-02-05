@@ -1,4 +1,4 @@
-import { BASE_URL, SSO_BASE_URL } from "../../src/constant";
+import { BASE_URL } from "../../src/constant";
 import axios from 'axios'
 
 export const ENQUEUE_SNACKBAR = "enqueueSnackbar";
@@ -120,7 +120,7 @@ export const setAuthOpen = (e) => (dispatch) => {
 export const codeSend = (phone) => async (dispatch, getState) => {
   try {
     dispatch({ type: START_LOADING });
-    const response = await axios.post(SSO_BASE_URL + "/user/codeSend", {
+    const response = await axios.post(BASE_URL + "/user/codeSend", {
       username: phone,
       uxId: 2801,
       roleId: 2891
@@ -144,7 +144,7 @@ export const codeSend = (phone) => async (dispatch, getState) => {
 export const codeCall = (phone) => async (dispatch, getState) => {
   try {
     dispatch({ type: START_LOADING });
-    const response = await axios.post(SSO_BASE_URL + "/user/codeCall?check=true", {
+    const response = await axios.post(BASE_URL + "/user/codeCall?check=true", {
       username: phone,
       uxId: 2801,
       roleId: 2891
@@ -166,7 +166,7 @@ export const codeCall = (phone) => async (dispatch, getState) => {
 export const codeVerifyLogin = (phone, code) => async (dispatch, getState) => {
   try {
     dispatch({ type: START_LOADING });
-    const response = await axios.post(SSO_BASE_URL + "/user/codeVerifyLogin?login=true", {
+    const response = await axios.post(BASE_URL + "/user/codeVerifyLogin?login=true", {
       username: phone,
       validationCode: code,
       uxId: 2801,
@@ -196,7 +196,7 @@ export const codeVerifyLogin = (phone, code) => async (dispatch, getState) => {
 export const getUserProfile = () => async (dispatch, getState) => {
   try {
     dispatch({ type: START_LOADING });
-    const response = await axios.get(SSO_BASE_URL + "/user/profile");
+    const response = await axios.get(BASE_URL + "/user/profile");
     dispatch({
       type: USER_PROFILE,
       payload: response.data,
@@ -213,7 +213,7 @@ export const getUserProfile = () => async (dispatch, getState) => {
 export const logout = () => async (dispatch, getState) => {
   try {
     dispatch({ type: START_LOADING });
-    const response = await axios.post(SSO_BASE_URL + "/user/logout");
+    const response = await axios.post(BASE_URL + "/user/logout");
     dispatch({
       type: LOGOUT,
       payload: response.data,

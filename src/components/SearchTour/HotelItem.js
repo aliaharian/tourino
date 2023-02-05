@@ -25,11 +25,11 @@ const HotelItem = ({ data }) => {
                             {data.star}
                         </Typography>
                         <Typography>{data.destnation}</Typography>
-                        <Typography>{`${Math.floor((data.transfer[1].time - data.transfer[0].time) / 86400) + 1} شب و ${Math.floor((data.transfer[1].time - data.transfer[0].time) / 86400)} روز`}</Typography>
+                        {/* <Typography>{`${Math.floor((data.transfer[1].time - data.transfer[0].time) / 86400) + 1} شب و ${Math.floor((data.transfer[1].time - data.transfer[0].time) / 86400)} روز`}</Typography> */}
 
                     </div>
                     <div>
-                        <Typography>{numberFormat.toPersianSeprateTomanCommas(data.price)}</Typography>
+                        {/* <Typography>{numberFormat.toPersianSeprateTomanCommas(data.price)}</Typography> */}
                         <Typography>تومان</Typography>
                     </div>
 
@@ -37,13 +37,13 @@ const HotelItem = ({ data }) => {
                 <div className={classes.tourTransfer}>
                     <div>
                         <Typography>رفت</Typography>
-                        <Typography style={{maxWidth:120}} noWrap>{data.transfer[0].name}</Typography>
-                        <Typography noWrap>{data.transfer[0].departDate+' - '+data.transfer[0].departTime}</Typography>
+                        {/* <Typography style={{maxWidth:120}} noWrap>{data.transfer[0].name}</Typography> */}
+                        {/* <Typography noWrap>{data.transfer[0].departDate+' - '+data.transfer[0].departTime}</Typography> */}
                     </div>
                     <div>
                         <Typography>برگشت</Typography>
-                        <Typography style={{maxWidth:120}} noWrap>{data.transfer[1].name}</Typography>
-                        <Typography noWrap>{data.transfer[1].departDate+' - '+data.transfer[1].departTime}</Typography>
+                        {/* <Typography style={{maxWidth:120}} noWrap>{data.transfer[1].name}</Typography> */}
+                        {/* <Typography noWrap>{data.transfer[1].departDate+' - '+data.transfer[1].departTime}</Typography> */}
                     </div>
                     <div className={classes.tourActions}>
                         <div><Button>جزئیات تور</Button></div>

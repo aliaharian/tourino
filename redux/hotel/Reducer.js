@@ -9,7 +9,7 @@ const defaultState = {
   featuredHotelsList:null
 }
 
-export default (state = defaultState, action) => {
+const hotelReducer = (state = defaultState, action) => {
   switch (action.type) {
 
     case GET_HOTEL_TYPES:
@@ -27,3 +27,6 @@ export default (state = defaultState, action) => {
       return state
   }
 }
+
+
+export default hotelReducer;

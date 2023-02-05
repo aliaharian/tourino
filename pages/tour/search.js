@@ -4,118 +4,106 @@ import Head from "next/head";
 import Layout from "../../src/components/Layout/Layout";
 import SearchTour from "../../src/components/SearchTour/SearchTour";
 import { BASE_URL } from "../../src/constant";
-import axios from 'axios'
-export default function Search({ dest, origin, startBusSuggest, endBusSuggest, loading, hotelsSuggest, roomsParam }) {
-    const Router = useRouter()
-    let query = Router.query
+import axios from "axios";
+export default function Search({ loading, hotelsSuggest, roomsParam }) {
+  const Router = useRouter();
+  let query = Router.query;
 
-    return (
-        <div>
-            <Head>
-                <title>
-                    جستجوی تور های {dest.name}  </title>
-            </Head>
-            <Layout dest={dest} origin={origin} error={origin.errorCode || dest.errorCode ? true : false}>
-                <SearchTour roomsParam={roomsParam} hotelsSuggest={hotelsSuggest} loadingParam={loading} query={query} startBusSuggest={startBusSuggest} endBusSuggest={endBusSuggest} />
-            </Layout>
-        </div>
-    )
-
+  console.log("adlvkjbndviodbvkdjsbvdksjavbdsvb", hotelsSuggest);
+  return (
+    <div>
+      <Head>
+        <title>جستجوی تور های {hotelsSuggest.to_city.title} </title>
+      </Head>
+      <Layout
+        dest={hotelsSuggest.from_city}
+        origin={hotelsSuggest.to_city}
+        error={false}
+      >
+        <SearchTour
+          roomsParam={roomsParam}
+          hotelsSuggest={hotelsSuggest}
+          loadingParam={loading}
+          query={query}
+          // startBusSuggest={startBusSuggest}
+          // endBusSuggest={endBusSuggest}
+        />
+      </Layout>
+    </div>
+  );
 }
 
 export async function getServerSideProps({ query }) {
+  let loading = true;
 
-    let loading = true;
-    // const dest = await axios.get(`${BASE_URL}/areas/${query.dest}`);
+  let roomsParam = "";
+  let tmp = query.rooms;
+  let roomsArray = [];
+  let adultsTmp = 0;
+  let infantsTmp = 0;
 
+  tmp = tmp.split(",");
+  tmp.map((item) => {
+    let singleRoom = item.split("_");
+    adultsTmp =
+      parseInt(adultsTmp) + parseInt(singleRoom[0]) + parseInt(singleRoom[1]);
+    infantsTmp = parseInt(infantsTmp) + parseInt(singleRoom[2]);
 
-    const response = await fetch(`${BASE_URL}/areas/${query.dest}`, {
-        withCredentials: false,
-        // headers: { cookie: req.headers.cookie },
+    roomsArray.push({
+      adult: singleRoom[0],
+      teen: singleRoom[1],
+      child: singleRoom[2],
+      infant: singleRoom[3],
     });
-    const dest = await response.json();
+  });
 
-
-    // const origin = await axios.get(`${BASE_URL}/areas/${query.origin}`);
-
-    const response2 = await fetch(`${BASE_URL}/areas/${query.origin}`, {
-        withCredentials: false,
-        // headers: { cookie: req.headers.cookie },
-    });
-    const origin = await response2.json();
-
-
-    let roomsParam = ''
-    let tmp = query.rooms
-    let roomsArray = []
-    let adultsTmp = 0
-    let infantsTmp = 0
-
-    tmp = tmp.split(',')
-    tmp.map((item) => {
-        let singleRoom = item.split('_')
-        adultsTmp = parseInt(adultsTmp) + parseInt(singleRoom[0]) + parseInt(singleRoom[1])
-        infantsTmp = parseInt(infantsTmp) + parseInt(singleRoom[2])
-
-        roomsArray.push({
-            adult: singleRoom[0],
-            child: singleRoom[1],
-            infant: singleRoom[2]
-        })
-    })
-
-    roomsArray.map((room) => {
-        roomsParam += room.adult;
-        for (let i = 0; i < room.child; i++) {
-            roomsParam += ',5'
-        }
-        for (let i = 0; i < room.infant; i++) {
-            roomsParam += ',0'
-        }
-        roomsParam += '_'
-    })
-    roomsParam = roomsParam.substring(0, roomsParam.length - 1);
-
-
-    /////start bus
-    let startBusParams = `
-    sourceCode=${origin.data.sepandCode}&
-    destinationCode=${dest.data.sepandCode}&
-    passengerCount=${adultsTmp}&day=${parseInt(query.startDate) * 1000}`
-
-    startBusParams += query.sort === 'price' ? `&best=true` : `&best=false`;
-    startBusParams += query.sort === 'time' ? `&descending=false` : `&descending=false`;
-
-    const startBusSuggest = await axios.post(`${BASE_URL}/buses/suggest?${startBusParams}`);
-
-    ///////end bus
-    let endBusParams = `
-    sourceCode=${dest.data.sepandCode}&
-    destinationCode=${origin.data.sepandCode}&
-    passengerCount=${adultsTmp}&day=${parseInt(query.endDate) * 1000}`
-
-    endBusParams += query.sort === 'price' ? `&best=true` : `&best=false`;
-    endBusParams += query.sort === 'time' ? `&descending=false` : `&descending=true`;
-
-    const endBusSuggest = await axios.post(`${BASE_URL}/buses/suggest?${endBusParams}`);
-
-
-    ///hotels
-    let hotelParams = `cityId=${dest.data.id}&rooms=${roomsParam}&rentFrom=${parseInt(query.startDate) * 1000}&rentTo=${parseInt(query.endDate) * 1000}`
-
-    const hotelsSuggest = await axios.post(`${BASE_URL}/hotels/suggest?${hotelParams}`);
-
-    loading = false;
-
-    return {
-        props: {
-            dest: dest,
-            origin: origin,
-            startBusSuggest: startBusSuggest.data,
-            endBusSuggest: endBusSuggest.data,
-            hotelsSuggest: hotelsSuggest.data,
-            roomsParam: roomsParam,
-            loading: loading
-        }
+  roomsArray.map((room) => {
+    roomsParam += room.adult;
+    for (let i = 0; i < room.child; i++) {
+      roomsParam += ",5";
     }
+    for (let i = 0; i < room.infant; i++) {
+      roomsParam += ",0";
+    }
+    roomsParam += "_";
+  });
+  roomsParam = roomsParam.substring(0, roomsParam.length - 1);
+
+  console.log("roomsParamroomsParamroomsParamroomsParam", roomsParam);
+  console.log("roomsParamroomsParamroomsParamroomsParam", roomsArray);
+
+  console.log("dvdvvd", {
+    adult: roomsArray[0]?.adult,
+    kids: roomsArray[0]?.child,
+    teens: roomsArray[0]?.teen,
+    infants: roomsArray[0]?.infant,
+    from_date: query.startDate,
+    to_date: query.endDate,
+    from_city_id: query.origin,
+    to_city_id: query.dest,
+    departure_vehicle_type: query.transport,
+    arrival_vehicle_type: query.transport,
+  });
+  const hotelsSuggest = await axios.post(`${BASE_URL}/tours/suggest/hotel`, {
+    adult: roomsArray[0]?.adult,
+    kids: roomsArray[0]?.child,
+    teens: roomsArray[0]?.teen,
+    infants: roomsArray[0]?.infant,
+    from_date: query.startDate*1000,
+    to_date: query.endDate*1000,
+    from_city_id: query.origin,
+    to_city_id: query.dest,
+    departure_vehicle_type: query.transport,
+    arrival_vehicle_type: query.transport,
+  });
+
+  loading = false;
+
+  return {
+    props: {
+      hotelsSuggest: hotelsSuggest.data,
+      roomsParam: roomsParam,
+      loading: loading,
+    },
+  };
 }

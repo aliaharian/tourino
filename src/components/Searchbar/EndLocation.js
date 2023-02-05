@@ -43,7 +43,7 @@ const EndLocation = (props) => {
                 }
             } >
             <Typography> مقصد </Typography>
-            <Typography noWrap> {props.endLocation?.name || 'کجا می روید؟'} </Typography>
+            <Typography noWrap> {props.endLocation?.city?.title || 'کجا می روید؟'} </Typography>
         </div>
 
         <Popper className={classes.locationMenu} open={props.selected} anchorEl={anchorEl.current} role={undefined} transition disablePortal>
@@ -65,11 +65,11 @@ const EndLocation = (props) => {
                                         <div className={classes.locationOfferItemContainer}>
 
                                             {cities && cities.map((city) => (
-                                                <div onClick={() => {
+                                                <div key={city.city_id} onClick={() => {
                                                     props.handleChange(city)
                                                 }}
                                                     className={clsx(classes.locationOfferItem, props.endLocation?.id === city.id && classes.selectedCity)}>
-                                                    <Typography>{city.name}</Typography>
+                                                    <Typography>{city.city.title}</Typography>
                                                 </div>
                                             ))}
                                         </div>

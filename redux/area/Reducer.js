@@ -7,7 +7,7 @@ const defaultState = {
   availableCities: null,
 }
 
-export default (state = defaultState, action) => {
+const areaReducer = (state = defaultState, action) => {
   switch (action.type) {
 
     case GET_AVAILABLE_CITIES:
@@ -20,3 +20,5 @@ export default (state = defaultState, action) => {
       return state
   }
 }
+
+export default areaReducer;

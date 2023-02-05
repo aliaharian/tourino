@@ -37,6 +37,7 @@ const Searchbar = ({ scrollPos, showSearch, setShowSearch, transport, query, des
     const [rooms, setRooms] = React.useState([
         {
             adult: 1,
+            teen: 0,
             child: 0,
             infant: 0
         }
@@ -199,7 +200,7 @@ const Searchbar = ({ scrollPos, showSearch, setShowSearch, transport, query, des
         } else if (adults + infants < 2) {
             text = 'حداقل تعداد مسافران باید دو نفر باشد'
         } else if (adults + infants > 10) {
-            text = 'حدداکثر تعداد مسافران باید کمتر از ۱۰ نفر باشد'
+            text = 'حداکثر تعداد مسافران باید کمتر از ۱۰ نفر باشد'
         }
 
         if (text !== "") {
@@ -224,12 +225,12 @@ const Searchbar = ({ scrollPos, showSearch, setShowSearch, transport, query, des
             }
             let roomsStr = ''
             rooms.map((room) => {
-                roomsStr += room.adult + '_' + room.child + '_' + room.infant + ','
+                roomsStr += room.adult + '_' + room.teen + '_'  + room.child + '_'  + room.infant + ','
             })
             roomsStr = roomsStr.substring(0, roomsStr.length - 1);
 
 
-            Router.push(`/tour/search?transport=${transport}&origin=${startLocation.id}&dest=${endLocation.id}&startDate=${new Date(startDate).getTime() / 1000}&endDate=${new Date(endDate).getTime() / 1000}&rooms=${roomsStr}&sort=view&star=4`)
+            Router.push(`/tour/search?transport=${transport}&origin=${startLocation.city_id}&dest=${endLocation.city_id}&startDate=${new Date(startDate).getTime() / 1000}&endDate=${new Date(endDate).getTime() / 1000}&rooms=${roomsStr}&sort=view&star=4`)
             Dispatch(setLoading(true))
         }
     }

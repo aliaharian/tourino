@@ -34,8 +34,19 @@ const RoomInfo = (
             </div>
             <div className={classes.roomPeopleCount}>
                 <div className={classes.roomPeopleInfo}>
+                    <Typography>نوجوان</Typography>
+                    <Typography>6 تا ۱۲ سال</Typography>
+                </div>
+                <div className={classes.roomPeopleControl}>
+                    <Button onClick={()=>{handleChange('teen',parseInt(roomInfo.teen)+1)}}><AddIcon /></Button>
+                    <Typography>{roomInfo.teen}</Typography>
+                    <Button onClick={()=>{handleChange('teen',parseInt(roomInfo.teen)-1)}}><RemoveIcon /></Button>
+                </div>
+            </div>
+            <div className={classes.roomPeopleCount}>
+                <div className={classes.roomPeopleInfo}>
                     <Typography>کودک</Typography>
-                    <Typography>۲ تا ۱۲ سال</Typography>
+                    <Typography>۲ تا 6 سال</Typography>
                 </div>
                 <div className={classes.roomPeopleControl}>
                     <Button onClick={()=>{handleChange('child',parseInt(roomInfo.child)+1)}}><AddIcon /></Button>

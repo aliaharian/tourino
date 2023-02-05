@@ -9,7 +9,7 @@ export const getAvailableCities = () => async (dispatch, getState) => {
   const state = getState();
   console.log('getState', state);
   try {
-    const response = await axios.post("/areas/public/available", {},
+    const response = await axios.get("/cities/available", {},
     //  {
     //   headers: { Authorization: state.user.user.uuid },
     // }
