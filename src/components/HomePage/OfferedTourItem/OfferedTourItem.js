@@ -45,7 +45,7 @@ const OfferedTourItem = ({ data }) => {
 
                 </div>
                 <div className={classes.tourActions}>
-                    <div>{`${Math.floor((data.transfer[1].time - data.transfer[0].time)/86400)+1} شب و ${Math.floor((data.transfer[1].time - data.transfer[0].time)/86400)} روز` }</div>
+                    <div>{`${data.days} شب و ${data.nights} روز` }</div>
                     <div><Button>جزئیات تور</Button></div>
                 </div>
             </div>

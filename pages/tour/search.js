@@ -16,8 +16,8 @@ export default function Search({ loading, hotelsSuggest, roomsParam }) {
         <title>جستجوی تور های {hotelsSuggest.to_city.title} </title>
       </Head>
       <Layout
-        dest={hotelsSuggest.from_city}
-        origin={hotelsSuggest.to_city}
+        dest={hotelsSuggest.to_city}
+        origin={hotelsSuggest.from_city}
         error={false}
       >
         <SearchTour
@@ -109,19 +109,26 @@ export async function getServerSideProps({ query }) {
     departure_vehicle_type: query.departure_type,
     arrival_vehicle_type: query.arrival_type,
   };
-  if(query.star){
-    params.hotel_stars = query.star
+  if (query.star) {
+    params.hotel_stars = query.star;
   }
-  if(minPrice){
-    params.min_price = minPrice
+  //rate
+  if (query.rate) {
+    params.hotel_rate = query.rate;
   }
-  if(maxPrice){
-    params.max_price = maxPrice
+  if (minPrice) {
+    params.min_price = minPrice;
   }
-  if(query.sort){
-    params.order = query.sort
+  if (maxPrice) {
+    params.max_price = maxPrice;
   }
-  const hotelsSuggest = await axios.post(`${BASE_URL}/tours/suggest/hotel`, params);
+  if (query.sort) {
+    params.order = query.sort;
+  }
+  const hotelsSuggest = await axios.post(
+    `${BASE_URL}/tours/suggest/hotel`,
+    params
+  );
 
   loading = false;
 

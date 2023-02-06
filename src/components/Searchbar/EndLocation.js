@@ -43,7 +43,7 @@ const EndLocation = (props) => {
                 }
             } >
             <Typography> مقصد </Typography>
-            <Typography noWrap> {props.endLocation?.city?.title || 'کجا می روید؟'} </Typography>
+            <Typography noWrap> {props.endLocation?.city?.title ||props.endLocation?.title || 'کجا می روید؟'} </Typography>
         </div>
 
         <Popper className={classes.locationMenu} open={props.selected} anchorEl={anchorEl.current} role={undefined} transition disablePortal>

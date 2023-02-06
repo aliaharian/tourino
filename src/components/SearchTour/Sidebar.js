@@ -71,7 +71,6 @@ const AirbnbSlider = withStyles({
 
 const Sidebar = ({
   price,
-  hotelTypes,
   stars,
   selectedStar,
   setSelectedStar,
@@ -81,6 +80,10 @@ const Sidebar = ({
   selectedArrivalType,
   selectedDepartureType,
   handleSubmitPrice,
+  selectedRate,
+  handleChangeRate,
+  handleClearArrivalType,
+  handleClearDepartureType,
 }) => {
   const classes = useStyles();
   const Dispatch = useDispatch();
@@ -103,11 +106,27 @@ const Sidebar = ({
       value: "airplane",
     },
   ];
+  const rates = [
+    {
+      title: "عالی",
+      value: "عالی",
+    },
+    {
+      title: "خوب",
+      value: "خوب",
+    },
+    {
+      title: "متوسط",
+      value: "متوسط",
+    },
+  ];
 
   return (
     <div className={classes.sidebarContainer}>
       <div className={classes.sidebarItem}>
-        <Typography>محدوده قیمت (تومان)</Typography>
+        <div className={classes.sidebarTitle}>
+          <Typography>محدوده قیمت (تومان)</Typography>
+        </div>
         <AirbnbSlider
           valueLabelDisplay="off"
           defaultValue={price}
@@ -129,7 +148,18 @@ const Sidebar = ({
       </div>
 
       <div className={classes.sidebarItem}>
-        <Typography>ستاره هتل</Typography>
+        <div className={classes.sidebarTitle}>
+          <Typography>ستاره هتل</Typography>
+          <Typography
+            onClick={() => handleChangeStars("all")}
+            className={clsx(
+              selectedStar == "all" && classes.allSelected,
+              classes.allBtn
+            )}
+          >
+            همه
+          </Typography>
+        </div>
         <div className={classes.starSlider}>
           {stars.map((star) => (
             <div
@@ -143,7 +173,35 @@ const Sidebar = ({
         </div>
       </div>
       <div className={classes.sidebarItem}>
-        <Typography>وسیله نقلیه رفت</Typography>
+        <div className={classes.sidebarTitle}>
+          <Typography>رتبه بندی هتل در تورینو</Typography>
+        </div>
+        <div className={classes.rateContainer}>
+          {rates.map((rate) => (
+            <div
+              className={clsx(
+                selectedRate.indexOf(rate.value) !== -1 && classes.activeRate
+              )}
+              onClick={() => handleChangeRate(rate.value)}
+            >
+              <Typography>{rate.title}</Typography>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className={classes.sidebarItem}>
+        <div className={classes.sidebarTitle}>
+          <Typography>وسیله نقلیه رفت</Typography>
+          <Typography
+            onClick={() => handleClearDepartureType()}
+            className={clsx(
+              selectedDepartureType === [] && classes.allSelected,
+              classes.allBtn
+            )}
+          >
+            همه
+          </Typography>
+        </div>
         <div className={classes.hotelTypeContainer}>
           {vehicleTypes &&
             vehicleTypes.map((type) => {
@@ -172,7 +230,18 @@ const Sidebar = ({
         </div>
       </div>
       <div className={classes.sidebarItem}>
-        <Typography>وسیله نقلیه برگشت</Typography>
+        <div className={classes.sidebarTitle}>
+          <Typography>وسیله نقلیه برگشت</Typography>
+          <Typography
+            onClick={() => handleClearArrivalType()}
+            className={clsx(
+              selectedArrivalType === [] && classes.allSelected,
+              classes.allBtn
+            )}
+          >
+            همه
+          </Typography>
+        </div>
         <div className={classes.hotelTypeContainer}>
           {vehicleTypes &&
             vehicleTypes.map((type) => {

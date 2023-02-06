@@ -127,12 +127,14 @@ const Searchbar = ({
         adultsTmp =
           parseInt(adultsTmp) +
           parseInt(singleRoom[0]) +
-          parseInt(singleRoom[1]);
-        infantsTmp = parseInt(infantsTmp) + parseInt(singleRoom[2]);
+          parseInt(singleRoom[1]) +
+          parseInt(singleRoom[2]);
+        infantsTmp = parseInt(infantsTmp) + parseInt(singleRoom[3]);
         if (
           singleRoom[0] > 5 ||
           singleRoom[1] > 5 ||
-          singleRoom[2] > 5
+          singleRoom[2] > 5 ||
+          singleRoom[3] > 5
           // ((parseInt(singleRoom[0]) + parseInt(singleRoom[1]) + parseInt(singleRoom[2])) < 2)
         ) {
           Router.push("/", undefined, { shallow: true });
@@ -150,8 +152,9 @@ const Searchbar = ({
         }
         roomsArray.push({
           adult: singleRoom[0],
-          child: singleRoom[1],
-          infant: singleRoom[2],
+          teen: singleRoom[1],
+          child: singleRoom[2],
+          infant: singleRoom[3],
         });
       });
 

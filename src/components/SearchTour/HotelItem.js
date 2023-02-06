@@ -47,17 +47,9 @@ const HotelItem = ({ data, from_city, to_city }) => {
             </div>
             <Typography>{to_city.title}</Typography>
             <Typography>{`${
-              Math.floor(
-                (data.arrival_vehicle.departure_date_time -
-                  data.departure_vehicle.arrival_date_time) /
-                  86400000
-              ) + 1
+             data.hotel.nights
             } شب و ${
-              Math.floor(
-                (data.arrival_vehicle.departure_date_time -
-                  data.departure_vehicle.arrival_date_time) /
-                  86400000
-              ) + 2
+              data.hotel.days
             } روز`}</Typography>
           </div>
           <div>

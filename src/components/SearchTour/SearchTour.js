@@ -39,6 +39,7 @@ const SearchTour = ({
   const [price, setPrice] = React.useState([50000, 4000000]);
   const [selectedDepartureType, setSelectedDepartureType] = useState([]);
   const [selectedArrivalType, setSelectedArrivalType] = useState([]);
+  const [selectedRate, setSelectedRate] = useState([]);
   const [openTimeout, setOpenTimeout] = useState(false);
   const [ready, setReady] = useState(false);
   const Dispatch = useDispatch();
@@ -73,11 +74,19 @@ const SearchTour = ({
       let tmp = query.price.split(",");
       setPrice([parseInt(tmp[0]), parseInt(tmp[1])]);
     }
-    if (query.hotelType) {
-      let tmp = query.hotelType.split(",");
-      setSelectedHotelType(tmp);
-      console.log("type", tmp);
+    if (query.departure_type) {
+      let tmp = query.departure_type.split(",");
+      setSelectedDepartureType(tmp);
     }
+    if (query.arrival_type) {
+      let tmp = query.arrival_type.split(",");
+      setSelectedArrivalType(tmp);
+    }
+    if (query.rate) {
+      let tmp = query.rate.split(",");
+      setSelectedRate(tmp);
+    }
+
     if (query.sort) {
       setSelectedSort(query.sort);
     }
@@ -178,6 +187,31 @@ const SearchTour = ({
     setSearchTimeout();
   };
 
+  const handleChangeRate = (rate) => {
+    let tmpRate = selectedRate;
+    tmpRate = _.xor(tmpRate, [rate]);
+    setSelectedRate([...tmpRate]);
+    let tmp = "?";
+    query &&
+      Object.keys(query).map((key) => {
+        if (key !== "rate") {
+          tmp += `${key}=${query[key]}&`;
+        }
+      });
+    let tmpTxt = "";
+    tmpRate.map((item) => {
+      tmpTxt += item + ",";
+    });
+    tmpTxt = tmpTxt.substring(0, tmpTxt.length - 1);
+
+    // if (tmpTxt == "") {
+    //   tmpTxt = "all";
+    // }
+    tmp += `rate=${tmpTxt}`;
+    Router.push(`/tour/search${tmp}`);
+    setSearchTimeout();
+  };
+
   if (Router.asPath.search("search?") === -1) {
     return (
       <div
@@ -225,6 +259,34 @@ const SearchTour = ({
     Dispatch(setLoading(type));
   };
 
+  const handleClearArrivalType = () => {
+    setSelectedArrivalType([]);
+    let tmp = "?";
+    query &&
+      Object.keys(query).map((key) => {
+        if (key !== "arrival_type") {
+          tmp += `${key}=${query[key]}&`;
+        }
+      });
+    tmp += `arrival_type=all`;
+    Router.push(`/tour/search${tmp}`);
+    setSearchTimeout();
+  };
+
+  const handleClearDepartureType = () => {
+    setSelectedDepartureType([]);
+    let tmp = "?";
+    query &&
+      Object.keys(query).map((key) => {
+        if (key !== "departure_type") {
+          tmp += `${key}=${query[key]}&`;
+        }
+      });
+    tmp += `departure_type=all`;
+    Router.push(`/tour/search${tmp}`);
+    setSearchTimeout();
+  };
+
   return (
     <div className={classes.searchTourContainer}>
       <div className={classes.FilterContainer}>
@@ -242,6 +304,10 @@ const SearchTour = ({
           selectedArrivalType={selectedArrivalType}
           // selectedHotelType={selectedHotelType}
           handleSubmitPrice={handleSubmitPrice}
+          selectedRate={selectedRate}
+          handleChangeRate={handleChangeRate}
+          handleClearArrivalType={handleClearArrivalType}
+          handleClearDepartureType={handleClearDepartureType}
         />
       </div>
       <div className={classes.hotelsList}>

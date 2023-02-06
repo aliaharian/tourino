@@ -222,8 +222,20 @@ export default makeStyles((theme) => ({
       position: "absolute",
       right: -24,
     },
+  },
+  allBtn: {
+    cursor: "pointer",
+    color: "#9E9E9E !important",
+  },
+  allSelected: {
+    color: "#406D97 !important",
+  },
+  sidebarTitle: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
     "&>p": {
-      fontSize: 15,
+      fontSize: 12,
       color: theme.textColor.primary,
       marginBottom: 33,
     },
@@ -373,5 +385,27 @@ export default makeStyles((theme) => ({
     height: 16,
     borderRadius: 4,
     backgroundColor: "#406D97",
+  },
+  rateContainer: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr 1fr",
+    gridGap: 8,
+    width: "100%",
+    "&>div": {
+      width: "100%",
+      backgroundColor: "#FAFAFA",
+      height: 32,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: 8,
+      cursor: "pointer",
+      "&>p": {
+        fontSize: 11,
+      },
+    },
+  },
+  activeRate: {
+    backgroundColor: "#EEEEEE !important",
   },
 }));

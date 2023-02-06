@@ -80,7 +80,7 @@ const StartLocation = (props) => {
         <Typography> مبدا </Typography>
         <Typography noWrap>
           {" "}
-          {props.startLocation?.city?.title || "کجا هستید؟"}{" "}
+          {props.startLocation?.city?.title || props.startLocation?.title || "کجا هستید؟"}{" "}
         </Typography>
       </div>
 
