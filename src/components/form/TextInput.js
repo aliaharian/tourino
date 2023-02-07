@@ -7,6 +7,7 @@ function TextInput(props) {
         <>
             <Typography className={clsx(classes.label , props.required && classes.required)}>{props.label || ""}</Typography>
             <TextField
+                name={props.name}   
                 className={clsx(classes.inputRoot , props.error && classes.error)}
                 value={props.value}
                 onChange={props.onChange}

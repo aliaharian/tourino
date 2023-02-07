@@ -14,6 +14,7 @@ import {
   SET_LOADING,
   SET_TOKEN,
   LOAD_SUCCESS,
+  SET_USER_INFO,
 } from "./Actions";
 
 const defaultState = {
@@ -84,6 +85,11 @@ const userReducer = (state = defaultState, action) => {
         ...state,
       };
     case USER_PROFILE:
+      return {
+        ...state,
+        userProfile: action.payload,
+      };
+    case SET_USER_INFO:
       return {
         ...state,
         userProfile: action.payload,

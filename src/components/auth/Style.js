@@ -1,6 +1,12 @@
 import { makeStyles } from "@material-ui/styles";
 export default makeStyles((theme) => ({
     authContent:{
+        '&>p':{
+            '&:nth-child(4)':{
+                marginTop:20,
+
+            }
+        }
         
     },
     title:{
