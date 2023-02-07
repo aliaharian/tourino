@@ -46,12 +46,13 @@ function MyApp({ Component, pageProps }) {
 MyApp.getInitialProps = async ({ ctx }) => {
   // if (ctx.req) {
   const { user } = ctx.store.getState();
-  const cookies = ctx.req.headers.cookie;
 
   //get token from cookies string
   try {
     if (ctx.req) {
       if (ctx.req.headers.cookie) {
+        const cookies = ctx.req.headers.cookie;
+
         let token = cookies
           ?.split(";")
           .find((c) => c.trim().startsWith("token="));

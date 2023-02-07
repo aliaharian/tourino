@@ -223,7 +223,7 @@ export const setUserInfo = (data) => async (dispatch, getState) => {
     });
     dispatch({ type: END_LOADING });
     dispatch(setAuthOpen(false));
-    dispatch(getUserProfile());
+    // dispatch(getUserProfile());
   } catch (e) {
     dispatch(errorSnackbar(e));
     dispatch({ type: END_LOADING });

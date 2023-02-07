@@ -39,6 +39,40 @@ export default makeStyles((theme) => ({
             backgroundColor: theme.textColor.error
         }
     },
+    requiredAlt: {
+        position: 'relative',
+        paddingLeft:16,
+        marginBottom:8,
+        marginLeft:4,
+        '&:after': {
+            content: '""',
+            position: 'absolute',
+            left:0,
+            top: "calc(50% - 5px)",
+            width: '9px',
+            height: '9px',
+            borderRadius: '50%',
+            backgroundColor: theme.textColor.error,
+
+        }
+    },
+    notRequiredAlt: {
+        position: 'relative',
+        paddingLeft:16,
+        marginBottom:8,
+        marginLeft:4,
+        '&:after': {
+            content: '""',
+            position: 'absolute',
+            left:0,
+            top: "calc(50% - 5px)",
+            width: '9px',
+            height: '9px',
+            borderRadius: '50%',
+            backgroundColor: "#BDBDBD",
+
+        }
+    },
     error: {
         '&>div': {
             border: '1px solid ' + theme.textColor.error + ' !important',

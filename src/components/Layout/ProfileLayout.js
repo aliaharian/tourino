@@ -10,7 +10,7 @@ const ProfileLayout = ({ children }) => {
         <div className={classes.profileSidebarContainer}>
           <ProfileSidebar />
         </div>
-        <div>{children}</div>
+        <div className={classes.profileContent}>{children}</div>
       </div>
     </Layout>
   );

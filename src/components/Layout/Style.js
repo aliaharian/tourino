@@ -12,4 +12,11 @@ export default makeStyles((theme) => ({
   profileSidebarContainer: {
     // backgroundColor: "red",
   },
+  profileContent: {
+    width: "100%",
+    border: "1px solid #D9D9D9",
+    minHeight: 500,
+    borderRadius: 24,
+    padding: 16,
+  },
 }));
