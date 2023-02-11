@@ -8,6 +8,15 @@ export default makeStyles((theme) => ({
     maxWidth: 1200,
     margin: "0 auto",
     padding: "21px 80px",
+    [theme.breakpoints.down("sm")]: {
+      gridTemplateColumns: "100%",
+      padding: "21px 16px",
+
+      '&>div':{
+        width: '100%',
+      }
+    },
+
   },
   profileSidebarContainer: {
     // backgroundColor: "red",
