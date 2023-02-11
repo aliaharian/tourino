@@ -4,76 +4,65 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUserInfo } from "../../../redux/user";
 import useStyles from "./Style";
-
-const ProfileTours = ({ profile, ...props }) => {
+import dateTime from "../../utilities/dateTime";
+import { numberFormat } from "../../utilities";
+const ProfileTours = ({ profile, tours, ...props }) => {
   const classes = useStyles();
   const Dispatch = useDispatch();
+  console.log("tours", tours);
 
   return (
     <div className={classes.profileTours}>
       <table className={classes.profileToursTable}>
         <thead>
           <tr>
-            <th>شماره تور</th>
-            <th>مبدا/مقصد</th>
-            <th>تاریخ و ساعت</th>
-            <th>مبلغ کل(ریال)</th>
-            <th>وضعیت</th>
+            <th style={{ width: 96 }}>شماره تور</th>
+            <th style={{ width: 89 }}>مبدا/مقصد</th>
+            <th style={{ width: 208 }}>تاریخ و ساعت</th>
+            <th style={{ width: 105 }}>مبلغ کل(ریال)</th>
+            <th style={{ width: 154 }}>وضعیت</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td style={{ width: 96 }}>1</td>
-            <td style={{ width: 89 }}>تهران/مشهد</td>
-            <td style={{ width: 208 }}> 1399/12/12</td>
-            <td style={{ width: 105 }}>1000000</td>
-            <td style={{ width: 154 }}>
-              <div className={classes.statusLabel}>پرداخت شده</div>
-            </td>
-            <td>
-              <Button
-                variant="contained"
-                className={classes.profileToursTableBtn}
-              >
-                <MoreVertRounded />
-              </Button>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>تهران/مشهد</td>
-            <td>1399/12/12</td>
-            <td>1000000</td>
-            <td>
-              <div className={classes.statusLabel}>پرداخت شده</div>
-            </td>
-            <td>
-              <Button
-                variant="contained"
-                className={classes.profileToursTableBtn}
-              >
-                <MoreVertRounded />
-              </Button>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>تهران/مشهد</td>
-            <td>1399/12/12</td>
-            <td>1000000</td>
-            <td>
-              <div className={classes.statusLabel}>پرداخت شده</div>
-            </td>
-            <td>
-              <Button
-                variant="contained"
-                className={classes.profileToursTableBtn}
-              >
-                <MoreVertRounded />
-              </Button>
-            </td>
-          </tr>
+          {tours.map((tour, index) => (
+            <tr>
+              <td>{tour.id}</td>
+              <td>
+                {tour.from_city.title} / {tour.to_city.title}
+              </td>
+              <td>
+                {
+                  dateTime.dateTimeCustom(tour.departure_date_time / 1000)
+                    .dateDate
+                }
+                {" - "}
+                {
+                  dateTime.dateTimeCustom(tour.departure_date_time / 1000)
+                    .dateTime
+                }
+              </td>
+              <td>
+                {numberFormat.toPersianSeprateTomanCommas(tour.payablePrice)}
+              </td>
+              <td>
+                <div
+                  className={classes.statusLabel}
+                  style={{ backgroundColor: tour.status.color + "29" , color: tour.status.color }}
+                >
+                  {tour.status.slug}
+                </div>
+              </td>
+              <td>
+                <Button
+                  variant="contained"
+                  className={classes.profileToursTableBtn}
+                >
+                  <MoreVertRounded />
+                </Button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

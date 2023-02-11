@@ -115,6 +115,8 @@ export default makeStyles((theme) => ({
       "& tr": {
         backgroundColor: "#fafafa",
         "&>th": {
+          color: "#757575 !important ",
+          fontWeight:'normal',
           "&:nth-child(1)": {
             borderRadius: " 12px 0 0 12px",
           },
@@ -129,6 +131,7 @@ export default makeStyles((theme) => ({
       marginTop: 3,
       "& tr": {
         height: 68,
+        borderBottom:"1px solid #E3E3E3",
         "&:nth-child(1)": {
           height: 72,
         },
@@ -156,4 +159,27 @@ export default makeStyles((theme) => ({
       color: "#BDBDBD",
     },
   },
+  statusLabel: {
+    padding: "5px 12px",
+    borderRadius: 8,
+    width: "fit-content",
+    margin: "0 auto",
+  },
+  addCuttonContainer:{
+    width:'100%',
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center',
+    marginTop:130
+  },
+  addButton:{
+    width:144,
+    height:40,
+    backgroundColor:"#FF5A5F",
+    color:"#fff",
+    borderRadius:8,
+    '&:hover':{
+      backgroundColor:"#FF5A5F",
+    }
+  }
 }));
