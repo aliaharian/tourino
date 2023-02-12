@@ -16,7 +16,7 @@ import Sidebar from "./Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { getHotelTypes } from "../../../redux/hotel";
 import { useRouter } from "next/dist/client/router";
-import { enqueueSnackbar, setLoading } from "../../../redux/user";
+import { enqueueSnackbar, openMenu, setLoading } from "../../../redux/user";
 import TimeoutModal from "./TimeoutModal";
 import LoadingModal from "./LoadingModal";
 import noResult from "../../assets/icon/no_result_search.svg";
@@ -35,7 +35,7 @@ const SearchTour = ({
 }) => {
   const classes = useStyles();
   const [selectedSort, setSelectedSort] = useState("price");
-  const [selectedStar, setSelectedStar] = useState('all');
+  const [selectedStar, setSelectedStar] = useState("all");
   const [price, setPrice] = React.useState([50000, 4000000]);
   const [selectedDepartureType, setSelectedDepartureType] = useState([]);
   const [selectedArrivalType, setSelectedArrivalType] = useState([]);
@@ -287,9 +287,14 @@ const SearchTour = ({
     setSearchTimeout();
   };
 
+  const _openMenu = useSelector((state) => state.user.openMenu);
+  const handleClose = () => {
+    Dispatch(openMenu(false));
+  };
+
   return (
     <div className={classes.searchTourContainer}>
-      <div className={classes.FilterContainer}>
+      <div className={clsx(classes.FilterContainer , _openMenu && classes.openFilter)} onClick={handleClose}>
         <Sidebar
           stars={stars}
           selectedStar={selectedStar}

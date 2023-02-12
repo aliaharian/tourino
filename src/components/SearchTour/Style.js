@@ -6,11 +6,28 @@ export default makeStyles((theme) => ({
     padding: "21px 80px",
     display: "flex",
     widtth: "100%",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      padding: "21px 16px",
+    },
+  },
+  openFilter: {
+    left: "0 !important",
   },
   FilterContainer: {
     width: 242,
     paddingRight: 24,
-
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      position: "fixed",
+      top: 0,
+      left: "-100%",
+      backgroundColor: "rgba(0,0,0,0.5)",
+      zIndex: 999,
+      padding: "0",
+      overflow: "scroll",
+      maxHeight: "100vh",
+    },
     "&>div": {
       width: "100%",
       height: "auto",
@@ -19,12 +36,21 @@ export default makeStyles((theme) => ({
       borderRadius: 20,
       position: "sticky",
       top: 105,
+      [theme.breakpoints.down("sm")]: {
+        backgroundColor: "#fff",
+        borderRadius: 0,
+        width: "75%",
+      },
     },
   },
   hotelsList: {
     // paddingLeft: 40,
     width: "calc(100% - 266px)",
     paddingTop: 18,
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      paddingLeft: 0,
+    },
   },
   sortSection: {
     width: "100%",
@@ -34,9 +60,16 @@ export default makeStyles((theme) => ({
     "& p": {
       fontSize: 13,
       color: theme.textColor.primary,
+      [theme.breakpoints.down("sm")]: {
+        fontSize: 11,
+      },
     },
   },
   sortButtons: {
+    //breakpoint
+    [theme.breakpoints.down("sm")]: {
+      display: "flex",
+    },
     "& .MuiButton-root": {
       height: "39px",
       backgroundColor: "#fff",
@@ -46,6 +79,9 @@ export default makeStyles((theme) => ({
       marginLeft: 13,
       fontSize: 13,
       padding: "9px 11px",
+      [theme.breakpoints.down("sm")]: {
+        fontSize: 10,
+      },
     },
   },
   sortSelected: {
@@ -66,10 +102,22 @@ export default makeStyles((theme) => ({
     justifyContent: "space-between",
     backgroundColor: "#fff",
     padding: "33px 0",
+
     // boxShadow: '0px 3px 12px rgba(0,0,0,0.16)',
     // borderRadius: 20,
     overflow: "hidden",
     borderBottom: "1px solid " + theme.textColor.border,
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      width: "100%",
+      height: "auto",
+      "&>div": {
+        width: "100%",
+        maxWidth: "100%",
+        minHeight: 201,
+        marginBottom: 16,
+      },
+    },
   },
   imageContainer: {
     flex: 1,
@@ -89,6 +137,9 @@ export default makeStyles((theme) => ({
     flexDirection: "column",
     height: "100%",
     boxSizing: "border-box",
+    [theme.breakpoints.down("sm")]: {
+      padding: 0,
+    },
   },
   tourBaseInfo: {
     display: "flex",
@@ -153,6 +204,10 @@ export default makeStyles((theme) => ({
     alignItems: "flex-end",
     justifyContent: "flex-start",
     width: "100%",
+    //breakpoint
+    [theme.breakpoints.down("sm")]: {
+      justifyContent: "space-between",
+    },
     "&>div": {
       flex: 1,
       "&:nth-child(1)": {
@@ -161,6 +216,10 @@ export default makeStyles((theme) => ({
       },
       "&:nth-child(2)": {
         paddingLeft: 20,
+        //breakpoint
+        [theme.breakpoints.down("sm")]: {
+          paddingLeft: 8,
+        },
       },
       "&>p": {
         "&:nth-child(1)": {

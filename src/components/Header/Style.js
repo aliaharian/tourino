@@ -65,6 +65,7 @@ export default makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "flex-start",
     transition: "all 150ms ease",
+
     // paddingTop: 5,
     "&>a": {
       display: "flex",
@@ -129,7 +130,7 @@ export default makeStyles((theme) => ({
     },
   },
   loginContainer: {
-    width:100,
+    width: 100,
     "& p": {
       fontSize: 12,
     },
@@ -144,6 +145,10 @@ export default makeStyles((theme) => ({
     justifyContent: "center",
     flexDirection: "column",
     position: "relative",
+    //breakpoints
+    [theme.breakpoints.down("sm")]: {
+      height: "100%",
+    },
   },
   transportContainer: {
     display: "flex",
@@ -209,10 +214,21 @@ export default makeStyles((theme) => ({
     transform: "translateX(-12px)",
     padding: "0 40px",
     transition: "all 150ms ease",
+    [theme.breakpoints.down("sm")]: {
+      position: "static",
+      marginTop: 0,
+      top: 0,
+      padding: 0,
+      transform: "translateX(0)",
+    },
   },
   searchbarContainerSm: {
     width: "max-content",
     top: "-57px",
     transition: "all 150ms ease",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
   },
+
 }));

@@ -12,14 +12,39 @@ export default makeStyles((theme) => ({
       gridTemplateColumns: "100%",
       padding: "21px 16px",
 
-      '&>div':{
-        width: '100%',
-      }
+      "&>div": {
+        // width: '100%',
+      },
     },
-
+  },
+  sidebarOpen: {
+    [theme.breakpoints.down("sm")]: {
+      left: 0 + " !important",
+      "&>div": {
+        left: 0 + " !important",
+      },
+    },
   },
   profileSidebarContainer: {
     // backgroundColor: "red",
+    [theme.breakpoints.down("sm")]: {
+      position: "absolute",
+      top: 0,
+      left: "-100%",
+      zIndex: 999,
+      width: "100%",
+      height: "100%",
+      backgroundColor: "rgba(0,0,0,0.5)",
+      "&>div": {
+        width: "75%",
+        backgroundColor: "white",
+        height: "100%",
+        borderRadius: 0,
+        position: "absolute",
+        left: "-100%",
+        transition: "all 150ms ease",
+      },
+    },
   },
   profileContent: {
     width: "100%",
@@ -27,5 +52,10 @@ export default makeStyles((theme) => ({
     minHeight: 500,
     borderRadius: 24,
     padding: 16,
+    //breakpoint 768px
+    [theme.breakpoints.down("sm")]: {
+      border: "none",
+      padding: 0,
+    },
   },
 }));

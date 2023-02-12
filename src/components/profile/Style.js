@@ -15,6 +15,10 @@ export default makeStyles((theme) => ({
     borderRadius: "24px 24px 0 0",
     backgroundColor: "#F5F5F5",
     flexDirection: "column",
+    //breakpoint
+    [theme.breakpoints.down("sm")]: {
+      borderRadius: 0,
+    },
     "& svg": {
       color: theme.textColor.avatarBg,
       fontSize: 48,
@@ -88,6 +92,10 @@ export default makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    //breakpoint
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 0,
+    },
   },
   mb24px: {
     marginBottom: 24,
@@ -116,7 +124,7 @@ export default makeStyles((theme) => ({
         backgroundColor: "#fafafa",
         "&>th": {
           color: "#757575 !important ",
-          fontWeight:'normal',
+          fontWeight: "normal",
           "&:nth-child(1)": {
             borderRadius: " 12px 0 0 12px",
           },
@@ -131,7 +139,7 @@ export default makeStyles((theme) => ({
       marginTop: 3,
       "& tr": {
         height: 68,
-        borderBottom:"1px solid #E3E3E3",
+        borderBottom: "1px solid #E3E3E3",
         "&:nth-child(1)": {
           height: 72,
         },
@@ -165,21 +173,121 @@ export default makeStyles((theme) => ({
     width: "fit-content",
     margin: "0 auto",
   },
-  addCuttonContainer:{
-    width:'100%',
-    display:'flex',
-    justifyContent:'center',
-    alignItems:'center',
-    marginTop:130
+  addCuttonContainer: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 130,
+    //breakpoint
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 30,
+    },
   },
-  addButton:{
-    width:144,
-    height:40,
-    backgroundColor:"#FF5A5F",
-    color:"#fff",
-    borderRadius:8,
-    '&:hover':{
-      backgroundColor:"#FF5A5F",
-    }
-  }
+  addButton: {
+    width: 144,
+    height: 40,
+    backgroundColor: "#FF5A5F",
+    color: "#fff",
+    borderRadius: 8,
+    "&:hover": {
+      backgroundColor: "#FF5A5F",
+    },
+  },
+  addOutlinedButton: {
+    width: 144,
+    height: 40,
+    backgroundColor: "#fff",
+    color: "#FF5A5F",
+    borderRadius: 8,
+    border: "1px solid #FF5A5F",
+    marginLeft: 16,
+    "&:hover": {
+      backgroundColor: "#fff",
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: 10,
+    },
+  },
+  walletTopperContainer: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: "#FAFAFA",
+    padding: 16,
+    borderRadius: 12,
+    marginBottom: 17,
+    //breakpoint
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column-reverse",
+      alignItems: "flex-start",
+      border: "1px solid #E3E3E3",
+      padding: 16,
+      "&>div": {
+        display: "flex",
+        justifyContent: "space-between",
+        width: "100%",
+        alignItems: "center",
+      },
+    },
+  },
+  walletPrice: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    [theme.breakpoints.down("sm")]: {
+      justifyContent: "space-between !important",
+      width: "100%",
+      marginBottom: 30,
+      "&>p": {
+        margin: 0,
+      },
+    },
+    "&>p": {
+      "&:nth-child(1)": {
+        marginRight: 40,
+        color: "#757575",
+        fontSize: 12,
+      },
+      "&:nth-child(2)": {
+        fontSize: 16,
+      },
+    },
+  },
+  mobileTableTitle: {
+    fontSize: 15,
+    margin: "16px 0 16px 4px",
+    width: "100%",
+  },
+  tableMobileItem: {
+    display: "flex",
+    width: "100%",
+    border: "1px solid #E3E3E3",
+    borderRadius: 12,
+    backgroundColor: "#fafafa",
+    flexDirection: "column",
+    marginBottom: 16,
+    "&>div": {
+      display: "flex",
+      padding: 16,
+      justifyContent: "space-between",
+      "&>div": {
+        "&>p": {
+          margin: 0,
+          "&:nth-child(1)": {
+            fontSize: 12,
+            color: "#757575",
+            marginBottom: 16,
+          },
+          "&:nth-child(2)": {
+            fontSize: 14,
+          },
+        },
+      },
+      "&:nth-child(2)": {
+        borderTop: "1px solid #E3E3E3",
+      },
+    },
+  },
 }));

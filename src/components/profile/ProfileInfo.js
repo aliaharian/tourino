@@ -1,4 +1,4 @@
-import { Button } from "@material-ui/core";
+import { Button, useMediaQuery } from "@material-ui/core";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUserInfo } from "../../../redux/user";
@@ -29,6 +29,7 @@ const ProfileInfo = ({ profile, ...props }) => {
       setInfo({ ...info, [e.target.name]: e.target.value });
     }
   };
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   //submit
   const handleSubmit = () => {
@@ -36,6 +37,8 @@ const ProfileInfo = ({ profile, ...props }) => {
   };
   return (
     <div className={classes.profileInfo}>
+              {isMobile && <p className={classes.mobileTableTitle}>اطلاعات کاربری</p>}
+
       <div className={classes.mb24px}>
         <TextInput2
           required

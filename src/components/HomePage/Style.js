@@ -68,6 +68,9 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.down(1200)]: {
       padding: "87px 32px 114px 32px",
     },
+    [theme.breakpoints.down("sm")]: {
+      padding: "87px 16px 114px 16px",
+    },
   },
   offeredToursSection: {
     width: "100%",
@@ -106,7 +109,10 @@ export default makeStyles((theme) => ({
     display: "grid",
     gridTemplateColumns: "repeat(4,1fr)",
     gridGap: 24,
-    marginTop:48
+    marginTop:48,
+    [theme.breakpoints.down("sm")]: {
+      gridTemplateColumns: "1fr",
+    }
   },
   landscapeTourItem: {
     // padding: '0 12px',
@@ -235,6 +241,9 @@ export default makeStyles((theme) => ({
     backgroundImage: "#fff",
     [theme.breakpoints.down(1200)]: {
       padding: "8px 40px 114px 40px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      padding: "8px 16px 114px 16px",
     },
   },
   customersIcon: {

@@ -15,6 +15,7 @@ import {
   SET_TOKEN,
   LOAD_SUCCESS,
   SET_USER_INFO,
+  OPEN_MENU,
 } from "./Actions";
 
 const defaultState = {
@@ -28,6 +29,7 @@ const defaultState = {
   authorization: null,
   load: true,
   user: null,
+  openMenu: false,
 };
 
 const userReducer = (state = defaultState, action) => {
@@ -122,6 +124,12 @@ const userReducer = (state = defaultState, action) => {
       return {
         ...state,
         searchLoading: action.key,
+      };
+    //openMenu
+    case OPEN_MENU:
+      return {
+        ...state,
+        openMenu: action.payload,
       };
     default:
       return state;

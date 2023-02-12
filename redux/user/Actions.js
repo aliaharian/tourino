@@ -17,6 +17,8 @@ export const LOGOUT = "logout";
 export const SET_LOADING = "setLoading";
 export const SET_TOKEN = "setToken";
 export const LOAD_SUCCESS = "userLoadSuccess";
+//openMenu
+export const OPEN_MENU = "openMenu";
 //SET_USER_INFO
 export const SET_USER_INFO = "setUserInfo";
 
@@ -250,4 +252,10 @@ export const logout = () => async (dispatch, getState) => {
     localStorage.removeItem("token");
     Cookies.remove("token");
   }
+};
+export const openMenu = (open) => async (dispatch, getState) => {
+  dispatch({
+    type: OPEN_MENU,
+    payload: open,
+  });
 };
