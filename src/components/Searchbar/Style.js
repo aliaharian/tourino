@@ -20,6 +20,15 @@ export default makeStyles((theme) => ({
         outline: "none !important",
       },
     },
+    //brwapoints
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      backgroundColor: "transparent",
+      boxShadow: "none",
+      border: "none",
+      height: "auto",
+      padding: "0 24px",
+    },
   },
   searchbarSm: {
     boxShadow: "none",
@@ -31,6 +40,8 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       height: 40,
       borderRadius: 20,
+      padding: "0 8px 0 24px !important",
+
     },
   },
   noAfter: {
@@ -55,6 +66,15 @@ export default makeStyles((theme) => ({
     },
     [theme.breakpoints.down(800)]: {
       padding: "11px 20px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      backgroundColor: "#fff",
+      width: "100%",
+      maxWidth: "100%",
+      display: "flex",
+      height: 48,
+      minHeight: 48,
+      marginBottom: 16,
     },
     "&:after": {
       content: '""',
@@ -86,6 +106,21 @@ export default makeStyles((theme) => ({
       "&:nth-child(1)": {
         color: theme.textColor.primary,
         marginBottom: 2,
+        [theme.breakpoints.down(800)]: {
+          lineHeight:"24px",
+          position:"relative",
+          marginRight:12,
+          paddingRight:12,
+          '&:after':{
+            position: "absolute",
+            right:0,
+            content: '""',
+            height: 24,
+            width: 1,
+            backgroundColor: "#d6d3d3",
+            display:"inline-block"
+          }
+        },
       },
       "&:nth-child(2)": {
         fontSize: 12,
@@ -96,12 +131,30 @@ export default makeStyles((theme) => ({
 
   searchbarItemChild: {
     marginRight: 0,
+    [theme.breakpoints.down("sm")]: {
+      display: "flex",
+    },
     "&>p": {
       fontSize: 13,
       lineHeight: "22px",
       "&:nth-child(1)": {
         color: theme.textColor.primary,
         marginBottom: 1,
+        [theme.breakpoints.down(800)]: {
+          lineHeight:"24px",
+          position:"relative",
+          marginRight:12,
+          paddingRight:12,
+          '&:after':{
+            position: "absolute",
+            right:0,
+            content: '""',
+            height: 24,
+            width: 1,
+            backgroundColor: "#d6d3d3",
+            display:"inline-block"
+          }
+        },
       },
       "&:nth-child(2)": {
         color: theme.textColor.secondary,
@@ -121,6 +174,17 @@ export default makeStyles((theme) => ({
       height: 44,
       backgroundColor: "#ff5a5f",
       borderRadius: "50%",
+      [theme.breakpoints.down("sm")]: {
+        position: "absolute",
+        bottom: -92,
+        left: "calc(50% - 60px)",
+        width: 120,
+        minWidth: 120,
+        maxWidth: 120,
+        height: 40,
+        borderRadius: 20,
+        color: "#fff",
+      },
       "&:hover": {
         backgroundColor: "#ff5a5f",
       },
@@ -129,6 +193,15 @@ export default makeStyles((theme) => ({
         color: "#fff",
         transform: "scaleX(-1)",
       },
+    },
+    [theme.breakpoints.down("sm")]: {
+      backgroundColor: "#fff",
+      width: "100%",
+      maxWidth: "100%",
+      display: "flex",
+      height: 48,
+      minHeight: 48,
+      marginBottom: 16,
     },
   },
 
@@ -466,6 +539,11 @@ export default makeStyles((theme) => ({
     justifyContent: "space-between",
     padding: "0 10px 0 24px",
     cursor: "pointer",
+    //breakpoint
+    [theme.breakpoints.down("sm")]: {
+      height:40,
+      padding:0
+    },
     "&>p": {
       fontSize: 13,
       "&>span": {
@@ -490,4 +568,12 @@ export default makeStyles((theme) => ({
   emptyPlaceholder: {
     minWidth: 250,
   },
+  datepickerHeader:{
+    display:"flex",
+    height:64,
+    width:"100%",
+    alignItems:"center",
+    justifyContent:"space-between",
+    padding:"0 24px",
+  }
 }));

@@ -9,6 +9,7 @@ import {
   Paper,
   Popper,
   Typography,
+  useMediaQuery,
 } from "@material-ui/core";
 import { useEffect, useRef } from "react";
 import useStyles from "./Style";
@@ -37,6 +38,7 @@ const PeopleCount = ({
   const anchorEl = useRef(null);
   const [open, setOpen] = React.useState(false);
   const Dispatch = useDispatch();
+  const isMobile = useMediaQuery("(max-width: 600px)");
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -135,6 +137,8 @@ const PeopleCount = ({
               isStopped={false}
               isPaused={false}
             />
+          ) : isMobile ? (
+            "جستجو"
           ) : (
             <IoSearch />
           )}

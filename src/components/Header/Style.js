@@ -13,6 +13,11 @@ export default makeStyles((theme) => ({
     transition: "all 150ms ease",
     right: "50%",
     transform: "translateX(50%)",
+    [theme.breakpoints.down("sm")]: {
+      backgroundColor: "#fff",
+      height: 64,
+      padding: "16px 80px",
+    },
   },
   headerContainer: {
     width: "100%",
@@ -33,6 +38,11 @@ export default makeStyles((theme) => ({
     transform: "translateX(50%)",
     [theme.breakpoints.down(1200)]: {
       padding: "21px 40px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: 64,
+      padding: 0,
+      padding: "16px 24px",
     },
   },
   headerContainerShadow: {
@@ -57,6 +67,10 @@ export default makeStyles((theme) => ({
         marginLeft: 10,
         color: "#fff",
         fontFamily: theme.font.bold,
+        //breakpoint
+        [theme.breakpoints.down("sm")]: {
+          color: "#FF5A5F",
+        },
       },
     },
   },
@@ -86,6 +100,9 @@ export default makeStyles((theme) => ({
     border: "1px solid #fff",
     borderRadius: 8,
     transition: "all 150ms ease",
+    [theme.breakpoints.down("sm")]: {
+      border: "1px solid #FF5A5F",
+    },
   },
   siteLogoDark: {
     width: 31,
@@ -153,6 +170,12 @@ export default makeStyles((theme) => ({
   transportContainer: {
     display: "flex",
     alignItems: "center",
+    //brereakpoints
+    [theme.breakpoints.down("sm")]: {
+      position: "absolute",
+      top:12,
+
+    },
     // justifyContent: 'space-between',
     // width: 182,
     // paddingTop: 7,
@@ -220,6 +243,7 @@ export default makeStyles((theme) => ({
       top: 0,
       padding: 0,
       transform: "translateX(0)",
+
     },
   },
   searchbarContainerSm: {
@@ -231,4 +255,15 @@ export default makeStyles((theme) => ({
     },
   },
 
+  homepageSearch: {
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      position: "absolute",
+      top: 64,
+      left: 0,
+      height: "calc(95vh - 64px)",
+      // justifyContent: "flex-start",
+      paddingTop: 12,
+    },
+  },
 }));

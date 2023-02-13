@@ -88,6 +88,7 @@ const Header = () => {
             </div>
             <SearchSection
               showSearch={showSearch}
+              homepage={true}
               setShowSearch={(e) => {
                 setShowSearch(e);
               }}
