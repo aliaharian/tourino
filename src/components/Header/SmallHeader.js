@@ -35,14 +35,15 @@ const SmallHeader = ({ dest, origin }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   });
   const handleOpenMenu = () => {
-    Dispatch(openMenu(true)) 
-  }
+    Dispatch(openMenu(true));
+  };
 
   return (
     <>
       <ClickAwayListener
         onClickAway={(e) => {
-          setShowSearch(false);
+          // console.log('sdvsdvdvdsvdsvsdvdsvdsvdsv')
+          // setShowSearch(false);
         }}
       >
         <div
@@ -92,6 +93,7 @@ const SmallHeader = ({ dest, origin }) => {
       <div
         style={showSearch ? { display: "block" } : {}}
         className={classes.overlay}
+        onClick={() => setShowSearch(false)}
       ></div>
     </>
   );

@@ -20,9 +20,9 @@ const DatePicker = ({ startDate, endDate, ...props }) => {
     <div className={classes.root}>
       <DateRangePicker
         isRTL={true}
-        orientation={isMobile ? "vertical" : "horizontal"}
+        // orientation={isMobile ? "vertical" : "horizontal"}
         renderCalendarDay={undefined}
-        verticalHeight={isMobile ? 844 : 568}
+        verticalHeight={568}
         hideKeyboardShortcutsPanel
         noBorder
         onClose={({ startDate }) => {

@@ -3,6 +3,8 @@ import useStyles from "./Style";
 import StarRateIcon from "@material-ui/icons/StarRate";
 import { dateTime, numberFormat } from "../../utilities";
 import { FlagOutlined, FlagRounded, StarRateRounded } from "@material-ui/icons";
+import Link from 'next/link'
+
 
 const HotelItem = ({ data, from_city, to_city }) => {
   const classes = useStyles();
@@ -34,7 +36,11 @@ const HotelItem = ({ data, from_city, to_city }) => {
       <div className={classes.dataContainer}>
         <div className={classes.tourBaseInfo}>
           <div>
-            <Typography>{data.hotel.name}</Typography>
+           <Link href={"/hotel/" + data.hotel.id}>
+            <a>
+              {data.hotel.name}
+            </a>
+            </Link>
             <div className={classes.starsContainer}>
               <Typography className={classes.stars}>
                 <StarRateRounded />
@@ -46,11 +52,7 @@ const HotelItem = ({ data, from_city, to_city }) => {
               </Typography>
             </div>
             <Typography>{to_city.title}</Typography>
-            <Typography>{`${
-             data.hotel.nights
-            } شب و ${
-              data.hotel.days
-            } روز`}</Typography>
+            <Typography>{`${data.hotel.nights} شب و ${data.hotel.days} روز`}</Typography>
           </div>
           <div>
             <Typography>شروع قیمت از</Typography>

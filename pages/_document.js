@@ -12,6 +12,7 @@ import { BASE_URL } from "../src/constant";
 
 
 export default class MyDocument extends Document {
+
   render() {
     return (
       <Html lang="fa" dir="rtl">

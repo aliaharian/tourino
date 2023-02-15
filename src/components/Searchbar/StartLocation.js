@@ -1,5 +1,6 @@
 import {
   ClickAwayListener,
+  Dialog,
   Grow,
   Menu,
   MenuItem,
@@ -7,18 +8,23 @@ import {
   Paper,
   Popper,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@material-ui/core";
 import { useEffect, useRef, useState } from "react";
 import useStyles from "./Style";
 import locationIcon from "../../assets/img/location.png";
 import clsx from "clsx";
 import HistoryIcon from "@material-ui/icons/History";
+import { Close } from "@material-ui/icons";
 const StartLocation = (props) => {
   const classes = useStyles();
   const anchorEl = useRef(null);
   const [gps, setGps] = useState();
   const [recent, setRecent] = useState();
   const [cities, setCities] = useState();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleToggle = () => {
     props.onClick();
@@ -61,6 +67,61 @@ const StartLocation = (props) => {
     }
     props.onClose();
   };
+
+  const renderContent = () => {
+    return (
+      <div className={classes.locationMenuInside}>
+        <div className={classes.selectFromLocation}>
+          <img src={locationIcon} />
+          <Typography> انتخاب شهر بر اساس موقعیت مکانی شما </Typography>
+        </div>
+        {recent && (
+          <div className={classes.locationHistoryContainer}>
+            <Typography>جست و جو های اخیر </Typography>
+
+            {recent &&
+              recent.map((item) => (
+                <div
+                  className={classes.locationHistoryItem}
+                  onClick={() => {
+                    props.handleChange(item);
+                    // setOpen(false)
+                  }}
+                >
+                  <div className={classes.locationHistoryIcon}>
+                    <HistoryIcon />
+                  </div>
+                  <Typography>{item?.city?.title}</Typography>
+                </div>
+              ))}
+          </div>
+        )}
+
+        <div className={classes.locationOfferContainer}>
+          <Typography>شهر های پیشنهادی </Typography>
+
+          <div className={classes.locationOfferItemContainer}>
+            {cities &&
+              cities.map((city) => (
+                <div
+                  key={city.city_id}
+                  onClick={() => {
+                    props.handleChange(city);
+                  }}
+                  className={clsx(
+                    classes.locationOfferItem,
+                    props.startLocation?.city_id === city.city_id &&
+                      classes.selectedCity
+                  )}
+                >
+                  <Typography>{city.city.title}</Typography>
+                </div>
+              ))}
+          </div>
+        </div>
+      </div>
+    );
+  };
   // return focus to the button when we transitioned from !open -> open
   return (
     <>
@@ -80,92 +141,61 @@ const StartLocation = (props) => {
         <Typography> مبدا </Typography>
         <Typography noWrap>
           {" "}
-          {props.startLocation?.city?.title || props.startLocation?.title || "کجا هستید؟"}{" "}
+          {props.startLocation?.city?.title ||
+            props.startLocation?.title ||
+            "کجا هستید؟"}{" "}
         </Typography>
       </div>
-
-      <Popper
-        className={classes.locationMenu}
-        open={props.selected}
-        anchorEl={anchorEl.current}
-        role={undefined}
-        transition
-        disablePortal
-      >
-        {({ TransitionProps, placement }) => (
-          <Grow
-            {...TransitionProps}
-            style={{
-              transformOrigin:
-                placement === "bottom" ? "center top" : "center bottom",
-            }}
-          >
-            <Paper>
-              <ClickAwayListener
-                onClickAway={(e) => {
-                  handleClose(e);
-                }}
-              >
-                <MenuList autoFocusItem={props.selected} id="menu-list-grow">
-                  <div className={classes.locationMenuInside}>
-                    <div className={classes.selectFromLocation}>
-                      <img src={locationIcon} />
-                      <Typography>
-                        {" "}
-                        انتخاب شهر بر اساس موقعیت مکانی شما{" "}
-                      </Typography>
-                    </div>
-                    {recent && (
-                      <div className={classes.locationHistoryContainer}>
-                        <Typography>جست و جو های اخیر </Typography>
-
-                        {recent &&
-                          recent.map((item) => (
-                            <div
-                              className={classes.locationHistoryItem}
-                              onClick={() => {
-                                props.handleChange(item);
-                                // setOpen(false)
-                              }}
-                            >
-                              <div className={classes.locationHistoryIcon}>
-                                <HistoryIcon />
-                              </div>
-                              <Typography>{item.name}</Typography>
-                            </div>
-                          ))}
-                      </div>
-                    )}
-
-                    <div className={classes.locationOfferContainer}>
-                      <Typography>شهر های پیشنهادی </Typography>
-
-                      <div className={classes.locationOfferItemContainer}>
-                        {cities &&
-                          cities.map((city) => (
-                            <div
-                              key={city.city_id}
-                              onClick={() => {
-                                props.handleChange(city);
-                              }}
-                              className={clsx(
-                                classes.locationOfferItem,
-                                props.startLocation?.city_id === city.city_id &&
-                                  classes.selectedCity
-                              )}
-                            >
-                              <Typography>{city.city.title}</Typography>
-                            </div>
-                          ))}
-                      </div>
-                    </div>
-                  </div>
-                </MenuList>
-              </ClickAwayListener>
-            </Paper>
-          </Grow>
-        )}
-      </Popper>
+      {isMobile ? (
+        <Dialog
+          fullScreen
+          open={props.selected}
+          onClose={(e) => handleClose(e)}
+        >
+          <div className={classes.datepickerHeader}>
+            <p>انتخاب شهر رفت</p>
+            <Close onClick={(e) => handleClose(e)} />
+          </div>
+          <div className={classes.mobileContentContainer}>
+            {
+               renderContent()
+            }
+          </div>
+        </Dialog>
+      ) : (
+        <Popper
+          className={classes.locationMenu}
+          open={props.selected}
+          anchorEl={anchorEl.current}
+          role={undefined}
+          transition
+          disablePortal
+        >
+          {({ TransitionProps, placement }) => (
+            // <Grow
+            //   {...TransitionProps}
+            //   style={{
+            //     transformOrigin:
+            //       placement === "bottom" ? "center top" : "center bottom",
+            //   }}
+            // >
+              (
+              <Paper>
+                <ClickAwayListener
+                  onClickAway={(e) => {
+                    handleClose(e);
+                  }}
+                >
+                  <MenuList autoFocusItem={props.selected} id="menu-list-grow">
+                    {renderContent()}
+                  </MenuList>
+                </ClickAwayListener>
+              </Paper>
+              )
+            // </Grow>
+          )}
+        </Popper>
+      )}
     </>
   );
 };

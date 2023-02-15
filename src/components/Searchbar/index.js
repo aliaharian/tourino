@@ -25,6 +25,7 @@ const Searchbar = ({
   query,
   dest,
   origin,
+  homepage,
 }) => {
   const classes = useStyles();
   const [selected, setSelected] = useState();
@@ -286,13 +287,14 @@ const Searchbar = ({
     }
   };
 
-  console.log('start',startLocation)
-    console.log('end',endLocation)
+  console.log("start", startLocation);
+  console.log("end", endLocation);
   return (
     <div
       ref={anchorElGlobal}
       className={clsx(
         classes.searchbar,
+        !homepage && showSearch && classes.searchbarOther,
         scrollPos && !showSearch && classes.searchbarSm
       )}
     >
@@ -320,6 +322,10 @@ const Searchbar = ({
             anchorElGlobal={anchorElGlobal}
             startDate={startDate}
             endDate={endDate}
+            gotoNext={() => {
+              console.log("okkkk");
+              setSelected("pepoleCount");
+            }}
             onClose={() => setSelected(null)}
             setStartDate={(e) => {
               // console.log('changed')

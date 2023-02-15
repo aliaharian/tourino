@@ -16,6 +16,7 @@ import {
   LOAD_SUCCESS,
   SET_USER_INFO,
   OPEN_MENU,
+  SET_MAP,
 } from "./Actions";
 
 const defaultState = {
@@ -30,6 +31,7 @@ const defaultState = {
   load: true,
   user: null,
   openMenu: false,
+  map: null,
 };
 
 const userReducer = (state = defaultState, action) => {
@@ -130,6 +132,11 @@ const userReducer = (state = defaultState, action) => {
       return {
         ...state,
         openMenu: action.payload,
+      };
+    case SET_MAP:
+      return {
+        ...state,
+        map: action.payload,
       };
     default:
       return state;

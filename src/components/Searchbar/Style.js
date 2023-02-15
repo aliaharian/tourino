@@ -30,6 +30,11 @@ export default makeStyles((theme) => ({
       padding: "0 24px",
     },
   },
+  searchbarOther:{
+    [theme.breakpoints.down("sm")]: {
+      left:-50
+    },
+  },
   searchbarSm: {
     boxShadow: "none",
     border: "1px solid " + theme.textColor.border,
@@ -41,7 +46,6 @@ export default makeStyles((theme) => ({
       height: 40,
       borderRadius: 20,
       padding: "0 8px 0 24px !important",
-
     },
   },
   noAfter: {
@@ -75,6 +79,7 @@ export default makeStyles((theme) => ({
       height: 48,
       minHeight: 48,
       marginBottom: 16,
+      border: "1px solid " + theme.textColor.border,
     },
     "&:after": {
       content: '""',
@@ -107,19 +112,19 @@ export default makeStyles((theme) => ({
         color: theme.textColor.primary,
         marginBottom: 2,
         [theme.breakpoints.down(800)]: {
-          lineHeight:"24px",
-          position:"relative",
-          marginRight:12,
-          paddingRight:12,
-          '&:after':{
+          lineHeight: "24px",
+          position: "relative",
+          marginRight: 12,
+          paddingRight: 12,
+          "&:after": {
             position: "absolute",
-            right:0,
+            right: 0,
             content: '""',
             height: 24,
             width: 1,
             backgroundColor: "#d6d3d3",
-            display:"inline-block"
-          }
+            display: "inline-block",
+          },
         },
       },
       "&:nth-child(2)": {
@@ -141,19 +146,19 @@ export default makeStyles((theme) => ({
         color: theme.textColor.primary,
         marginBottom: 1,
         [theme.breakpoints.down(800)]: {
-          lineHeight:"24px",
-          position:"relative",
-          marginRight:12,
-          paddingRight:12,
-          '&:after':{
+          lineHeight: "24px",
+          position: "relative",
+          marginRight: 12,
+          paddingRight: 12,
+          "&:after": {
             position: "absolute",
-            right:0,
+            right: 0,
             content: '""',
             height: 24,
             width: 1,
             backgroundColor: "#d6d3d3",
-            display:"inline-block"
-          }
+            display: "inline-block",
+          },
         },
       },
       "&:nth-child(2)": {
@@ -399,9 +404,15 @@ export default makeStyles((theme) => ({
     top: 20,
     right: 15,
     backgroundColor: "rgb(235, 235, 235) !important",
+
     "& svg": {
       fontSize: 12,
     },
+    //breakpoint
+    [theme.breakpoints.down("sm")]: {
+      top:12
+    }
+
   },
   roomContainer: {
     width: "100%",
@@ -541,8 +552,8 @@ export default makeStyles((theme) => ({
     cursor: "pointer",
     //breakpoint
     [theme.breakpoints.down("sm")]: {
-      height:40,
-      padding:0
+      height: 40,
+      padding: 0,
     },
     "&>p": {
       fontSize: 13,
@@ -568,12 +579,56 @@ export default makeStyles((theme) => ({
   emptyPlaceholder: {
     minWidth: 250,
   },
-  datepickerHeader:{
-    display:"flex",
-    height:64,
-    width:"100%",
-    alignItems:"center",
-    justifyContent:"space-between",
-    padding:"0 24px",
+  datepickerHeader: {
+    display: "flex",
+    height: 64,
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: "0 24px",
+  },
+  checkDatesContainer: {
+    padding: "0 16px",
+    display: "flex",
+    width: "100%",
+    alignItems: "center",
+    "&>div": {
+      width: "calc(50% - 8px)",
+      border: "1px solid " + theme.textColor.border,
+      padding: 12,
+      borderRadius: 8,
+      "&>p": {
+        margin: 0,
+        "&:nth-child(1)": {
+          color: "#9E9E9E",
+          fontSize: 12,
+        },
+
+        "&:nth-child(2)": {
+          marginTop: 4,
+          fontSize: 14,
+        },
+      },
+      "&:first-child": {
+        marginRight: 8,
+      },
+      "&:last-child": {
+        marginLeft: 8,
+      },
+    },
+  },
+  submitDateBtn: {
+    width: "100%",
+    padding:"0 16px",
+    marginTop:16,
+    "&>button": {
+      width: "100%",
+      color:  "#fff",
+      borderRadius: 8,
+      backgroundColor: "#FF5A5F",
+    },
+  },
+  mobileContentContainer:{
+    padding:"0 16px"
   }
 }));

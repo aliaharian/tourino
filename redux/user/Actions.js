@@ -19,6 +19,7 @@ export const SET_TOKEN = "setToken";
 export const LOAD_SUCCESS = "userLoadSuccess";
 //openMenu
 export const OPEN_MENU = "openMenu";
+export const SET_MAP = "setMap";
 //SET_USER_INFO
 export const SET_USER_INFO = "setUserInfo";
 
@@ -256,6 +257,13 @@ export const logout = () => async (dispatch, getState) => {
 export const openMenu = (open) => async (dispatch, getState) => {
   dispatch({
     type: OPEN_MENU,
+    payload: open,
+  });
+};
+
+export const setMap = (open) => async (dispatch, getState) => {
+  dispatch({
+    type: SET_MAP,
     payload: open,
   });
 };

@@ -28,9 +28,8 @@ export default makeStyles((theme) => ({
     transition: "all 150ms ease",
     right: "50%",
     transform: "translateX(50%)",
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       padding: "21px 16px",
-
     },
   },
   headerContainerShadow: {
@@ -39,6 +38,9 @@ export default makeStyles((theme) => ({
   headerContainerTall: {
     transition: "all 150ms ease",
     height: 170,
+    [theme.breakpoints.down("sm")]: {
+      height: 535,
+    },
   },
   siteName: {
     display: "flex",
@@ -206,6 +208,10 @@ export default makeStyles((theme) => ({
     width: "300px",
     top: "-57px",
     transition: "all 150ms ease",
+    //breakpoints
+    [theme.breakpoints.down("sm")]: {
+      top: "0",
+    },
   },
   overlay: {
     position: "fixed",
@@ -221,6 +227,6 @@ export default makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginRight:10
+    marginRight: 10,
   },
 }));

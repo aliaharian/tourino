@@ -26,6 +26,7 @@ const SelectDate = ({
   setStartDate,
   endDate,
   setEndDate,
+  gotoNext,
   ...props
 }) => {
   const classes = useStyles();
@@ -103,6 +104,8 @@ const SelectDate = ({
       <div
         className={clsx(
           classes.searchbarItem,
+          classes.noAfter,
+
           props.selected && classes.searchbarItemActive
         )}
         // style={focusedInput ? { maxWidth: 210 } : { maxWidth: 210 }}
@@ -140,7 +143,21 @@ const SelectDate = ({
           {/* {renderContent()} */}
           <div className={classes.datepickerHeader}>
             <p>انتخاب تاریخ</p>
-            <Close />
+            <Close onClick={(e) => handleClose(e)} />
+          </div>
+          <div>{renderContent()}</div>
+          <div className={classes.checkDatesContainer}>
+            <div>
+              <p>رفت</p>
+              <p>{startDateStr}</p>
+            </div>
+            <div>
+              <p>برگشت</p>
+              <p>{endDateStr}</p>
+            </div>
+          </div>
+          <div className={classes.submitDateBtn}>
+            <Button onClick={(e) => {gotoNext()}} >تایید تاریخ</Button>
           </div>
         </Dialog>
       ) : (

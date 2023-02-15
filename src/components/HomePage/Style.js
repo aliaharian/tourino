@@ -11,6 +11,11 @@ export default makeStyles((theme) => ({
     position: "relative",
     display: "flex",
     justifyContent: "center",
+    //breakpoint
+    [theme.breakpoints.down("sm")]: {
+      maxHeight: "70vh",
+
+    },
 
     "&:before": {
       content: '""',

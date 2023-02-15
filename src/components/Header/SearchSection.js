@@ -26,6 +26,7 @@ const SearchSection = ({
       <div
         className={clsx(
           classes.transportContainer,
+          !homepage && classes.transportContainerOther,
           scrollPos && showSearch && classes.transportContainerDark
         )}
         style={scrollPos && !showSearch ? { display: "none" } : {}}
@@ -66,10 +67,16 @@ const SearchSection = ({
       <div
         className={clsx(
           classes.searchbarContainer,
-          scrollPos && !showSearch && classes.searchbarContainerSm
+          !homepage && classes.searchbarContainerOther,
+          scrollPos && !showSearch && classes.searchbarContainerSm,
+          scrollPos &&
+            !showSearch &&
+            homepage &&
+            classes.searchbarContainerSmHome
         )}
       >
         <Searchbar
+          homepage={homepage}
           dest={dest}
           origin={origin}
           query={query}

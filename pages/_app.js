@@ -10,9 +10,13 @@ import "swiper/components/navigation/navigation.scss";
 import { wrapper } from "../redux/store";
 import axios from "axios";
 import { BASE_URL } from "../src/constant";
-import { LOAD_SUCCESS, SET_TOKEN, USER_PROFILE } from "../redux/user";
+import { LOAD_SUCCESS, setMap, SET_TOKEN, USER_PROFILE } from "../redux/user";
 import Cookies from "js-cookie";
 import { Cookies as CookiesSsr } from "cookies";
+import { setRTLTextPlugin } from "!mapbox-gl";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 function MyApp({ Component, pageProps }) {
   axios.defaults.baseURL = BASE_URL;
   axios.defaults.headers.post["Content-Type"] = "application/json";
@@ -20,6 +24,18 @@ function MyApp({ Component, pageProps }) {
     "Bearer " + Cookies.get("token");
 
   axios.defaults.withCredentials = false;
+
+  const Dispatch = useDispatch();
+  const mapset = useSelector(state=>state.user.map)
+  console.log('map',mapset)
+  useEffect(() => {
+    if (typeof window !== "undefined" && !mapset) {
+      setRTLTextPlugin(
+        "https://www.parsimap.com/scripts/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.0/mapbox-gl-rtl-text.js"
+      );
+      Dispatch(setMap(true));
+    }
+  },[]);
 
   return (
     <SnackbarProvider maxSnack={3}>

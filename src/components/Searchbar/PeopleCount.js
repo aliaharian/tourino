@@ -2,6 +2,7 @@ import {
   Button,
   CircularProgress,
   ClickAwayListener,
+  Dialog,
   Grow,
   Menu,
   MenuItem,
@@ -10,6 +11,7 @@ import {
   Popper,
   Typography,
   useMediaQuery,
+  useTheme,
 } from "@material-ui/core";
 import { useEffect, useRef } from "react";
 import useStyles from "./Style";
@@ -24,6 +26,7 @@ import { enqueueSnackbar } from "../../../redux/user";
 import { Scrollbars } from "react-custom-scrollbars";
 import Lottie from "react-lottie";
 import animationData from "../../assets/icon/loading.json";
+import { Close } from "@material-ui/icons";
 
 const PeopleCount = ({
   adults,
@@ -38,7 +41,9 @@ const PeopleCount = ({
   const anchorEl = useRef(null);
   const [open, setOpen] = React.useState(false);
   const Dispatch = useDispatch();
-  const isMobile = useMediaQuery("(max-width: 600px)");
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -47,10 +52,17 @@ const PeopleCount = ({
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+
   const handleToggle = () => {
     setOpen(!open);
     props.onClick();
   };
+  useEffect(() => {
+    if (props.selected) {
+      setOpen(true);
+    }
+  }, [props.selected]);
+  console.log("selected", props.selected);
 
   const handleClose = (event) => {
     setOpen(false);
@@ -102,23 +114,39 @@ const PeopleCount = ({
     setAdults(adultTmp);
     setInfants(infantTmp);
   }, [rooms]);
+
+  const renderContent = () => {
+    return rooms.map((room, index) => (
+      <RoomInfo
+        key={index}
+        roomCount={rooms.length}
+        roomNumber={index + 1}
+        roomInfo={room}
+        handleChange={(type, count) => handleChangeRoom(index, type, count)}
+        handleRemove={() => handleRemoveRoom(index)}
+      />
+    ));
+  };
   return (
     <>
       <div
         className={clsx(
           classes.searchbarItem,
+          classes.noAfter,
+
           open && classes.searchbarItemActive,
           classes.searchBtnContainer
         )}
+        onClick={(event) => {
+          console.log(event.target.id);
+          if (event.target.id !== "submitBtn") handleToggle();
+        }}
       >
         <div
           className={clsx(classes.searchbarItemChild)}
           ref={anchorEl}
           aria-controls={open ? "menu-list-grow" : undefined}
           aria-haspopup="true"
-          onClick={(event) => {
-            handleToggle();
-          }}
         >
           <Typography> مسافران </Typography>
           <Typography style={{ maxWidth: 130 }} noWrap>
@@ -128,7 +156,17 @@ const PeopleCount = ({
           </Typography>
         </div>
 
-        <Button onClick={props.handleSearchTour} disabled={props.beginSearch}>
+        <Button
+          onClick={(e) => {
+            setTimeout(() => {
+              setOpen(false);
+              handleClose(e);
+              props.handleSearchTour();
+            }, 10);
+          }}
+          id="submitBtn"
+          disabled={props.beginSearch}
+        >
           {props.beginSearch ? (
             <Lottie
               options={defaultOptions}
@@ -144,54 +182,68 @@ const PeopleCount = ({
           )}
         </Button>
       </div>
-      <Popper
-        className={classes.countMenu}
-        open={open}
-        anchorEl={anchorEl.current}
-        role={undefined}
-        transition
-        disablePortal
-      >
-        {({ TransitionProps, placement }) => (
-          <Grow
-            {...TransitionProps}
-            style={{
-              transformOrigin:
-                placement === "bottom" ? "center top" : "center bottom",
-            }}
-          >
-            <Paper>
-              <ClickAwayListener
-                onClickAway={(e) => {
+      {isMobile ? (
+        <Dialog fullScreen open={open} onClose={(e) => handleClose(e)}>
+          <div className={classes.datepickerHeader}>
+            <p>انتخاب تعداد نفرات</p>
+            <Close onClick={(e) => handleClose(e)} />
+          </div>
+          <div className={classes.mobileContentContainer}>
+            {renderContent()}
+          </div>
+          <div className={classes.submitDateBtn}>
+            <Button
+              onClick={(e) => {
+                setTimeout(() => {
+                  setOpen(false);
                   handleClose(e);
-                }}
-              >
-                <Scrollbars>
-                  <MenuList autoFocusItem={open} id="menu-list-grow">
-                    {rooms.map((room, index) => (
-                      <RoomInfo
-                        key={index}
-                        roomCount={rooms.length}
-                        roomNumber={index + 1}
-                        roomInfo={room}
-                        handleChange={(type, count) =>
-                          handleChangeRoom(index, type, count)
-                        }
-                        handleRemove={() => handleRemoveRoom(index)}
-                      />
-                    ))}
-                    {/* <div className={classes.addRoomContainer}>
+                  props.handleSearchTour();
+                }, 10);
+              }}
+            >
+              تایید تعداد نفرات
+            </Button>
+          </div>
+        </Dialog>
+      ) : (
+        <Popper
+          className={classes.countMenu}
+          open={open}
+          anchorEl={anchorEl.current}
+          role={undefined}
+          transition
+          disablePortal
+        >
+          {({ TransitionProps, placement }) => (
+            <Grow
+              {...TransitionProps}
+              style={{
+                transformOrigin:
+                  placement === "bottom" ? "center top" : "center bottom",
+              }}
+            >
+              <Paper>
+                <ClickAwayListener
+                  onClickAway={(e) => {
+                    handleClose(e);
+                  }}
+                >
+                  <Scrollbars>
+                    <MenuList autoFocusItem={open} id="menu-list-grow">
+                      {renderContent()}
+                      {/* <div className={classes.addRoomContainer}>
                                         <Button onClick={handleAddRoom}>
                                             <AddIcon />
                                         </Button>
                                     </div> */}
-                  </MenuList>
-                </Scrollbars>
-              </ClickAwayListener>
-            </Paper>
-          </Grow>
-        )}
-      </Popper>
+                    </MenuList>
+                  </Scrollbars>
+                </ClickAwayListener>
+              </Paper>
+            </Grow>
+          )}
+        </Popper>
+      )}
     </>
   );
 };

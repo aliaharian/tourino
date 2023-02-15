@@ -51,6 +51,9 @@ export default makeStyles((theme) => ({
   headerContainerTall: {
     transition: "all 150ms ease",
     height: 170,
+    [theme.breakpoints.down("sm")]: {
+      height: 535,
+    },
   },
   siteName: {
     display: "flex",
@@ -167,14 +170,14 @@ export default makeStyles((theme) => ({
       height: "100%",
     },
   },
+  
   transportContainer: {
     display: "flex",
     alignItems: "center",
     //brereakpoints
     [theme.breakpoints.down("sm")]: {
       position: "absolute",
-      top:12,
-
+      top: 24,
     },
     // justifyContent: 'space-between',
     // width: 182,
@@ -206,6 +209,11 @@ export default makeStyles((theme) => ({
     "& p": {
       color: "#fff",
       margin: 0,
+    },
+  },
+  transportContainerOther:{
+    [theme.breakpoints.down("sm")]: {
+      top: 10,
     },
   },
   transportContainerDark: {
@@ -243,7 +251,13 @@ export default makeStyles((theme) => ({
       top: 0,
       padding: 0,
       transform: "translateX(0)",
-
+    },
+  },
+  searchbarContainerOther:{
+    [theme.breakpoints.down("sm")]: {
+      position: "absolute",
+      top:64,
+      left:0
     },
   },
   searchbarContainerSm: {
@@ -252,6 +266,17 @@ export default makeStyles((theme) => ({
     transition: "all 150ms ease",
     [theme.breakpoints.down("sm")]: {
       width: "100%",
+      top:0
+    },
+  },
+  searchbarContainerSmHome: {
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      position: "fixed",
+      top: 64,
+      backgroundColor: "#fff",
+      padding:"12px 24px",
+      transition:"none"
     },
   },
 
@@ -261,9 +286,21 @@ export default makeStyles((theme) => ({
       position: "absolute",
       top: 64,
       left: 0,
-      height: "calc(95vh - 64px)",
+      height: "calc(62vh - 64px)",
       // justifyContent: "flex-start",
       paddingTop: 12,
+      transition:"none"
+
     },
+  },
+  overlay: {
+    position: "fixed",
+    display: "none",
+    top: 0,
+    zIndex: 11,
+    right: 0,
+    height: "100vh",
+    width: "100vw",
+    backgroundColor: "rgba(0,0,0,0.7)",
   },
 }));

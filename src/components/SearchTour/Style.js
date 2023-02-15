@@ -148,6 +148,12 @@ export default makeStyles((theme) => ({
     width: "100%",
     "&>div": {
       "&:nth-child(1)": {
+        "& a": {
+          fontFamily: theme.font.bold,
+          color: theme.textColor.primary,
+          marginBottom: 2,
+          fontSize: 14,
+        },
         "&>p": {
           "&:nth-child(1)": {
             fontFamily: theme.font.bold,

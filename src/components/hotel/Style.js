@@ -178,4 +178,8 @@ export default makeStyles((theme) => ({
       color: "#343434",
     },
   },
+  map:{
+    width:"100%",
+    height:300
+  }
 }));

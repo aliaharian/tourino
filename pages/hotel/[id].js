@@ -5,7 +5,8 @@ import Hotel from "../../src/components/hotel/Hotel";
 import { BASE_URL } from "../../src/constant";
 import axios from "axios";
 
-export default function HotelInfo({ loading,hotel }) {
+export default function HotelInfo({ loading, hotel }) {
+
   return (
     <div>
       <Head>
@@ -16,15 +17,14 @@ export default function HotelInfo({ loading,hotel }) {
         // origin={hotelsSuggest.from_city}
         error={false}
       >
-        <Hotel hotel={hotel.hotel}/>
-      
+        <Hotel hotel={hotel.hotel} />
       </Layout>
     </div>
   );
 }
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  async ({ store, req, res,query }) => {
+  async ({ store, req, res, query }) => {
     const { user } = store.getState();
     let loading = true;
 
@@ -48,13 +48,11 @@ export const getServerSideProps = wrapper.getServerSideProps(
     //   }
     // }
 
-
     const hotel = await axios.get(`${BASE_URL}/hotels/${query.id}`, {
-        // headers: {
-        //   Authorization: `Bearer ${token}`,
-        // },
-      });
-
+      // headers: {
+      //   Authorization: `Bearer ${token}`,
+      // },
+    });
 
     loading = false;
 
@@ -62,7 +60,6 @@ export const getServerSideProps = wrapper.getServerSideProps(
       props: {
         loading: loading,
         hotel: hotel.data,
-
       },
     };
   }

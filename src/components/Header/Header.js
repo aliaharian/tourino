@@ -60,7 +60,7 @@ const Header = () => {
       />
       <ClickAwayListener
         onClickAway={(e) => {
-          setShowSearch(false);
+          // setShowSearch(false);
         }}
       >
         <div
@@ -142,6 +142,12 @@ const Header = () => {
           </Grid>
         </div>
       </ClickAwayListener>
+
+      <div
+        style={showSearch ? { display: "block" } : {}}
+        className={classes.overlay}
+        onClick={() => setShowSearch(false)}
+      ></div>
     </>
   );
 };
