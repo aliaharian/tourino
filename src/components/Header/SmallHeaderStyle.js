@@ -229,4 +229,11 @@ export default makeStyles((theme) => ({
     justifyContent: "center",
     marginRight: 10,
   },
+  loginContainer: {
+    width: 100,
+    "& p": {
+      fontSize: 12,
+    },
+  },
+
 }));

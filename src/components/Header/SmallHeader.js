@@ -1,6 +1,8 @@
 import {
   ClickAwayListener,
   Grid,
+  Menu,
+  MenuItem,
   Typography,
   useMediaQuery,
   useTheme,
@@ -12,13 +14,24 @@ import SearchSection from "./SearchSection";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Link from "next/link";
-import { useDispatch } from "react-redux";
-import { openMenu } from "../../../redux/user";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, openMenu, setAuthOpen, setAuthStep } from "../../../redux/user";
+import { useRouter } from 'next/router'
+import Auth from "../auth/Auth";
 
 const SmallHeader = ({ dest, origin }) => {
   const classes = useStyles();
+  const router = useRouter()
   const [showSearch, setShowSearch] = React.useState(false);
   const Dispatch = useDispatch();
+  const authStep = useSelector((state) => state.user.authStep);
+  const authOpen = useSelector((state) => state.user.authOpen);
+  const userProfile = useSelector((state) => state.user.userProfile);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleLogout = () => {
+    Dispatch(logout());
+    setAnchorEl(null);
+  };
   //useMediaQuery
   const theme = useTheme();
 
@@ -40,6 +53,14 @@ const SmallHeader = ({ dest, origin }) => {
 
   return (
     <>
+      <Auth
+        step={authStep}
+        open={authOpen}
+        onClose={() => {
+          Dispatch(setAuthOpen(false));
+          Dispatch(setAuthStep("enterNumber"));
+        }}
+      />
       <ClickAwayListener
         onClickAway={(e) => {
           // console.log('sdvsdvdvdsvdsvsdvdsvdsvdsv')
@@ -78,14 +99,62 @@ const SmallHeader = ({ dest, origin }) => {
               }}
               scrollPos={true}
             />
-            <div className={classes.profileMenu}>
-              <div className={classes.menuIconContainer}>
-                <MenuIcon />
-              </div>
-              <div className={classes.avatarContainer}>
-                <AccountCircleIcon />
-              </div>
+            <div
+              className={clsx(
+                classes.profileMenu,
+                !userProfile && classes.loginContainer
+              )}
+              aria-haspopup="true"
+              aria-controls="menu"
+              onClick={(e) => {
+                if (!userProfile) {
+                  Dispatch(setAuthOpen(true));
+                  Dispatch(setAuthStep("enterNumber"));
+                } else {
+                  setAnchorEl(e.currentTarget);
+                }
+              }}
+            >
+              {userProfile ? (
+                <>
+                  {" "}
+                  <div className={classes.menuIconContainer}>
+                    <MenuIcon />
+                  </div>
+                  <div className={classes.avatarContainer}>
+                    <AccountCircleIcon />
+                  </div>
+                </>
+              ) : (
+                <div>
+                  <Typography>ورود / ثبت نام</Typography>
+                </div>
+              )}
             </div>
+            {userProfile && (
+              <Menu
+                id="menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={() => setAnchorEl(null)}
+              >
+                <MenuItem
+                  key={0}
+                  onClick={() => {
+                    setAnchorEl(null);
+                    router.push({
+                      pathname: "/profile/info",
+                    });
+                  }}
+                >
+                  پروفایل کاربری
+                </MenuItem>
+                <MenuItem key={1} onClick={handleLogout}>
+                  خروج
+                </MenuItem>
+              </Menu>
+            )}
           </Grid>
         </div>
       </ClickAwayListener>

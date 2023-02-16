@@ -1,371 +1,353 @@
 import { makeStyles } from "@material-ui/styles";
-import bg from '../../assets/img/bg.png'
+import bg from "../../assets/img/bg.png";
 export default makeStyles((theme) => ({
-    container: {
-        maxWidth: 1618,
-        margin: '0 auto',
-        padding: '21px 250px',
-        [theme.breakpoints.down(1445)]: {
-            padding: '21px 180px',
-        },
-        [theme.breakpoints.down(1350)]: {
-            padding: '21px 130px',
-        },
-        [theme.breakpoints.down(1250)]: {
-            padding: '21px 40px',
-        },
+  container: {
+    maxWidth: 1200,
+    margin: "0 auto",
+    padding: "21px 80px",
+    [theme.breakpoints.down("sm")]: {},
+    "&>h2": {
+      fontSize: 18,
+      marginBottom: 16,
     },
-    hotelSection: {
-        display: 'flex',
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
-        flexDirection: 'column',
-        width: '100%',
-        paddingBottom: 20,
-        borderBottom: '1px solid ' + theme.textColor.border
+  },
+  hotelInfo: {
+    display: "flex",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: 24,
+    border: "1px solid #E0E0E0",
+    borderRadius: 24,
+    minHeight: "294px",
+    "&>div": {
+      display: "flex",
+      width: "100%",
+      alignItems: "center",
+      justifyContent: "flex-start",
+      minHeight: "100%",
     },
-    hotelName: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        width: '100%',
-        '&>p': {
-            fontSize: 13,
-            fontFamily: theme.font.bold,
-            color: theme.textColor.primary
-        }
+  },
+  hotelImage: {
+    height: "244px",
+    marginRight: 24,
+    "&>img": {
+      height: "100%",
+      width: "100%",
+      objectFit: "cover",
     },
-    hotelInfo: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        flexDirection: 'row',
-        width: '100%',
-        marginTop: 15,
-
-        '&>div:nth-child(1)': {
-            flex: 1,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-start',
-            '& p': {
-                fontSize: 13,
-                fontFamily: theme.font.medium,
-                color: theme.textColor.primary,
-                marginRight: 20
-            },
-            '&>div': {
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'flex-start',
-                '& svg': {
-                    color: theme.textColor.error,
-                    fontSize: 18
-                }
-            }
-        },
-        '&>div:nth-child(2)': {
-            '& svg': {
-                marginLeft: 10,
-                color: theme.textColor.secondary,
-                fontSize: 18
-            }
-
-        }
-
+  },
+  hotelDetail: {
+    height: "100%",
+    "&>p": {
+      fontSize: 18,
+      borderBottom: "1px solid #E0E0E0",
+      marginBottom: 16,
+      paddingBottom: 16,
+      marginTop: 0,
     },
-    hotelAddress: {
-        fontSize: '13px !important',
-        fontFamily: theme.font.regular + ' !important',
-        color: theme.textColor.secondary + ' !important',
+    "&>div": {
+      display: "flex",
+      alignItems: "center",
+      "&>p": {
+        margin: 0,
+      },
     },
-    hotelImages: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        width: '100%',
-        flexDirection: 'row-reverse',
-        maxHeight: '100%',
-        marginTop: 15,
-        position: 'relative',
-
-        '&>div:nth-child(1)': {
-            flex: 1,
-            maxWidth: 'calc(50% - 3px)',
-            height: '100%',
-
-            '& img': {
-                width: '100%',
-            }
-        },
-        '&>div:nth-child(2)': {
-            flex: 1,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            maxWidth: 'calc(50% - 3px)',
-            height: '100%',
-
-            '& div': {
-                maxWidth: 'calc(50% - 3.5px)',
-                '& img': {
-                    width: '100%',
-
-                }
-            }
-        }
-
+  },
+  stars: {
+    backgroundColor: "#FFEBEC80",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 54,
+    borderRadius: 4,
+    height: 32,
+    marginBottom: 16,
+    "& svg": {
+      color: "#FF5A5F",
+      fontSize: 16,
+      marginRight: 4,
     },
-    ImageFloatBtn: {
-        position: 'absolute',
-        bottom: 20,
-        left: 10,
-        backgroundColor: '#fff',
-        borderRadius: 8,
-        padding: '7px 10px',
-        '& p': {
-            fontSize: 13,
-            color: theme.textColor.secondary
-        },
-        '& svg': {
-            fontSize: 18,
-            color: theme.textColor.secondary,
-            marginRight: 5
-        },
-        '&:hover': {
-            position: 'absolute',
-            bottom: 20,
-            left: 10,
-            backgroundColor: '#fff',
-            borderRadius: 8,
-            padding: '7px 10px',
-        }
+  },
+  rate: {
+    backgroundColor: "#F5F5F5",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 154,
+    borderRadius: 4,
+    height: 32,
+    marginBottom: 16,
+    "& svg": {
+      color: "#BDBDBD",
+      fontSize: 16,
+      marginRight: 4,
     },
-    aboutHotel: {
-        marginTop: 15,
-        '&>p:nth-child(1)': {
-            fontSize: 16,
-            fontFamily: theme.font.bold,
-            color: theme.textColor.primary,
-            marginBottom: 10,
-        },
-        '&>p:nth-child(2)': {
-            fontSize: 13,
-            fontFamily: theme.font.regular,
-            color: theme.textColor.secondary,
-            lineHeight: 1.8
-        },
+    "&>p": {
+      color: "#757575",
+      fontSize: 12,
     },
-    roomsSection: {
-        width: '100%',
-        padding: '20px 0',
-        borderBottom: '1px solid ' + theme.textColor.border
-
+  },
+  address: {
+    "& svg": {
+      color: "#BDBDBD",
+      fontSize: 16,
+      marginRight: 4,
     },
-    roomsTitle: {
-        fontSize: 13,
-        fontFamily: theme.font.regular,
-        color: theme.textColor.primary,
-        marginBottom: 10,
-        '& span': {
-            color: theme.textColor.secondary,
-            marginLeft: 10
-        }
+    "&>p": {
+      color: "#424242",
+      fontSize: 14,
     },
-    roomItemContainer: {
-        margin: '0 -10px',
-        width: 'calc(100% + 20px)'
-
-    },
-    roomItemParent: {
-        padding: '10px',
-    },
-    roomItem: {
-        border: '1px solid ' + theme.textColor.border,
-        borderRadius: 8,
-        padding: '15px',
-        display: 'flex',
-        alignItems: 'flex-start',
-        justifyContent: 'space-between',
-        flexDirection: 'column',
-        '& p': {
-            fontSize: 12,
-            color: theme.textColor.primary,
-        }
-    },
-
-    roomType: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        width: '100%',
-    },
-    changeRoomBtn: {
-        border: '1px solid ' + theme.textColor.border,
-        borderRadius: 12,
-        '& span': {
-            fontSize: 11,
-            color: theme.textColor.secondary,
-
-        }
-    },
-    transportSection: {
-        width: '100%',
-        padding: '20px 0',
-        borderBottom: '1px solid ' + theme.textColor.border
-
-    },
-    transportTitle: {
-        fontSize: 13,
-        fontFamily: theme.font.regular,
-        color: theme.textColor.primary,
-        marginBottom: 10,
-    },
-    transportItemContainer: {
-        margin: '0 -10px',
-        width: 'calc(100% + 20px)'
-
-    },
-    transportItemParent: {
-        padding: '10px',
-    },
-    transportItem: {
-        border: '1px solid ' + theme.textColor.border,
-        borderRadius: 8,
-        // padding: '15px',
-        display: 'flex',
-        alignItems: 'flex-start',
-        justifyContent: 'space-between',
-        flexDirection: 'column',
-        '& p': {
-            fontSize: 12,
-            color: theme.textColor.primary,
-        }
-    },
-    transportHeader: {
-        padding: 15,
-        borderBottom: '1px solid ' + theme.textColor.border,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        width: '100%',
-        position: 'relative',
-        '&>p:nth-child(2)': {
-            position: 'absolute',
-            right: '50%',
-            transform: 'translateX(50%)'
-        }
-    },
-    changeTransportBtn: {
-        border: '1px solid ' + theme.textColor.border,
-        borderRadius: 12,
-        '& span': {
-            fontSize: 11,
-            color: theme.textColor.secondary,
-
-        }
-    },
-    transportBody: {
-        width: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        flexDirection: 'column',
-        padding: 15,
-    },
-    transportLogo: {
-        width: 60,
-        height: 60,
-        borderRadius: '50%',
-        border: '1px solid ' + theme.textColor.border,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        '& svg': {
-            color: theme.textColor.secondary
-        }
-    },
-    transportTime: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-        position: 'relative',
-        padding: '20px 0',
-        '&>div:nth-child(1) , &>div:nth-child(3)': {
-            position: 'absolute',
-            display: 'flex',
-            justifyContent: 'center',
-            flexDirection: 'column',
-            '& p': {
-                maxWidth: '100px',
-            },
-            '&>div:nth-child(2)': {
-                width: 8,
-                height: 8,
-                borderRadius: '50%',
-                backgroundColor: '#3d6b92',
-                margin: '5px 0',
-
-            }
-        },
-        '&>div:nth-child(1) ': {
-            left: 0,
-            alignItems: 'flex-start',
-
-        },
-        '&>div:nth-child(2)': {
-            width: '100%',
-            height: 3,
-            borderRadius: 3,
-            backgroundColor: theme.textColor.border,
-            margin: '5px 0',
-        },
-
-        '&>div:nth-child(3) ': {
-            right: 0,
-            alignItems: 'flex-end',
-
-        },
-    },
-    transportName: {
+  },
+  divider120: {
+    width: 120,
+    height: 1,
+    backgroundColor: "#E0E0E0",
+    margin: "16px 0",
+  },
+  eghamat: {
+    "&>p": {
+      "&:nth-child(1)": {
         fontSize: 12,
-        color: theme.textColor.primary
+        color: "#757575",
+        marginRight: 4,
+      },
     },
-    facilitySection: {
-        width: '100%',
-        padding: '20px 0',
-        // borderBottom: '1px solid ' + theme.textColor.border
-
+  },
+  hotelMap: {
+    width: "278px !important",
+    flexDirection: "column",
+  },
+  map: {
+    width: 278,
+    height: 182,
+  },
+  gotoHotel: {
+    marginTop: 24,
+    "&>a": {
+      width: 157,
+      height: 40,
+      borderRadius: 20,
+      border: "1px solid #707070",
+      color: "#707070",
     },
-    facilityTitle: {
-        fontSize: 13,
-        fontFamily: theme.font.regular,
-        color: theme.textColor.primary,
-        marginBottom: 10,
+  },
+  tourHeader: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: "0 4px",
+    margin: "24px 0",
+    "&>p": {
+      fontSize: 24,
+      margin: 0,
     },
-    facilityItemParent: {
-        padding: '10px',
-    },
-    facilityItem: {
-        borderRadius: 8,
-        // padding: '15px',
-        display: 'flex',
-        alignItems: 'flex-start',
-        justifyContent: 'space-between',
-        flexDirection: 'column',
-
-        '& p ': {
-            fontSize: 12,
-            color: theme.textColor.primary,
+  },
+  transportContainer: {
+    display: "grid",
+    gridTemplateColumns: "repeat(2,1fr)",
+    gridGap: 24,
+  },
+  transportCard: {
+    display: "flex",
+    cursor: "pointer",
+    border: "1px solid #E0E0E0",
+    borderRadius: 24,
+    padding: 20,
+    alignItems: "center",
+    justifyContent: "space-between",
+    "&>div": {
+      display: "flex",
+      "&>img": {
+        marginRight: 20,
+        minHeight: 80,
+        maxHeight: 80,
+      },
+      "&>div": {
+        "&>p": {
+          margin: 0,
+          "&:nth-child(1)": {
+            color: "#ACACAC",
+            fontSize: 14,
+          },
+          "&:nth-child(2)": {
+            color: "#0f0f0f",
+            fontSize: 16,
+            margin: "12px 0",
+          },
+          "&:nth-child(3)": {
+            color: "#757575",
+            fontSize: 16,
+          },
         },
-        '& span': {
-            fontSize: 13,
-            color: theme.textColor.primary,
-        },
-        '& svg':{
-            fontSize:18
-        }
+      },
     },
+    "& svg": {
+      fontSize: 40,
+      color: "#757575",
+    },
+  },
+  notCheckedIcon: {
+    width: 16,
+    height: 16,
+    borderRadius: 4,
+    border: "1px solid #E0E0E0",
+  },
+  checkedIcon: {
+    width: 16,
+    height: 16,
+    borderRadius: 4,
+    backgroundColor: "#406D97",
+  },
+  servicesContainer: {
+    display: "grid",
+    gridTemplateColumns: "repeat(4,1fr)",
+    gridGap: 24,
+    marginBottom: 72,
+  },
+  checkboxLabel: {
+    display: "flex",
+    "& p": {
+      fontSize: 12,
+    },
+  },
+  freeBadge: {
+    backgroundColor: "#FF5A5F",
+    color: "#fff",
+    borderRadius: 16,
+    width: 57,
+    height: 24,
+    fontSize: 12,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: 9,
+  },
+  priceContainer: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 65,
+  },
+  price: {
+    width: 511,
+    height: 80,
+    borderRadius: 16,
+    backgroundColor: "#EEEEEE",
+    border: "1px solid #E0E0E0",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: "0 32px",
+    "& p": {
+      fontSize: 20,
+      margin: 0,
+    },
+  },
+  transportDialog: {
+    width: 600,
+    height: 600,
+    borderRadius: 16,
+    padding: "0",
+  },
+  dialogTitle: {
+    display: "flex",
+    padding: "28px 32px",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "space-between",
+    "& p": {
+      fontSize: 18,
+      margin: 0,
+    },
+  },
+  transportSelector: {
+    width: "100%",
+    padding: "13px 80px 0",
+    display: "grid",
+    gridTemplateColumns: "repeat(4,1fr)",
+    backgroundColor: "#F5F5F5",
+    marginBottom: 32,
+    "&>div": {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      cursor: "pointer",
+      "&>p": {
+        margin: 0,
+        marginBottom: 11,
+      },
+    },
+  },
+  selectedType: {
+    borderBottom: "2px solid #406D97",
+  },
+  vehiclesContainer: {
+    width: "100%",
+    height: "calc(100% - 160px)",
+    overflowY: "auto",
+  },
+  vehicleItem: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    padding: "12px 40px 12px 32px",
+    borderBottom: "1px solid #E0E0E0",
+    cursor: "pointer",
+    "&:hover": {
+      backgroundColor: "#F5F5F5",
+    },
+    "&>div": {
+      display: "flex",
+      alignItems: "center",
+      "&:nth-child(1)": {
+        "& p": {
+          margin: 0,
+        },
+      },
+    },
+  },
+  dialogAgencyLogoContainer: {
+    width: 80,
+    height: 80,
+    borderRadius: 16,
+    border: "1px solid #E0E0E0",
+    padding: 14,
+    marginRight: 16,
+    "&>img": {
+      width: "100%",
+      height: "100%",
+      objectFit: "contain",
+    },
+  },
+  dialogTransportName: {
+    fontSize: 14,
+    marginBottom: "12px !important",
+  },
+  dialogTransportDate: {
+    fontSize: 14,
+    color: "#757575",
+  },
+  dialogTransportPrice: {
+    fontSize: 16,
+    direction: "rtl",
+  },
+  submitBtn: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    "&>button": {
+      width: "220px",
+      height: "56px",
+      borderRadius: "20px",
+      backgroundColor: "#FF5A5F",
+      color: "#fff",
+      fontSize: 16,
+      '&:hover': {
+        backgroundColor: "#FF5A5F",
+        
+      }
+    },
+  },
 }));

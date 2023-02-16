@@ -78,8 +78,6 @@ export async function getServerSideProps({ query }) {
     maxPrice = price[1];
   }
 
-  console.log("roomsParamroomsParamroomsParamroomsParam", roomsParam);
-  console.log("roomsParamroomsParamroomsParamroomsParam", roomsArray);
 
   console.log("neeee", {
     adult: roomsArray[0]?.adult,

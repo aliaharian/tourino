@@ -88,9 +88,32 @@ export default makeStyles((theme) => ({
         maxWidth:'300px',
         margin:'0 auto',
     },
-     codeInputRoot: {
+    codeInputRoot: {
         width: '48px',
         height: 48,
+        '& .Mui-focused': {
+            border: '1px solid ' + theme.textColor.primary,
+        },
+        '&>div': {
+            height: '100%',
+            padding: '0 15px',
+            border: '1px solid ' + theme.textColor.border,
+            borderRadius: 8,
+        },
+        '& input': {    
+            textAlign:'center'
+
+        }
+    },
+    birthInputContainer: {
+        display:"grid",
+        gridTemplateColumns:"1fr 1fr 1fr",
+        gridGap:8,
+    },
+    birthRoot: {
+        // width: '48px',
+        height: 48,
+        
         '& .Mui-focused': {
             border: '1px solid ' + theme.textColor.primary,
         },

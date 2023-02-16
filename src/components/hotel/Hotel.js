@@ -21,7 +21,7 @@ mapboxgl.accessToken =
 
 const Hotel = ({ hotel }) => {
   const classes = useStyles();
-  console.log(hotel);
+
   const mapContainer = useRef(null);
   const map = useRef(null);
   const marker = useRef(null);
@@ -152,7 +152,17 @@ const Hotel = ({ hotel }) => {
         <p>جایی که خواهید بود</p>
         <div className={classes.hotelServiceContainer}>
           <div ref={mapContainer} className={classes.map}></div>
+          <div className={classes.addressMap}>
+            <LocationOnOutlined/>
+            <p>
+            {hotel.city_place.title} {hotel.address}
+          </p>
+          </div>
         </div>
+      </div>
+      <div className={classes.hotelNotes}>
+        <p>قوانین هتل</p>
+        <div dangerouslySetInnerHTML={{ __html: hotel.notes }}></div>
       </div>
     </div>
   );

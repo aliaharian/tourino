@@ -160,7 +160,7 @@ const PeopleCount = ({
           onClick={(e) => {
             setTimeout(() => {
               setOpen(false);
-              handleClose(e);
+              // handleClose(e);
               props.handleSearchTour();
             }, 10);
           }}
@@ -196,7 +196,7 @@ const PeopleCount = ({
               onClick={(e) => {
                 setTimeout(() => {
                   setOpen(false);
-                  handleClose(e);
+                  // handleClose(e);
                   props.handleSearchTour();
                 }, 10);
               }}

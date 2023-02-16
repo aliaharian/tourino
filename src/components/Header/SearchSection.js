@@ -20,14 +20,14 @@ const SearchSection = ({
     <div
       className={clsx(
         classes.searchSectionContainer,
-        homepage && classes.homepageSearch
+        homepage ? classes.homepageSearch : ""
       )}
     >
       <div
         className={clsx(
           classes.transportContainer,
-          !homepage && classes.transportContainerOther,
-          scrollPos && showSearch && classes.transportContainerDark
+          !homepage ? classes.transportContainerOther : "",
+          scrollPos && showSearch ? classes.transportContainerDark : ""
         )}
         style={scrollPos && !showSearch ? { display: "none" } : {}}
       >
@@ -35,7 +35,7 @@ const SearchSection = ({
           onClick={() => {
             setTransport("all");
           }}
-          className={transport === "all" && classes.transportActive}
+          className={transport === "all" ? classes.transportActive : ""}
         >
           <p>همه</p>
         </div>
@@ -43,7 +43,7 @@ const SearchSection = ({
           onClick={() => {
             setTransport("airplane");
           }}
-          className={transport === "airplane" && classes.transportActive}
+          className={transport === "airplane" ? classes.transportActive : ""}
         >
           <p>هواپیما</p>
         </div>
@@ -51,7 +51,7 @@ const SearchSection = ({
           onClick={() => {
             setTransport("train");
           }}
-          className={transport === "train" && classes.transportActive}
+          className={transport === "train" ? classes.transportActive : ""}
         >
           <p>قطار</p>
         </div>
@@ -59,7 +59,7 @@ const SearchSection = ({
           onClick={() => {
             setTransport("bus");
           }}
-          className={transport === "bus" && classes.transportActive}
+          className={transport === "bus" ? classes.transportActive : ""}
         >
           <p>اتوبوس</p>
         </div>
@@ -67,12 +67,11 @@ const SearchSection = ({
       <div
         className={clsx(
           classes.searchbarContainer,
-          !homepage && classes.searchbarContainerOther,
-          scrollPos && !showSearch && classes.searchbarContainerSm,
-          scrollPos &&
-            !showSearch &&
-            homepage &&
-            classes.searchbarContainerSmHome
+          !homepage ? classes.searchbarContainerOther : "",
+          scrollPos && !showSearch ? classes.searchbarContainerSm : "",
+          scrollPos && !showSearch && homepage
+            ? classes.searchbarContainerSmHome
+            : ""
         )}
       >
         <Searchbar

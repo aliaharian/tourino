@@ -115,7 +115,7 @@ const Faq = () => {
             <Grid container className={classes.faqContainer}>
 
                 {faq.map((data, index) => (
-                    <Accordion square expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
+                    <Accordion key={index} square expanded={expanded === `panel${index}`} onChange={handleChange(`panel${index}`)}>
                         <AccordionSummary expandIcon={<ExpandMoreIcon />}
                             aria-controls={`panel${index}d-content`}
                             id={`panel${index}d-header`}

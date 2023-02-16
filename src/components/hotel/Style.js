@@ -136,6 +136,18 @@ export default makeStyles((theme) => ({
       },
     },
   },
+  hotelNotes:{
+    padding: "24px 0",
+    "&>p": {
+      fontSize: 18,
+      margin: "0 0 16px",
+    },
+    "&>div": {
+      "& p": {
+        margin: "8px 0",
+      },
+    },
+  },
   hotelServices: {
     padding: "24px 0",
     borderBottom: "1px solid #e0e0e0",
@@ -181,5 +193,14 @@ export default makeStyles((theme) => ({
   map:{
     width:"100%",
     height:300
+  },
+  addressMap:{
+    display:"flex",
+    width:"100%",
+    alignItems:"center",
+    marginTop:12,
+    '&>p':{
+      marginLeft:8
+    }
   }
 }));

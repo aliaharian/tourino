@@ -14,14 +14,14 @@ const Footer = () => {
         <div className={classes.footerGrandContainer}>
             <div className={classes.footerContainer}>
                 <Grid container className={classes.footer}>
-                    <Grid lg={4} md={4} sm={6} xs={12} >
-                        <Typography variant="p" component="h1">گردشگری</Typography>
+                    <Grid item lg={4} md={4} sm={6} xs={12} >
+                        <Typography  component="h1">گردشگری</Typography>
                         <Typography>
                             گردشگری بزرگترین و معتبرترین سایت خرید اینترنتی بلیط هواپیما ، قطار و اتوبوس در کشور است که از سال 1393 کار خود را شروع کرده و در این مدت توانسته رضایت درصد قابل توجهی از کاربران را به دست بیاورد. در ابتدا، فروش بلیط پرواز داخلی در دستور کار گردشگری قرار داشت؛ اما به مرور امکان خرید سایر محصولات گردشگری نیز به گردشگری اضافه شد.
                         </Typography>
                     </Grid>
-                    <Grid lg={2} md={2} sm={6} xs={12} >
-                        <Typography variant="p" component="h3">دسته بندی ها</Typography>
+                    <Grid item lg={2} md={2} sm={6} xs={12} >
+                        <Typography  component="h3">دسته بندی ها</Typography>
                         <ul>
                             <li>
                                 <Link href="#">
@@ -65,8 +65,8 @@ const Footer = () => {
                             </li>
                         </ul>
                     </Grid>
-                    <Grid lg={3} md={3} sm={6} xs={12} >
-                        <Typography variant="p" component="h3">اطلاعات تکمیلی</Typography>
+                    <Grid item lg={3} md={3} sm={6} xs={12} >
+                        <Typography  component="h3">اطلاعات تکمیلی</Typography>
                         <ul>
                             <li>
                                 <Link href="#">
@@ -110,25 +110,25 @@ const Footer = () => {
                             </li>
                         </ul>
                     </Grid>
-                    <Grid lg={3} md={3} sm={6} xs={12} >
-                        <Typography variant="p" component="h3">مجوز ها</Typography>
+                    <Grid item lg={3} md={3} sm={6} xs={12} >
+                        <Typography  component="h3">مجوز ها</Typography>
                         <Grid container>
-                            <Grid lg={4} md={4} sm={4} xs={4}>
+                            <Grid item lg={4} md={4} sm={4} xs={4}>
                                 <a
-                                    referrerpolicy="origin"
+                                    referrerPolicy="origin"
                                     target="_blank"
                                     href="https://trustseal.enamad.ir/?id=209400&amp;Code=S1yxU9zKgTRHXf6MyNmY">
                                     <img
-                                        referrerpolicy="origin"
+                                        referrerPolicy="origin"
                                         src="https://Trustseal.eNamad.ir/logo.aspx?id=209400&amp;Code=S1yxU9zKgTRHXf6MyNmY"
                                         alt=""
                                         style={{ cursor: "pointer" }}
                                         id="S1yxU9zKgTRHXf6MyNmY" />
                                 </a>
                             </Grid>
-                            <Grid lg={4} md={4} sm={4} xs={4} >
+                            <Grid item lg={4} md={4} sm={4} xs={4} >
                                 <img
-                                    referrerpolicy='origin'
+                                    referrerPolicy='origin'
                                     id='nbqejzpejxlzapfuesgtrgvj'
                                     style={{ cursor: 'pointer' }}
                                     onClick={() => {
@@ -138,17 +138,17 @@ const Footer = () => {
                                     src='https://logo.samandehi.ir/logo.aspx?id=271503&p=odrfyndtnbpdujynlymaqfti'
                                 />
                             </Grid>
-                            <Grid lg={4} md={4} sm={4} xs={4} >
+                            <Grid item lg={4} md={4} sm={4} xs={4} >
                                 <a href="http://www.aira.ir/" target="_blank">
                                     <img src={nerkh} />
                                 </a>
                             </Grid>
-                            <Grid lg={4} md={4} sm={4} xs={4} >
+                            <Grid item lg={4} md={4} sm={4} xs={4} >
                                 <a href="https://www.cao.ir/home" target="_blank">
                                     <img src={cao} />
                                 </a>
                             </Grid>
-                            <Grid lg={4} md={4} sm={4} xs={4} >
+                            <Grid item lg={4} md={4} sm={4} xs={4} >
                                 <a href="https://www.cao.ir/paxrights" target="_blank">
                                     <img src={rights} />
                                 </a>

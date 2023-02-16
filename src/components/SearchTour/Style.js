@@ -257,7 +257,7 @@ export default makeStyles((theme) => ({
     "&>div": {
       fontSize: 13,
       color: theme.textColor.primary,
-      "&>button": {
+      "&>a": {
         width: "100px !important",
         height: "39px !important",
         border: "1px solid " + theme.textColor.border + " !important",
@@ -473,4 +473,8 @@ export default makeStyles((theme) => ({
   activeRate: {
     backgroundColor: "#EEEEEE !important",
   },
+  largeText:{
+    fontSize:"24px !important",
+    fontFamily:theme.font.bold + " !important",
+  }
 }));

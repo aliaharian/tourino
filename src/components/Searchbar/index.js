@@ -225,6 +225,7 @@ const Searchbar = ({
   }, []);
 
   const handleSearchTour = () => {
+    console.log('teleeee')
     let text = "";
     if (!startLocation) {
       text = "شهر مبدا را انتخاب کنید";
@@ -240,6 +241,7 @@ const Searchbar = ({
       text = "حداکثر تعداد مسافران باید کمتر از ۱۰ نفر باشد";
     }
 
+    console.log('text',text)
     if (text !== "") {
       Dispatch(
         enqueueSnackbar({
