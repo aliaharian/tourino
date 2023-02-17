@@ -1,8 +1,9 @@
 import BirthdateInput from "../form/BirthdateInput";
+import SelectInput from "../form/SelectInput";
 import TextInput2 from "../form/TextInput2";
 import useStyles from "./Style";
 
-const PassengerInfo = ({ info, setInfo, error }) => {
+const PassengerInfo = ({ info, setInfo, error, lg }) => {
   const classes = useStyles();
 
   const handleChange = (e) => {
@@ -11,13 +12,31 @@ const PassengerInfo = ({ info, setInfo, error }) => {
         return;
       }
       setInfo({ ...info, [e.target.name]: e.target.value });
+    } else if (
+      e.target.name == "day" ||
+      e.target.name == "month" ||
+      e.target.name == "year"
+    ) {
+      let tmp = { ...info };
+      switch (e.target.name) {
+        case "day":
+          tmp.birthDate[0] = e.target.value;
+          break;
+        case "month":
+          tmp.birthDate[1] = e.target.value;
+          break;
+        case "year":
+          tmp.birthDate[2] = e.target.value;
+          break;
+      }
+      setInfo({ ...tmp });
     } else {
       setInfo({ ...info, [e.target.name]: e.target.value });
     }
   };
   return (
     <>
-      <div className={classes.grid2}>
+      <div className={lg ? classes.grid3 : classes.grid2}>
         <div>
           <TextInput2
             required
@@ -38,8 +57,6 @@ const PassengerInfo = ({ info, setInfo, error }) => {
             onChange={handleChange}
           />
         </div>
-      </div>
-      <div className={classes.nationalCodeContainer}>
         <div>
           <TextInput2
             required
@@ -50,8 +67,7 @@ const PassengerInfo = ({ info, setInfo, error }) => {
             onChange={handleChange}
           />
         </div>
-      </div>
-      <div className={classes.grid2}>
+
         <div>
           <BirthdateInput
             required
@@ -63,12 +79,30 @@ const PassengerInfo = ({ info, setInfo, error }) => {
           />
         </div>
         <div>
-          <TextInput2
+          <SelectInput
             required
             error={error}
             label="جنسیت"
             name="gender"
             value={info.gender}
+            onChange={handleChange}
+            values={[
+              { value: "male", label: "مرد" },
+              {
+                value: "female",
+                label: "زن",
+              },
+            ]}
+          />
+        </div>
+
+        <div>
+          <TextInput2
+            required
+            error={error}
+            label="شماره تماس"
+            name="mobile"
+            value={info.mobile}
             onChange={handleChange}
           />
         </div>

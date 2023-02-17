@@ -9,19 +9,17 @@ import SearchTour from "../../../src/components/SearchTour/SearchTour";
 import TourInfo from "../../../src/components/tourInfo/TourInfo";
 import { BASE_URL } from "../../../src/constant";
 
-export default function TourPassengers({
-    tour
-}) {
+export default function TourPassengers({ tour, passengers }) {
   const Router = useRouter();
   let query = Router.query;
-console.log("tour", tour)
+  console.log("tour", tour);
   return (
     <div>
       <Head>
         <title>ثبت مسافرین تور </title>
       </Head>
       <Layout>
-        <TourInfo tour={tour}/>
+        <TourInfo tour={tour} userPassengers={passengers} />
         {/* <HotelDetail
           query={query}
           dest={info.to_city}
@@ -66,9 +64,21 @@ export const getServerSideProps = wrapper.getServerSideProps(
       },
     });
 
+    const passengers = await axios.get(`${BASE_URL}/user/passengers`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (tour.data.tour.passengers.length > 0) {
+      res.writeHead(302, { Location: "/profile/info" });
+      res.end();
+    }
+
     return {
       props: {
         tour: tour.data,
+        passengers: passengers.data,
       },
     };
     // } catch (err) {

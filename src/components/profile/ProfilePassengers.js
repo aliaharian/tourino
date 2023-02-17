@@ -6,14 +6,16 @@ import { setUserInfo } from "../../../redux/user";
 import useStyles from "./Style";
 import dateTime from "../../utilities/dateTime";
 import { numberFormat } from "../../utilities";
+import AddPassengerDialog from "./dialogs/AddPassengerDialog";
 const ProfilePassengers = ({ passengers, ...props }) => {
   const classes = useStyles();
   const Dispatch = useDispatch();
   console.log("tours", passengers);
   const isMobile = useMediaQuery("(max-width: 768px)");
-
+  const [openDialog, setOpenDialog] = useState(false);
   return (
     <div className={classes.profileTours}>
+ 
       {!isMobile && (
         <table className={classes.profileToursTable}>
           <thead>
@@ -81,10 +83,19 @@ const ProfilePassengers = ({ passengers, ...props }) => {
       )}
 
       <div className={classes.addCuttonContainer}>
-        <Button className={classes.addButton} startIcon={<Add />}>
+        <Button
+          onClick={() => setOpenDialog(true)}
+          className={classes.addButton}
+          startIcon={<Add />}
+        >
           افزودن مسافر
         </Button>
       </div>
+      
+      <AddPassengerDialog
+        open={openDialog}
+        onClose={() => setOpenDialog(false)}
+      />
     </div>
   );
 };

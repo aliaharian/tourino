@@ -13,7 +13,7 @@ import clsx from "clsx";
 import { useRef, useState } from "react";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-function BirthdateInput(props) {
+function SelectInput(props) {
   function range(min, max) {
     var len = max - min + 1;
     var arr = new Array(len);
@@ -24,7 +24,7 @@ function BirthdateInput(props) {
   }
   const StyledSelect = withStyles((theme) => ({
     root: {
-      width: 158,
+      width: "100%",
       backgroundColor: "#fff !important",
       fontSize: 13,
       paddingBottom: 0,
@@ -47,7 +47,7 @@ function BirthdateInput(props) {
 
   const StyledMenuItem = withStyles((theme) => ({
     root: {
-      width: 178,
+      width: "100%",
       height: 43,
       margin: "0 auto",
       backgroundColor: "#fff !important",
@@ -68,7 +68,7 @@ function BirthdateInput(props) {
   const StyledFormControl = withStyles((theme) => ({
     root: {
       height: 48,
-    //   width: 190,
+      width: "100%",
       padding: "0 16px",
       border: "1px solid " + theme.textColor.border,
       borderRadius: 8,
@@ -120,13 +120,14 @@ function BirthdateInput(props) {
       >
         {props.label || ""}
       </Typography>
-      <div className={classes.birthInputContainer}>
+      <div className={classes.selectInputContainer}>
         <StyledFormControl>
           <StyledSelect
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={props.value[0]}
-            name={"day"}
+            value={props.value}
+            name={props.name}
+
             displayEmpty
             //   variant="outlined"
             label={props.label}
@@ -156,7 +157,9 @@ function BirthdateInput(props) {
               },
               getContentAnchorEl: null,
 
-              style: {},
+            //   style: {
+            //     width: "100% !important",
+            //   },
               PopoverProps: {
                 style: {
                   borderRadius: "8px !important",
@@ -165,7 +168,7 @@ function BirthdateInput(props) {
 
               PaperProps: {
                 style: {
-                //   minWidth: 190,
+                  minWidth: 190,
                   border: "none",
                   boxShadow: "0 3px 10px #191a3212",
                   borderRadius: "8px !important",
@@ -179,141 +182,11 @@ function BirthdateInput(props) {
           >
             {
               //menuItem from 1 to 31 in for loop
-              Array.from(Array(31).keys()).map((item, index) => {
+              props.values.map((item, index) => {
                 return (
-                  <StyledMenuItem value={item + 1}>{item + 1}</StyledMenuItem>
-                );
-              })
-            }
-          </StyledSelect>
-        </StyledFormControl>
-        <StyledFormControl>
-          <StyledSelect
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={props.value[1]}
-            displayEmpty
-            name={"month"}
-            //   variant="outlined"
-            label={props.label}
-            onChange={props.onChange}
-            className={clsx(classes.birthRoot, props.error && classes.error)}
-            ref={selectRef}
-            IconComponent={() => {
-              return (
-                <ExpandMoreIcon
-                  className={`MuiSvgIcon-root MuiSelect-icon ${
-                    props.open && `MuiSelect-iconOpen`
-                  }`}
-                />
-              );
-            }}
-            InputProps={{
-              disableUnderline: true,
-            }}
-            MenuProps={{
-              anchorOrigin: {
-                vertical: "bottom",
-                horizontal: "left",
-              },
-              transformOrigin: {
-                vertical: "top",
-                horizontal: "left",
-              },
-              getContentAnchorEl: null,
-
-              style: {},
-              PopoverProps: {
-                style: {
-                  borderRadius: "8px !important",
-                },
-              },
-
-              PaperProps: {
-                style: {
-                //   minWidth: 190,
-                  border: "none",
-                  boxShadow: "0 3px 10px #191a3212",
-                  borderRadius: "8px !important",
-                  transform: isMobile
-                    ? "translate(-7px , 14px)"
-                    : "translate(-18px , 14px)",
-                  // backgroundColor:'red',
-                },
-              },
-            }}
-          >
-            {
-              //menuItem from 1 to 31 in for loop
-              Array.from(Array(12).keys()).map((item, index) => {
-                return (
-                  <StyledMenuItem value={item + 1}>{item + 1}</StyledMenuItem>
-                );
-              })
-            }
-          </StyledSelect>
-        </StyledFormControl>
-        <StyledFormControl>
-          <StyledSelect
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={props.value[2]}
-            displayEmpty
-            name={"year"}
-            //   variant="outlined"
-            label={props.label}
-            onChange={props.onChange}
-            className={clsx(classes.birthRoot, props.error && classes.error)}
-            ref={selectRef}
-            IconComponent={() => {
-              return (
-                <ExpandMoreIcon
-                  className={`MuiSvgIcon-root MuiSelect-icon ${
-                    props.open && `MuiSelect-iconOpen`
-                  }`}
-                />
-              );
-            }}
-            InputProps={{
-              disableUnderline: true,
-            }}
-            MenuProps={{
-              anchorOrigin: {
-                vertical: "bottom",
-                horizontal: "left",
-              },
-              transformOrigin: {
-                vertical: "top",
-                horizontal: "left",
-              },
-              getContentAnchorEl: null,
-
-              style: {},
-              PopoverProps: {
-                style: {
-                  borderRadius: "8px !important",
-                },
-              },
-
-              PaperProps: {
-                style: {
-                //   minWidth: 190,
-                  border: "none",
-                  boxShadow: "0 3px 10px #191a3212",
-                  borderRadius: "8px !important",
-                  transform: isMobile
-                    ? "translate(-7px , 14px)"
-                    : "translate(-18px , 14px)",
-                  // backgroundColor:'red',
-                },
-              },
-            }}
-          >
-            {
-              //array from 1300 to 1401
-              Array.from(range(1300, 1401).values()).map((item, index) => {
-                return (
-                  <StyledMenuItem value={item + 1}>{item + 1}</StyledMenuItem>
+                  <StyledMenuItem value={item.value}>
+                    {item.label}
+                  </StyledMenuItem>
                 );
               })
             }
@@ -324,4 +197,4 @@ function BirthdateInput(props) {
   );
 }
 
-export default BirthdateInput;
+export default SelectInput;
