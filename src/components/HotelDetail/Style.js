@@ -5,7 +5,9 @@ export default makeStyles((theme) => ({
     maxWidth: 1200,
     margin: "0 auto",
     padding: "21px 80px",
-    [theme.breakpoints.down("sm")]: {},
+    [theme.breakpoints.down("sm")]: {
+      padding: "21px 16px",
+    },
     "&>h2": {
       fontSize: 18,
       marginBottom: 16,
@@ -20,17 +22,27 @@ export default makeStyles((theme) => ({
     border: "1px solid #E0E0E0",
     borderRadius: 24,
     minHeight: "294px",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
     "&>div": {
       display: "flex",
       width: "100%",
       alignItems: "center",
       justifyContent: "flex-start",
       minHeight: "100%",
+      [theme.breakpoints.down("sm")]: {
+        flexDirection: "column",
+      },
     },
   },
   hotelImage: {
     height: "244px",
     marginRight: 24,
+    [theme.breakpoints.down("sm")]: {
+      marginRight: 0,
+      marginBottom: 24,
+    },
     "&>img": {
       height: "100%",
       width: "100%",
@@ -39,6 +51,11 @@ export default makeStyles((theme) => ({
   },
   hotelDetail: {
     height: "100%",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      height: "auto",
+      marginBottom: 24,
+    },
     "&>p": {
       fontSize: 18,
       borderBottom: "1px solid #E0E0E0",
@@ -140,12 +157,18 @@ export default makeStyles((theme) => ({
     "&>p": {
       fontSize: 24,
       margin: 0,
+      [theme.breakpoints.down("sm")]: {
+        fontSize: 16,
+      },
     },
   },
   transportContainer: {
     display: "grid",
     gridTemplateColumns: "repeat(2,1fr)",
     gridGap: 24,
+    [theme.breakpoints.down("sm")]: {
+      gridTemplateColumns: "repeat(1,1fr)",
+    },
   },
   transportCard: {
     display: "flex",
@@ -203,6 +226,9 @@ export default makeStyles((theme) => ({
     gridTemplateColumns: "repeat(4,1fr)",
     gridGap: 24,
     marginBottom: 72,
+    [theme.breakpoints.down("sm")]: {
+      gridTemplateColumns: "repeat(2,1fr)",
+    },
   },
   checkboxLabel: {
     display: "flex",
@@ -249,6 +275,11 @@ export default makeStyles((theme) => ({
     height: 600,
     borderRadius: 16,
     padding: "0",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      height: "100%",
+      borderRadius: 0,
+    },
   },
   dialogTitle: {
     display: "flex",
@@ -260,6 +291,9 @@ export default makeStyles((theme) => ({
       fontSize: 18,
       margin: 0,
     },
+    [theme.breakpoints.down("sm")]: {
+      padding: "18px 16px",
+    },
   },
   transportSelector: {
     width: "100%",
@@ -268,6 +302,10 @@ export default makeStyles((theme) => ({
     gridTemplateColumns: "repeat(4,1fr)",
     backgroundColor: "#F5F5F5",
     marginBottom: 32,
+    [theme.breakpoints.down("sm")]: {
+      padding: "13px 24px 0",
+      marginBottom: 24,
+    },
     "&>div": {
       display: "flex",
       alignItems: "center",
@@ -286,6 +324,9 @@ export default makeStyles((theme) => ({
     width: "100%",
     height: "calc(100% - 160px)",
     overflowY: "auto",
+    [theme.breakpoints.down("sm")]: {
+      height: "calc(100% - 200px)",
+    },
   },
   vehicleItem: {
     display: "flex",
@@ -294,6 +335,9 @@ export default makeStyles((theme) => ({
     padding: "12px 40px 12px 32px",
     borderBottom: "1px solid #E0E0E0",
     cursor: "pointer",
+    [theme.breakpoints.down("sm")]: {
+      padding: "12px 24px 12px 16px",
+    },
     "&:hover": {
       backgroundColor: "#F5F5F5",
     },
@@ -344,10 +388,9 @@ export default makeStyles((theme) => ({
       backgroundColor: "#FF5A5F",
       color: "#fff",
       fontSize: 16,
-      '&:hover': {
+      "&:hover": {
         backgroundColor: "#FF5A5F",
-        
-      }
+      },
     },
   },
 }));

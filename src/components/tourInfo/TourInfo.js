@@ -102,7 +102,7 @@ const TourInfo = ({ tour, userPassengers }) => {
           tourId: tour.tour.id,
         });
         Router.push({
-          pathname: "/profile/tours",
+          pathname: "/profile/tours/" + tour.tour.id,
         });
       } catch (err) {
         Dispatch(errorSnackbar(err));

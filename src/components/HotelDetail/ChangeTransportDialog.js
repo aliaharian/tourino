@@ -1,4 +1,4 @@
-import { Button, Dialog } from "@material-ui/core";
+import { Button, Dialog, useMediaQuery, useTheme } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import { dateTime, numberFormat } from "../../utilities";
@@ -16,6 +16,8 @@ const ChangeTransportDialog = ({
   const [selectedType, setSelectedType] = useState(vehicleType);
   const [vehicles, setVehicles] = useState([]);
   const classes = useStyles();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   useEffect(() => {
     //filter vehicles by type
@@ -32,8 +34,9 @@ const ChangeTransportDialog = ({
       onClose={onClose}
       open={open}
       PaperProps={{
-        style: { borderRadius: 16 },
+        style: { borderRadius: isMobile ? 0 : 16 },
       }}
+      fullScreen={isMobile}
     >
       <div className={classes.transportDialog}>
         <div className={classes.dialogTitle}>

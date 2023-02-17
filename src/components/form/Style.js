@@ -119,20 +119,7 @@ export default makeStyles((theme) => ({
         // width: '48px',
         height: 48,
         width:'100%',
-        
-        // '& .Mui-focused': {
-        //     border: '1px solid ' + theme.textColor.primary,
-        // },
-        // '&>div': {
-        //     height: '100%',
-        //     padding: '0 15px',
-        //     border: '1px solid ' + theme.textColor.border,
-        //     borderRadius: 8,
-        // },
-        // '& input': {    
-        //     textAlign:'center'
 
-        // }
     },
 
 }));

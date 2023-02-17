@@ -31,13 +31,14 @@ function SelectInput(props) {
       fontFamily: theme.font.medium,
       paddingTop: 0,
       paddingRight: "0 !important",
-      [theme.breakpoints.down(550)]: {
-        width: 78,
-        textAlign: "center",
-      },
-      [theme.breakpoints.down(470)]: {
-        width: 50,
-      },
+      height:"100%",
+      // [theme.breakpoints.down(550)]: {
+      //   width: 78,
+      //   textAlign: "center",
+      // },
+      // [theme.breakpoints.down(470)]: {
+      //   width: 50,
+      // },
     },
 
     iconOpen: {
@@ -75,12 +76,12 @@ function SelectInput(props) {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      [theme.breakpoints.down(550)]: {
-        width: 110,
-      },
-      [theme.breakpoints.down(470)]: {
-        width: 70,
-      },
+      // [theme.breakpoints.down(550)]: {
+      //   width: 110,
+      // },
+      // [theme.breakpoints.down(470)]: {
+      //   width: 70,
+      // },
       "&>label": {
         fontSize: 13,
         fontFamily: theme.font.regular,
@@ -127,7 +128,6 @@ function SelectInput(props) {
             id="demo-simple-select"
             value={props.value}
             name={props.name}
-
             displayEmpty
             //   variant="outlined"
             label={props.label}
@@ -143,9 +143,6 @@ function SelectInput(props) {
                 />
               );
             }}
-            InputProps={{
-              disableUnderline: true,
-            }}
             MenuProps={{
               anchorOrigin: {
                 vertical: "bottom",
@@ -157,9 +154,9 @@ function SelectInput(props) {
               },
               getContentAnchorEl: null,
 
-            //   style: {
-            //     width: "100% !important",
-            //   },
+              //   style: {
+              //     width: "100% !important",
+              //   },
               PopoverProps: {
                 style: {
                   borderRadius: "8px !important",

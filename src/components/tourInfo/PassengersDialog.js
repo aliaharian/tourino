@@ -1,4 +1,4 @@
-import { Button, Dialog } from "@material-ui/core";
+import { Button, Dialog, useMediaQuery, useTheme } from "@material-ui/core";
 import { Close } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import { dateTime, numberFormat } from "../../utilities";
@@ -12,14 +12,16 @@ const PassengersDialog = ({
   index,
 }) => {
   const classes = useStyles();
-
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Dialog
       onClose={onClose}
       open={open}
       PaperProps={{
-        style: { borderRadius: 16 },
+        style: { borderRadius: isMobile ? 0 : 16 },
       }}
+      fullScreen={isMobile}
     >
       <div className={classes.transportDialog}>
         <div className={classes.dialogTitle}>

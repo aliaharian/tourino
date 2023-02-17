@@ -5,7 +5,9 @@ export default makeStyles((theme) => ({
     maxWidth: 1200,
     margin: "0 auto",
     padding: "21px 80px",
-    [theme.breakpoints.down("sm")]: {},
+    [theme.breakpoints.down("sm")]: {
+      padding: "21px 16px",
+    },
     "&>h2": {
       fontSize: 18,
       marginBottom: 16,
@@ -21,6 +23,9 @@ export default makeStyles((theme) => ({
     "&>p": {
       fontSize: 24,
       margin: 0,
+      [theme.breakpoints.down("sm")]: {
+        fontSize: 16,
+      },
     },
   },
   passengersContainer: {
@@ -39,11 +44,17 @@ export default makeStyles((theme) => ({
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
     gridGap: 24,
+    [theme.breakpoints.down("sm")]: {
+      gridTemplateColumns: "1fr",
+    },
   },
   grid3: {
     display: "grid",
     gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
     gridGap: 24,
+    [theme.breakpoints.down("sm")]: {
+      gridTemplateColumns: "1fr",
+    },
   },
   nationalCodeContainer: {
     marginTop: 24,
@@ -76,11 +87,11 @@ export default makeStyles((theme) => ({
     "&>button": {
       width: "220px",
       height: "56px",
-      color:"#406D97",
+      color: "#406D97",
       borderRadius: "20px",
-      '& svg':{
-        color:"#406D97"
-      }
+      "& svg": {
+        color: "#406D97",
+      },
       // border: "1px solid #e0e0e0",
     },
   },
@@ -89,6 +100,12 @@ export default makeStyles((theme) => ({
     height: 600,
     borderRadius: 16,
     padding: "0",
+
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+      height: "100%",
+      borderRadius: 0,
+    },
   },
   dialogTitle: {
     display: "flex",
@@ -96,6 +113,9 @@ export default makeStyles((theme) => ({
     width: "100%",
     alignItems: "center",
     justifyContent: "space-between",
+    [theme.breakpoints.down("sm")]: {
+      padding: "16px 16px",
+    },
     "& p": {
       fontSize: 18,
       margin: 0,
@@ -109,11 +129,14 @@ export default makeStyles((theme) => ({
     justifyContent: "space-between",
     backgroundColor: "#F5F5F5",
     marginBottom: 32,
+    [theme.breakpoints.down("sm")]: {
+      padding: "13px 16px",
+    },
     "&>div": {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
- 
+
       "&>p": {
         margin: 0,
         fontSize: 16,
@@ -127,6 +150,9 @@ export default makeStyles((theme) => ({
     width: "100%",
     height: "calc(100% - 160px)",
     overflowY: "auto",
+    [theme.breakpoints.down("sm")]: {
+      height: "calc(100% - 200px)",
+    },
   },
   vehicleItem: {
     display: "flex",
@@ -135,6 +161,9 @@ export default makeStyles((theme) => ({
     padding: "12px 32px",
     borderBottom: "1px solid #E0E0E0",
     cursor: "pointer",
+    [theme.breakpoints.down("sm")]: {
+      padding: "12px 16px",
+    },
     "&:hover": {
       backgroundColor: "#F5F5F5",
     },
@@ -174,13 +203,16 @@ export default makeStyles((theme) => ({
     fontSize: 16,
     direction: "rtl",
   },
-  tourItemContainer:{
+  tourItemContainer: {
     border: "1px solid #e0e0e0",
     borderRadius: 8,
-    padding:'32px',
-    '&>div':{
-      borderBottom:"none !important",
-      padding:"0 !important",
-    }
-  }
+    padding: "32px",
+    [theme.breakpoints.down("sm")]: {
+      padding: "24px",
+    },
+    "&>div": {
+      borderBottom: "none !important",
+      padding: "0 !important",
+    },
+  },
 }));

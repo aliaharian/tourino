@@ -10,6 +10,10 @@ export default makeStyles((theme) => ({
     top: 0,
     transition: "all 150ms ease",
     zIndex: 200,
+    //hide on print
+    "@media print": {
+      display: "none",
+    },
   },
   headerContainer: {
     width: "100%",
@@ -235,5 +239,4 @@ export default makeStyles((theme) => ({
       fontSize: 12,
     },
   },
-
 }));

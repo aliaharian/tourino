@@ -75,12 +75,12 @@ function BirthdateInput(props) {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      [theme.breakpoints.down(550)]: {
-        width: 110,
-      },
-      [theme.breakpoints.down(470)]: {
-        width: 70,
-      },
+      // [theme.breakpoints.down(550)]: {
+      //   width: 110,
+      // },
+      // [theme.breakpoints.down(470)]: {
+      //   width: 70,
+      // },
       "&>label": {
         fontSize: 13,
         fontFamily: theme.font.regular,

@@ -71,7 +71,7 @@ export const getServerSideProps = wrapper.getServerSideProps(
     });
 
     if (tour.data.tour.passengers.length > 0) {
-      res.writeHead(302, { Location: "/profile/info" });
+      res.writeHead(302, { Location: "/profile/tours" });
       res.end();
     }
 

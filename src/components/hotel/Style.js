@@ -4,7 +4,9 @@ export default makeStyles((theme) => ({
     maxWidth: 1200,
     margin: "0 auto",
     padding: "21px 80px",
-    [theme.breakpoints.down("sm")]: {},
+    [theme.breakpoints.down("sm")]: {
+      padding: "21px 16px",
+    },
     "&>h2": {
       fontSize: 18,
       marginBottom: 16,
