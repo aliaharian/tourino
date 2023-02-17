@@ -16,6 +16,7 @@ import Link from "next/link";
 import Auth from "../auth/Auth";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthOpen, setAuthStep, getUserProfile, logout } from "../../../redux/user";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const classes = useStyles();
@@ -24,6 +25,7 @@ const Header = () => {
   const authOpen = useSelector((state) => state.user.authOpen);
   const userProfile = useSelector((state) => state.user.userProfile);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const router = useRouter()
 
   const Dispatch = useDispatch();
   const [scrollPos, setScrollPos] = useState(false);
@@ -132,7 +134,12 @@ const Header = () => {
                 open={Boolean(anchorEl)}
                 onClose={() => setAnchorEl(null)}
               >
-                <MenuItem key={0} onClick={() => setAnchorEl(null)}>
+                <MenuItem key={0} onClick={() => {
+                  setAnchorEl(null)
+                  router.push({
+                    pathname: "/profile/info",
+                  });
+                }}>
                   پروفایل کاربری
                 </MenuItem>
                 <MenuItem key={1} onClick={handleLogout}>

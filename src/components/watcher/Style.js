@@ -18,10 +18,10 @@ export default makeStyles((theme) => ({
     // minHeight: 500,
     borderRadius: 8,
     overflow: "hidden",
-    [theme.breakpoints.down("sm")]: {
-      gridTemplateColumns: "1fr",
+    // [theme.breakpoints.down("sm")]: {
+    //   gridTemplateColumns: "1fr",
 
-    },
+    // },
 
     "& p": {
       fontSize: 10,
@@ -47,10 +47,10 @@ export default makeStyles((theme) => ({
     gridTemplateColumns: "2fr 10fr",
     border: "1px solid #E5E5E5",
     borderRadius: 8,
-    [theme.breakpoints.down("sm")]: {
-      marginBottom:16
+    // [theme.breakpoints.down("sm")]: {
+    //   marginBottom:16
 
-    },
+    // },
   },
   passengerInfo: {
     padding: "8px",
