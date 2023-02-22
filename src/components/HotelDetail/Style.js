@@ -28,9 +28,10 @@ export default makeStyles((theme) => ({
     "&>div": {
       display: "flex",
       width: "100%",
-      alignItems: "center",
+      // alignItems: "center",
       justifyContent: "flex-start",
       minHeight: "100%",
+      alignItems:"flex-end",
       [theme.breakpoints.down("sm")]: {
         flexDirection: "column",
       },
@@ -39,11 +40,13 @@ export default makeStyles((theme) => ({
   hotelImage: {
     height: "244px",
     marginRight: 24,
+    borderRadius:16,
     [theme.breakpoints.down("sm")]: {
       marginRight: 0,
       marginBottom: 24,
     },
     "&>img": {
+      borderRadius:16,
       height: "100%",
       width: "100%",
       objectFit: "cover",
@@ -132,10 +135,12 @@ export default makeStyles((theme) => ({
   hotelMap: {
     width: "278px !important",
     flexDirection: "column",
+
   },
   map: {
     width: 278,
     height: 182,
+    borderRadius:16
   },
   gotoHotel: {
     marginTop: 24,
@@ -143,7 +148,7 @@ export default makeStyles((theme) => ({
       width: 157,
       height: 40,
       borderRadius: 20,
-      border: "1px solid #707070",
+      border: "1px solid #D9D9D9",
       color: "#707070",
     },
   },

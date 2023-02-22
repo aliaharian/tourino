@@ -7,6 +7,7 @@ import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions';
 import Typography from '@material-ui/core/Typography';
 import { CircularProgress } from '@material-ui/core';
+import { Close } from '@material-ui/icons';
 
 const styles = (theme) => ({
     dialog: {
@@ -16,6 +17,17 @@ const styles = (theme) => ({
             height: 'auto',
             borderRadius: 20,
             paddingBottom: 82,
+        }
+    },
+    dialogTitle:{
+       
+        '& h6':{
+             display:"flex",
+        justifyContent:"space-between",
+        alignItems:"center",
+        '& svg':{
+            cursor:"pointer"
+        }
         }
     },
     root: {
@@ -90,8 +102,9 @@ const DialogLayout = withStyles(styles)(({
 
     return (
         <Dialog onClose={onClose} aria-labelledby="customized-dialog-title" open={open} className={classes.dialog}>
-            <DialogTitle id="customized-dialog-title" onClose={onClose}>
+            <DialogTitle id="customized-dialog-title" className={classes.dialogTitle} onClose={onClose}>
                 {title}
+                <Close onClick={onClose}/>
             </DialogTitle>
             <DialogContent dividers>
                 {children}

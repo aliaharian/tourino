@@ -106,7 +106,7 @@ export default makeStyles((theme) => ({
       content: '""',
       marginTop: 16,
       display: "block",
-      backgroundColor: theme.palette.bg.gold,
+      backgroundColor: '#406D97',
       borderRadius:8
     },
   },

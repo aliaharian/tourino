@@ -150,7 +150,8 @@ export default makeStyles((theme) => ({
     },
   },
   loginContainer: {
-    width: 100,
+    width: 120,
+    height:36,
     "& p": {
       fontSize: 12,
     },
