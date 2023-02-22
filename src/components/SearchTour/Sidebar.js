@@ -161,8 +161,9 @@ const Sidebar = ({
           </Typography>
         </div>
         <div className={classes.starSlider}>
-          {stars.map((star) => (
+          {stars.map((star, index) => (
             <div
+              key={index}
               className={clsx(selectedStar === star && classes.activeStar)}
               onClick={() => handleChangeStars(star)}
             >
@@ -177,8 +178,9 @@ const Sidebar = ({
           <Typography>رتبه بندی هتل در تورینو</Typography>
         </div>
         <div className={classes.rateContainer}>
-          {rates.map((rate) => (
+          {rates.map((rate, index) => (
             <div
+            key={index}
               className={clsx(
                 selectedRate.indexOf(rate.value) !== -1 && classes.activeRate
               )}
@@ -204,9 +206,9 @@ const Sidebar = ({
         </div>
         <div className={classes.hotelTypeContainer}>
           {vehicleTypes &&
-            vehicleTypes.map((type) => {
+            vehicleTypes.map((type , index) => {
               return (
-                <div>
+                <div key={index}>
                   <FormControlLabel
                     control={
                       <Checkbox
@@ -244,9 +246,9 @@ const Sidebar = ({
         </div>
         <div className={classes.hotelTypeContainer}>
           {vehicleTypes &&
-            vehicleTypes.map((type) => {
+            vehicleTypes.map((type,index) => {
               return (
-                <div>
+                <div key={index}>
                   <FormControlLabel
                     control={
                       <Checkbox

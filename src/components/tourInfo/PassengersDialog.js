@@ -19,7 +19,7 @@ const PassengersDialog = ({
       onClose={onClose}
       open={open}
       PaperProps={{
-        style: { borderRadius: isMobile ? 0 : 16 },
+        style: { borderRadius: isMobile ? 0 : 16 ,overflow:'hidden'},
       }}
       fullScreen={isMobile}
     >

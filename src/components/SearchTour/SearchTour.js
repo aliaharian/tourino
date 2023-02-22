@@ -63,7 +63,7 @@ const SearchTour = ({
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       setOpenTimeout(true);
-    }, 9999999999999999);
+    }, 60 * 1000);
   };
 
   useEffect(() => {
@@ -294,7 +294,13 @@ const SearchTour = ({
 
   return (
     <div className={classes.searchTourContainer}>
-      <div className={clsx(classes.FilterContainer , _openMenu && classes.openFilter)} onClick={handleClose}>
+      <div
+        className={clsx(
+          classes.FilterContainer,
+          _openMenu && classes.openFilter
+        )}
+        onClick={handleClose}
+      >
         <Sidebar
           stars={stars}
           selectedStar={selectedStar}

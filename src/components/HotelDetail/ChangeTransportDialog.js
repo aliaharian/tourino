@@ -34,7 +34,7 @@ const ChangeTransportDialog = ({
       onClose={onClose}
       open={open}
       PaperProps={{
-        style: { borderRadius: isMobile ? 0 : 16 },
+        style: { borderRadius: isMobile ? 0 : 16, overflow: "hidden" },
       }}
       fullScreen={isMobile}
     >
@@ -102,6 +102,7 @@ const ChangeTransportDialog = ({
               </div>
               <div>
                 <p className={classes.dialogTransportPrice}>
+                  {vehicle.price_difference > 0 && "+"}
                   {numberFormat.toPersianSeprateTomanCommas(
                     vehicle.price_difference
                   )}{" "}

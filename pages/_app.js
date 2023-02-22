@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }) {
 
   const Dispatch = useDispatch();
   const mapset = useSelector(state=>state.user.map)
-  console.log('map',mapset)
+  console.log('designed and developed by https://www.linkedin.com/in/aliaharian/')
   useEffect(() => {
     if (typeof window !== "undefined" && !mapset) {
       setRTLTextPlugin(
@@ -36,6 +36,9 @@ function MyApp({ Component, pageProps }) {
       Dispatch(setMap(true));
     }
   },[]);
+  console.log = ()=>{
+
+  }
 
   return (
     <SnackbarProvider maxSnack={3}>

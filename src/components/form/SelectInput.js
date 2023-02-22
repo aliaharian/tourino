@@ -28,6 +28,8 @@ function SelectInput(props) {
       backgroundColor: "#fff !important",
       fontSize: 13,
       paddingBottom: 0,
+      display:'flex',
+      alignItems:"center",
       fontFamily: theme.font.medium,
       paddingTop: 0,
       paddingRight: "0 !important",
