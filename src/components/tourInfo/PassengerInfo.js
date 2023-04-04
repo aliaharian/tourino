@@ -2,16 +2,21 @@ import BirthdateInput from "../form/BirthdateInput";
 import SelectInput from "../form/SelectInput";
 import TextInput2 from "../form/TextInput2";
 import useStyles from "./Style";
-
+import { numberFormat } from "../../utilities";
 const PassengerInfo = ({ info, setInfo, error, lg }) => {
   const classes = useStyles();
 
   const handleChange = (e) => {
+    console.log('here')
     if (e.target.name === "mobile" || e.target.name === "nationalCode") {
-      if (isNaN(e.target.value)) {
-        return;
-      }
-      setInfo({ ...info, [e.target.name]: e.target.value });
+      // if (isNaN(e.target.value)) {
+      //   return;
+      // }
+      let val = e.target.value.toString().replace(/[^۰۱۲۳۴۵۶۷۸۹0-9]/g, "");
+      setInfo({
+        ...info,
+        [e.target.name]: numberFormat.toEnglishDigitsOnlyNum(val),
+      });
     } else if (
       e.target.name == "day" ||
       e.target.name == "month" ||

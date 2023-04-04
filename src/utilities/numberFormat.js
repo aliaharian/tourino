@@ -121,7 +121,7 @@ const toOn = (value) => (value ? toPersianDigits(putCommas(value)) : "");
 const toOnReduxForm = (value) => value && toOn(toOff(value));
 
 const toPersianSeprateTomanCommas = (toman) =>
-  toPersianDigits(toman.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+  toPersianDigits(toman?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 
 const removeLastComma = (str) => {
   if (!str) {

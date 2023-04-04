@@ -40,7 +40,7 @@ const ProfileTransactions = ({ transactions, ...props }) => {
           <thead>
             <tr>
               <th style={{ width: 122 }}>تاریخ و ساعت</th>
-              <th style={{ width: 163 }}>مبلغ (ریال)</th>
+              <th style={{ width: 163 }}>مبلغ (تومان)</th>
               <th style={{ width: 109 }}>نوع تراکنش</th>
               <th style={{ width: 258 }}>توضیحات</th>
               <th></th>
@@ -99,7 +99,7 @@ const ProfileTransactions = ({ transactions, ...props }) => {
                   </p>
                 </div>
                 <div>
-                  <p>مبلغ (ریال)</p>
+                  <p>مبلغ (تومان)</p>
                   <p>{numberFormat.toPersianSeprateTomanCommas(item.amount)}</p>
                 </div>
                 <div>

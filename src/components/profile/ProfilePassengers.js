@@ -2,20 +2,39 @@ import { Button, useMediaQuery } from "@material-ui/core";
 import { Add, MoreVertRounded } from "@material-ui/icons";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setUserInfo } from "../../../redux/user";
+import { errorSnackbar, getPassengers, setUserInfo } from "../../../redux/user";
 import useStyles from "./Style";
 import dateTime from "../../utilities/dateTime";
 import { numberFormat } from "../../utilities";
 import AddPassengerDialog from "./dialogs/AddPassengerDialog";
+import axios from "axios";
 const ProfilePassengers = ({ passengers, ...props }) => {
   const classes = useStyles();
   const Dispatch = useDispatch();
   console.log("tours", passengers);
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [openDialog, setOpenDialog] = useState(false);
+  const [saveLoading, setSaveLoading] = useState(false);
+  const handleSavePassenger = async (data) => {
+    console.log("data", data);
+    setSaveLoading(true);
+    try {
+      const response = await axios.post("/user/savePassenger", {
+        passenger: {
+          ...data,
+          type: "adult",
+        },
+      });
+      Dispatch(getPassengers());
+      setSaveLoading(false);
+      setOpenDialog(false);
+    } catch (err) {
+      Dispatch(errorSnackbar(err));
+      setSaveLoading(false);
+    }
+  };
   return (
     <div className={classes.profileTours}>
- 
       {!isMobile && (
         <table className={classes.profileToursTable}>
           <thead>
@@ -28,7 +47,7 @@ const ProfilePassengers = ({ passengers, ...props }) => {
             </tr>
           </thead>
           <tbody>
-            {passengers.map((item, index) => (
+            {passengers?.map((item, index) => (
               <tr>
                 <td>
                   {item.name} {item.last_name}
@@ -91,10 +110,12 @@ const ProfilePassengers = ({ passengers, ...props }) => {
           افزودن مسافر
         </Button>
       </div>
-      
+
       <AddPassengerDialog
         open={openDialog}
         onClose={() => setOpenDialog(false)}
+        handleSave={handleSavePassenger}
+        startSearch={saveLoading}
       />
     </div>
   );

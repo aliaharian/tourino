@@ -36,9 +36,9 @@ function MyApp({ Component, pageProps }) {
       Dispatch(setMap(true));
     }
   },[]);
-  console.log = ()=>{
+  // console.log = ()=>{
 
-  }
+  // }
 
   return (
     <SnackbarProvider maxSnack={3}>

@@ -74,7 +74,7 @@ const ProfileSidebar = () => {
           {numberFormat.toPersianSeprateTomanCommas(
             profile.user.wallet?.amount
           )}{" "}
-          ریال
+          تومان
         </Typography>
       </div>
       <div className={classes.nav}>

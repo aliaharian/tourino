@@ -22,7 +22,7 @@ const ProfileTours = ({ profile, tours, ...props }) => {
               <th style={{ width: 96 }}>شماره تور</th>
               <th style={{ width: 89 }}>مبدا/مقصد</th>
               <th style={{ width: 208 }}>تاریخ و ساعت</th>
-              <th style={{ width: 105 }}>مبلغ کل(ریال)</th>
+              <th style={{ width: 105 }}>مبلغ کل(تومان)</th>
               <th style={{ width: 154 }}>وضعیت</th>
               <th></th>
             </tr>
@@ -67,7 +67,7 @@ const ProfileTours = ({ profile, tours, ...props }) => {
               </div>
               <div>
                 <div>
-                  <p>مبلغ کل(ریال)</p>
+                  <p>مبلغ کل(تومان)</p>
 
                   <p>
                     {numberFormat.toPersianSeprateTomanCommas(

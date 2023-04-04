@@ -17,6 +17,7 @@ export const LOGOUT = "logout";
 export const SET_LOADING = "setLoading";
 export const SET_TOKEN = "setToken";
 export const LOAD_SUCCESS = "userLoadSuccess";
+export const GET_USER_PASSENGERS = "getUserPassengers";
 //openMenu
 export const OPEN_MENU = "openMenu";
 export const SET_MAP = "setMap";
@@ -34,7 +35,32 @@ export const enqueueSnackbar = (notification) => ({
     ...notification,
   },
 });
-
+export const getPassengers =
+  (server = false, serverData) =>
+  async (dispatch, getState) => {
+    try {
+      const state = getState();
+      console.log(state.user.authorization);
+      if (!server) {
+        const response = await axios.get(`/user/passengers`, {
+          headers: {
+            Authorization: "Bearer " + state.user.authorization.token,
+          },
+        });
+        dispatch({
+          type: GET_USER_PASSENGERS,
+          payload: response.data,
+        });
+      } else {
+        dispatch({
+          type: GET_USER_PASSENGERS,
+          payload: serverData,
+        });
+      }
+    } catch (e) {
+      dispatch(errorSnackbar(e));
+    }
+  };
 export const removeSnackbar = (key) => ({
   type: REMOVE_SNACKBAR,
   key,

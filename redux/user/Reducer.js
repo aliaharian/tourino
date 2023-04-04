@@ -17,6 +17,7 @@ import {
   SET_USER_INFO,
   OPEN_MENU,
   SET_MAP,
+  GET_USER_PASSENGERS,
 } from "./Actions";
 
 const defaultState = {
@@ -32,6 +33,7 @@ const defaultState = {
   user: null,
   openMenu: false,
   map: null,
+  passengers: [],
 };
 
 const userReducer = (state = defaultState, action) => {
@@ -58,6 +60,11 @@ const userReducer = (state = defaultState, action) => {
       return {
         ...state,
         authorization: action.payload,
+      };
+    case GET_USER_PASSENGERS:
+      return {
+        ...state,
+        passengers: action.payload,
       };
     case SET_ERROR:
       return {

@@ -6,7 +6,13 @@ import PassengerInfo from "../../tourInfo/PassengerInfo";
 import useStyles from "./Style";
 import animationData from "../../../assets/icon/loading.json";
 
-const AddPassengerDialog = ({ open, onClose, handleSave, startSearch , setStartSearch }) => {
+const AddPassengerDialog = ({
+  open,
+  onClose,
+  handleSave,
+  startSearch,
+  setStartSearch,
+}) => {
   const classes = useStyles();
 
   const [passenger, setPassenger] = useState({
@@ -25,6 +31,16 @@ const AddPassengerDialog = ({ open, onClose, handleSave, startSearch , setStartS
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+  useEffect(() => {
+    setPassenger({
+      name: "",
+      lastName: "",
+      nationalCode: "",
+      mobile: "",
+      birthDate: ["", "", ""],
+      gender: "",
+    });
+  }, [open]);
   return (
     <Dialog
       onClose={onClose}
@@ -43,27 +59,33 @@ const AddPassengerDialog = ({ open, onClose, handleSave, startSearch , setStartS
         <div className={classes.formContainer}>
           <PassengerInfo
             info={passenger}
-            setInfo={(info) => {}}
+            setInfo={(info) => {
+              console.log(info);
+              setPassenger({ ...info });
+            }}
             error={false}
           />{" "}
         </div>
         <div className={classes.submitBtn}>
-        <Button onClick={handleSave} disabled={startSearch}>
-          {startSearch ? (
-            <Lottie
-              options={defaultOptions}
-              height={48}
-              width={48}
-              isStopped={false}
-              isPaused={false}
-            />
-          ) : (
-            "افزودن کاربر"
-          )}
-        </Button>
+          <Button
+            onClick={() => {
+              handleSave(passenger);
+            }}
+          >
+            {startSearch ? (
+              <Lottie
+                options={defaultOptions}
+                height={48}
+                width={48}
+                isStopped={false}
+                isPaused={false}
+              />
+            ) : (
+              "افزودن کاربر"
+            )}
+          </Button>
+        </div>
       </div>
-      </div>
-     
     </Dialog>
   );
 };

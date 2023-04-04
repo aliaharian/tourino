@@ -133,9 +133,9 @@ const Sidebar = ({
           value={price}
           onChange={handleChangePrice}
           onChangeCommitted={handleSubmitPrice}
-          min={50000}
+          min={100000}
           step={50000}
-          max={4000000}
+          max={10000000}
         />
         <div className={classes.priceText}>
           <Typography>{`${numberFormat.toPersianSeprateTomanCommas(
