@@ -30,9 +30,9 @@ export default makeStyles((theme) => ({
       padding: "0 24px",
     },
   },
-  searchbarOther:{
+  searchbarOther: {
     [theme.breakpoints.down("sm")]: {
-      left:-50
+      left: -50,
     },
   },
   searchbarSm: {
@@ -394,10 +394,10 @@ export default makeStyles((theme) => ({
     },
   },
   deleteDate: {
-    width: 24,
-    maxWidth: 24,
-    minWidth: 24,
-    height: 24,
+    width: "24px !important",
+    maxWidth: "24px !important",
+    minWidth: "24px !important",
+    height: "24px !important",
     padding: 0,
     borderRadius: "50%",
     position: "absolute",
@@ -410,9 +410,8 @@ export default makeStyles((theme) => ({
     },
     //breakpoint
     [theme.breakpoints.down("sm")]: {
-      top:12
-    }
-
+      top: 12,
+    },
   },
   roomContainer: {
     width: "100%",
@@ -619,16 +618,16 @@ export default makeStyles((theme) => ({
   },
   submitDateBtn: {
     width: "100%",
-    padding:"0 16px",
-    marginTop:16,
+    padding: "0 16px",
+    marginTop: 16,
     "&>button": {
       width: "100%",
-      color:  "#fff",
+      color: "#fff",
       borderRadius: 8,
       backgroundColor: "#FF5A5F",
     },
   },
-  mobileContentContainer:{
-    padding:"0 16px"
-  }
+  mobileContentContainer: {
+    padding: "0 16px",
+  },
 }));

@@ -92,8 +92,14 @@ const SelectDate = ({
         focusedInput={focusedInput}
         startDate={startDate}
         endDate={endDate}
-        setStartDate={(e) => setStartDate(e)}
-        setEndDate={(e) => setEndDate(e)}
+        setStartDate={(e) => {
+          setStartDate(e);
+          // setFocusedInput(null);
+        }}
+        setEndDate={(e) => {
+          setEndDate(e);
+          // setFocusedInput(null);
+        }}
         setFocusedInput={(e) => setFocusedInput(e)}
       />
     );
@@ -114,6 +120,8 @@ const SelectDate = ({
         aria-haspopup="true"
         onClick={(event) => {
           handleToggle();
+          setStartDate()
+          setEndDate()
         }}
       >
         <Typography> تاریخ سفر </Typography>
@@ -157,7 +165,13 @@ const SelectDate = ({
             </div>
           </div>
           <div className={classes.submitDateBtn}>
-            <Button onClick={(e) => {gotoNext()}} >تایید تاریخ</Button>
+            <Button
+              onClick={(e) => {
+                gotoNext();
+              }}
+            >
+              تایید تاریخ
+            </Button>
           </div>
         </Dialog>
       ) : (
