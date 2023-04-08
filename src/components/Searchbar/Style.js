@@ -399,7 +399,7 @@ export default makeStyles((theme) => ({
     minWidth: "24px !important",
     height: "24px !important",
     padding: 0,
-    borderRadius: "50%",
+    borderRadius: "50% !important",
     position: "absolute",
     top: 20,
     right: 15,
