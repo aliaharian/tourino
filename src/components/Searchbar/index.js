@@ -225,7 +225,8 @@ const Searchbar = ({
   }, []);
 
   const handleSearchTour = () => {
-    console.log('teleeee')
+    console.log("teleeee", startLocation);
+    console.log("teleeee", endLocation);
     let text = "";
     if (!startLocation) {
       text = "شهر مبدا را انتخاب کنید";
@@ -241,7 +242,7 @@ const Searchbar = ({
       text = "حداکثر تعداد مسافران باید کمتر از ۱۰ نفر باشد";
     }
 
-    console.log('text',text)
+    console.log("text", text);
     if (text !== "") {
       Dispatch(
         enqueueSnackbar({
@@ -278,8 +279,8 @@ const Searchbar = ({
 
       Router.push(
         `/tour/search?departure_type=${transport}&arrival_type=${transport}&origin=${
-          startLocation.city_id
-        }&dest=${endLocation.city_id}&startDate=${
+          startLocation.city_id || startLocation.id
+        }&dest=${endLocation.city_id || endLocation.id}&startDate=${
           new Date(startDate).getTime() / 1000
         }&endDate=${
           new Date(endDate).getTime() / 1000

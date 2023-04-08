@@ -34,6 +34,9 @@ const SmallHeader = ({ dest, origin }) => {
   const authOpen = useSelector((state) => state.user.authOpen);
   const userProfile = useSelector((state) => state.user.userProfile);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  console.log("desttttt", dest);
+  console.log("originnnnn", origin);
+
   const handleLogout = () => {
     Dispatch(logout());
     setAnchorEl(null);
