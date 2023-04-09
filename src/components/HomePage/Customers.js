@@ -8,9 +8,18 @@ import OfferedTourItem from './OfferedTourItem/OfferedTourItem';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import iranAir from '../../assets/icon/iranAir.svg'
-import omanAir from '../../assets/icon/omanAir.svg'
-import airCanada from '../../assets/icon/airCanada.svg'
-import airFrance from '../../assets/icon/airFrance.svg'
+import asemanAir from '../../assets/icon/airline/Asemanairline-logo.svg'
+import kaspian from '../../assets/icon/airline/Kaspian-Airline-logo.svg'
+import mahan from '../../assets/icon/airline/Mahan-Airline-logo.svg'
+import naftAir from '../../assets/icon/airline/Naftair-logo.svg'
+import qeshmAir from '../../assets/icon/airline/Qeshmair-logo.svg'
+import tabanAir from '../../assets/icon/airline/Taban-Airline-logo.svg'
+import kishAir from '../../assets/icon/airline/Kishair-logo.svg'
+import ataAir from '../../assets/icon/airline/Ata-Airline.png'
+import atrak from '../../assets/icon/airline/Atrakair-Airline-logo.png'
+import iranAirTour from '../../assets/icon/airline/Iranairtour-logo.png'
+import merajAir from '../../assets/icon/airline/Meraj-Airline-logo.png'
+
 
 const Customers = () => {
     const classes = useStyles()
@@ -32,40 +41,42 @@ const Customers = () => {
         {
             img: iranAir,
         },
+        // {
+        //     img: asemanAir,
+        // },
         {
-            img: omanAir,
+            img: kaspian,
         },
         {
-            img: airCanada,
+            img: mahan,
         },
         {
-            img: airFrance,
+            img: naftAir,
         },
         {
-            img: iranAir,
+            img: qeshmAir,
         },
         {
-            img: omanAir,
+            img: tabanAir,
         },
         {
-            img: airCanada,
-        },
-        {
-            img: airFrance,
+            img: kishAir,
         },
 
         {
-            img: iranAir,
+            img: ataAir,
         },
         {
-            img: omanAir,
+            img: atrak,
         },
         {
-            img: airCanada,
+            img: iranAirTour,
         },
         {
-            img: airFrance,
+            img: merajAir,
         },
+
+       
     ]
 
     return (
