@@ -239,4 +239,7 @@ export default makeStyles((theme) => ({
       fontSize: 12,
     },
   },
+  logoImg:{
+    height:31
+  }
 }));

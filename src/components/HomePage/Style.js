@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/styles";
-import bg from "../../assets/img/bg.png";
+import bg from "../../assets/img/bg2.jpg";
 export default makeStyles((theme) => ({
   root: {
     width: "100%",

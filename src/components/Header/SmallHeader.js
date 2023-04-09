@@ -14,14 +14,20 @@ import SearchSection from "./SearchSection";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Link from "next/link";
+import logo from "../../assets/icon/logoP.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { logout, openMenu, setAuthOpen, setAuthStep } from "../../../redux/user";
-import { useRouter } from 'next/router'
+import {
+  logout,
+  openMenu,
+  setAuthOpen,
+  setAuthStep,
+} from "../../../redux/user";
+import { useRouter } from "next/router";
 import Auth from "../auth/Auth";
 
 const SmallHeader = ({ dest, origin }) => {
   const classes = useStyles();
-  const router = useRouter()
+  const router = useRouter();
   const [showSearch, setShowSearch] = React.useState(false);
   const Dispatch = useDispatch();
   const authStep = useSelector((state) => state.user.authStep);
@@ -84,8 +90,9 @@ const SmallHeader = ({ dest, origin }) => {
               <div className={classes.siteNameDark}>
                 <Link href="/">
                   <a>
-                    <div className={classes.siteLogoDark}></div>
-                    <Typography>تورینو</Typography>
+                    {/* <div className={classes.siteLogoDark}></div>
+                    <Typography>تورینو</Typography> */}
+                    <img className={classes.logoImg} src={logo} />
                   </a>
                 </Link>
               </div>

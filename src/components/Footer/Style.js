@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/styles";
-import bg from "../../assets/img/bg.png";
 export default makeStyles((theme) => ({
   footerGrandContainer: {
     width: "100%",
@@ -125,4 +124,7 @@ export default makeStyles((theme) => ({
       },
     },
   },
+  footerLogo:{
+    height:31
+  }
 }));

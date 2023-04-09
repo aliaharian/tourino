@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import clsx from "clsx";
 import Link from "next/link";
 import Auth from "../auth/Auth";
+import logo from "../../assets/icon/logoP.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthOpen, setAuthStep, getUserProfile, logout } from "../../../redux/user";
 import { useRouter } from "next/router";
@@ -79,12 +80,13 @@ const Header = () => {
             >
               <Link href="/">
                 <a>
-                  <div
+                  <img className={classes.logoImg} src={logo}/>
+                  {/* <div
                     className={
                       scrollPos ? classes.siteLogoDark : classes.siteLogo
                     }
                   ></div>
-                  <Typography>تورینو</Typography>
+                  <Typography>تورینو</Typography> */}
                 </a>
               </Link>
             </div>

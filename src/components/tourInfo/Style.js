@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/styles";
-import bg from "../../assets/img/bg.png";
 export default makeStyles((theme) => ({
   container: {
     maxWidth: 1200,

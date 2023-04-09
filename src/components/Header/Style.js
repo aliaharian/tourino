@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/styles";
-import bg from "../../assets/img/bg.png";
 export default makeStyles((theme) => ({
   headerGrandContainer: {
     width: "100vw",
@@ -304,4 +303,7 @@ export default makeStyles((theme) => ({
     width: "100vw",
     backgroundColor: "rgba(0,0,0,0.7)",
   },
+  logoImg:{
+    height:31
+  }
 }));
